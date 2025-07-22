@@ -12,6 +12,20 @@
 #' @importFrom dplyr `%>%` mutate group_by n
 #' @export
 summarize_star_occurances = function(data) {
+
+  if (!"data.frame" %in% class(data)) {
+  stop("Exoplanets data must be a `data.frame`")
+  }
+
+  if (nrow(data) == 0) {
+  warning("Empty exoplanets data")
+  return(data.frame("Star" = character(),"Count" = numeric()))
+  }
+
+  if (!"kepoi_name" %in% colnames(data)) {
+  stop("Exoplanets data must contain `kepoi_name` column.")
+  }
+
   data %>%
     mutate(
       Star = sapply(kepoi_name, \(x) unlist(strsplit(x, "\\."))[[1]])
