@@ -9,7 +9,7 @@
 #'           - `Star` column with star ID.
 #'           - `Count` column with number of planets.
 #' 
-#' @importFrom dplyr `%>%` mutate group_by n
+#' @importFrom dplyr `%>%` mutate group_by n summarise
 #' @export
 summarize_star_occurances = function(data) {
 
