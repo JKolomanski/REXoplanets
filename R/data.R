@@ -1,8 +1,10 @@
-#' rexoplanets_sample_data
+#' closest_50_exoplanets
 #'
-#' A sample dataset of exoplanets, including their names, discovery methods,
+#' A sample dataset of 50 exoplanets closest to earth,
+#' taken from table `Planetary Systems Composite Parameters`,
+#' including their names, discovery methods,
 #' and other relevant information.
 #'
-#' @format A data frame with 50 columns and 81 rows.
+#' @format A data frame with 683 columns and 50 rows.
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/}
-"rexoplanets_sample_data"
+"closest_50_exoplanets"
