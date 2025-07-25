@@ -1,10 +1,21 @@
-#' Calculate the Earth SImilarity Index (ESI)
+#' Calculate the Earth Similarity Index (ESI)
 #'
 #' @details
-#' The function takes in data frame and calculates the esi for each entry.
+#' The function takes in data frame and calculates the ESI for each entry.
+#'
+#' ESI (Earth Simillarity Index) is a characterization of how simmilar a planetary-mass object
+#' or natural satelite is to earth. It was designed to be a scale from zero to one,
+#' with Earth having a value of 1.
+#'
+#' This implementation bases it's calculation on planetary `stellar flux` and radius
+#'
+#' @references
+#' Schulze-Makuch, D., Méndez, A., Fairén, A. G., von Paris, P., Turse, C., Boyer, G.,
+#' Davila, A. F., Resendes de Sousa António, M., Irwin, L. N., and Catling, D. (2011)
+#' A Two-Tiered Approach to Assess the Habitability of Exoplanets. Astrobiology 11(10): 1041-1052.
 #'
 #' @param data A data frame with data from `ps` or `pscomppars` table.
-#'              It must contain columns: `st_lum`, `pl_orbsmax` and `pl_rade`.
+#'              It must contain columns: `objectid` `st_lum`, `pl_orbsmax`, `pl_rade` and pl_insol.
 #' @returns A data frame containing:
 #'              - `objectid` column with object ID.
 #'              - `esi` column with the ESI
@@ -13,16 +24,20 @@
 #' @export
 calculate_esi = function(data) {
   if (!"data.frame" %in% class(data)) {
-    stop("Exoplanets data must be a `data.frame`")
+    stop("calculate_esi data must be a `data.frame`")
   }
 
   if (nrow(data) == 0) {
-    warning("Empty exoplanets data")
+    warning("Empty calculate_esi data")
     return(data.frame("objectid" = character(), "esi" = numeric()))
   }
 
-  if (!"st_lum" %in% colnames(data)) {
-    stop("Exoplanets data must contain `st_lum` column.")
+  required_cols = c("objectid", "st_lum", "pl_orbsmax", "pl_rade", "pl_insol")
+  available_cols = colnames(data)
+  missing_cols = setdiff(required_cols, available_cols)
+
+  if (length(missing_cols) > 0) {
+    stop(paste("Invalid data provided. Missing columns: ", paste0(missing_cols, collapse = ", ")))
   }
 
   data = data %>%

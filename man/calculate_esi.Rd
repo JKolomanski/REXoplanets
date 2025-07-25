@@ -2,13 +2,13 @@
 % Please edit documentation in R/calculate_esi.R
 \name{calculate_esi}
 \alias{calculate_esi}
-\title{Calculate the Earth SImilarity Index (ESI)}
+\title{Calculate the Earth Similarity Index (ESI)}
 \usage{
 calculate_esi(data)
 }
 \arguments{
 \item{data}{A data frame with data from \code{ps} or \code{pscomppars} table.
-It must contain columns: \code{st_lum}, \code{pl_orbsmax} and \code{pl_rade}.}
+It must contain columns: \code{objectid} \code{st_lum}, \code{pl_orbsmax}, \code{pl_rade} and pl_insol.}
 }
 \value{
 A data frame containing:
@@ -16,8 +16,19 @@ A data frame containing:
 - \code{esi} column with the ESI
 }
 \description{
-Calculate the Earth SImilarity Index (ESI)
+Calculate the Earth Similarity Index (ESI)
 }
 \details{
-The function takes in data frame and calculates the esi for each entry.
+The function takes in data frame and calculates the ESI for each entry.
+
+ESI (Earth Simillarity Index) is a characterization of how simmilar a planetary-mass object
+or natural satelite is to earth. It was designed to be a scale from zero to one,
+with Earth having a value of 1.
+
+This implementation bases it's calculation on planetary \verb{stellar flux} and radius
+}
+\references{
+Schulze-Makuch, D., Méndez, A., Fairén, A. G., von Paris, P., Turse, C., Boyer, G.,
+Davila, A. F., Resendes de Sousa António, M., Irwin, L. N., and Catling, D. (2011)
+A Two-Tiered Approach to Assess the Habitability of Exoplanets. Astrobiology 11(10): 1041-1052.
 }
