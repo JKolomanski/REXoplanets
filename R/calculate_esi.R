@@ -37,7 +37,7 @@ calculate_esi = function(data) {
   missing_cols = setdiff(required_cols, available_cols)
 
   if (length(missing_cols) > 0) {
-    stop(paste("Invalid data provided. Missing columns: ", paste0(missing_cols, collapse = ", ")))
+    stop(paste("Invalid data provided. Missing columns:", paste0(missing_cols, collapse = ", ")))
   }
 
   data = data %>%
