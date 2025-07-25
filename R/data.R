@@ -1,4 +1,4 @@
-#' closest_50_planets
+#' closest_50_exoplanets
 #'
 #' A sample dataset of 50 exoplanets closest to earth,
 #' taken from table `Planetary Systems Composite Parameters`,
@@ -7,4 +7,4 @@
 #'
 #' @format A data frame with 683 columns and 50 rows.
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/}
-"closest_50_planets"
+"closest_50_exoplanets"
