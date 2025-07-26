@@ -32,10 +32,12 @@ calculate_esi = function(data) {
     return(data.frame("objectid" = character(), "esi" = numeric()))
   }
 
+  # todo: not all columns are required at once.
+  # fix this check to allow `pl_orbmax` and `pl_rade` columns to be missing
+  # if there are no NA's in `st_lum` and vice versa.
   required_cols = c("objectid", "st_lum", "pl_orbsmax", "pl_rade", "pl_insol")
   available_cols = colnames(data)
   missing_cols = setdiff(required_cols, available_cols)
-
   if (length(missing_cols) > 0) {
     stop(paste("Invalid data provided. Missing columns:", paste0(missing_cols, collapse = ", ")))
   }
