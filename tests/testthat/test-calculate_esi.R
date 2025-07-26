@@ -24,16 +24,16 @@ describe("calculate_esi", {
   it("throws an error if input is not a data frame", {
     expect_error(
       calculate_esi(""),
-      "calculate_esi data must be a `data.frame`"
+      "Data must be a `data.frame`."
     )
   })
 
-  it("returns empty data frame if input has zero rows", {
+  it("returns NULL if input has zero rows", {
     test_df = data.frame()
 
     expect_warning(
       calculate_esi(test_df),
-      "Empty calculate_esi data"
+      "Empty data."
     )
   })
 
@@ -42,7 +42,7 @@ describe("calculate_esi", {
 
     expect_error(
       calculate_esi(test_df),
-      "Invalid data provided. Missing columns: st_lum, pl_orbsmax, pl_rade, pl_insol"
+      "Invalid data provided. Missing columns: pl_rade, pl_insol, st_lum, pl_orbsmax"
     )
   })
 })
