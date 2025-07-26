@@ -13,7 +13,7 @@
 #'
 #' @returns A data frame with columns `objectid` and `pl_insol`.
 #'
-#' @importFrom dplyr `%>%`, coalesce
+#' @importFrom dplyr `%>%` coalesce
 #' @export
 calculate_stellar_flux = function(data, log = TRUE, unit = "relative") {
   if (!"data.frame" %in% class(data)) {
