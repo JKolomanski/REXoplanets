@@ -11,9 +11,9 @@
 #' @param log_lum Logical. If TRUE, assumes `st_lum` is in log10(L / L☉). Defaults to TRUE.
 #' @param unit Character. Either `"relative"` (default) or `"wm2"` to convert to W/m².
 #'
-#' @returns A data frame with columns `objectid` and `stellar_flux`.
+#' @returns A data frame with columns `objectid` and `pl_insol`.
 #'
-#' @importFrom dplyr `%>%`
+#' @importFrom dplyr `%>%`, coalesce
 #' @export
 calculate_stellar_flux = function(data, log = TRUE, unit = "relative") {
   if (!"data.frame" %in% class(data)) {
@@ -44,8 +44,8 @@ calculate_stellar_flux = function(data, log = TRUE, unit = "relative") {
 
   data = data %>%
     mutate(
-      stellar_flux = sf
+      pl_insol = coalesce(pl_insol, sf)
     )
 
-  data %>% select(objectid, stellar_flux)
+  data %>% select(objectid, pl_insol)
 }
