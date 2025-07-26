@@ -16,6 +16,21 @@
 #' @importFrom dplyr `%>%`
 #' @export
 calculate_stellar_flux = function(data, log = TRUE, unit = "relative") {
+  if (!"data.frame" %in% class(data)) {
+    stop("Data must be a `data.frame`.")
+  }
+
+  if (nrow(data) == 0) {
+    warning("Empty data.")
+    return(NULL)
+  }
+
+  required_cols = c("objectid", "st_lum", "pl_orbsmax")
+  missing_cols = setdiff(required_cols, colnames(data))
+  if (length(missing_cols) > 0) {
+    stop("Invalid data provided. Missing columns: ", paste(missing_cols, collapse = ", "))
+  }
+
   if (log) {
     sf = 10^data$st_lum / data$pl_orbsmax^2
   } else {
