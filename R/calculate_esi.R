@@ -24,12 +24,12 @@
 #' @export
 calculate_esi = function(data) {
   if (!"data.frame" %in% class(data)) {
-    stop("calculate_esi data must be a `data.frame`")
+    stop("Data must be a `data.frame`.")
   }
 
   if (nrow(data) == 0) {
-    warning("Empty calculate_esi data")
-    return(data.frame("objectid" = character(), "esi" = numeric()))
+    warning("Empty data.")
+    return(NULL)
   }
 
   # todo: not all columns are required at once.
