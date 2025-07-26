@@ -35,19 +35,26 @@ calculate_esi = function(data) {
   # Not all columns are required at once.
   # Allow `pl_orbmax` and `pl_rade` columns to be missing
   # if there are no NA's in `st_lum` and vice versa.
-  required_cols = c("objectid", "pl_rade", "pl_insol", "st_lum", "pl_orbsmax")
-  if (!any(is.na(data$pl_insol))) {
-    required_cols = required_cols[!required_cols %in% c("st_lum", "pl_orbsmax")]
+  required_cols = c("objectid", "pl_rade")
+
+  # Check which optional columns exist
+  has_insol = "pl_insol" %in% names(data)
+  has_lum = "st_lum" %in% names(data)
+  has_orb = "pl_orbsmax" %in% names(data)
+
+  if (has_insol && all(!is.na(data$pl_insol))) {
+    optional_cols = c()
+  } else if (has_lum && has_orb && all(!is.na(data$st_lum)) && all(!is.na(data$pl_orbsmax))) {
+    optional_cols = c()
+  } else {
+    optional_cols = c("pl_insol", "st_lum", "pl_orbsmax")
   }
 
-  if (!(any(is.na(data$pl_orbsmax)) && any(is.na(data$st_lum)))) {
-    required_cols = required_cols[!required_cols %in% c("pl_insol")]
-  }
+  required_cols = c(required_cols, optional_cols)
 
-  available_cols = colnames(data)
-  missing_cols = setdiff(required_cols, available_cols)
+  missing_cols = setdiff(required_cols, names(data))
   if (length(missing_cols) > 0) {
-    stop(paste("Invalid data provided. Missing columns:", paste0(missing_cols, collapse = ", ")))
+    stop("Invalid data provided. Missing columns: ", paste(missing_cols, collapse = ", "))
   }
 
   data %>%
