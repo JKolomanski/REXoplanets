@@ -33,8 +33,8 @@ calculate_esi = function(data) {
   }
 
   # Not all columns are required at once.
-  # Allow `pl_orbmax` and `pl_rade` columns to be missing
-  # if there are no NA's in `st_lum` and vice versa.
+  # Allow `pl_orbmax` and `st_lum` columns to be missing
+  # if there are no NA's in `pl_insol` and vice versa.
   required_cols = c("objectid", "pl_rade")
 
   # Check which optional columns exist
