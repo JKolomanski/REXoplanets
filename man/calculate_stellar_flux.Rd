@@ -14,7 +14,7 @@ calculate_stellar_flux(data, log = TRUE, unit = "relative")
 \item{log_lum}{Logical. If TRUE, assumes \code{st_lum} is in log10(L / L☉). Defaults to TRUE.}
 }
 \value{
-A data frame with columns \code{objectid} and \code{stellar_flux}.
+A data frame with columns \code{objectid} and \code{pl_insol}.
 }
 \description{
 Calculate stellar flux value
