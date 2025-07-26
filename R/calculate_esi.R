@@ -32,10 +32,18 @@ calculate_esi = function(data) {
     return(NULL)
   }
 
-  # todo: not all columns are required at once.
-  # fix this check to allow `pl_orbmax` and `pl_rade` columns to be missing
+  # Not all columns are required at once.
+  # Allow `pl_orbmax` and `pl_rade` columns to be missing
   # if there are no NA's in `st_lum` and vice versa.
-  required_cols = c("objectid", "st_lum", "pl_orbsmax", "pl_rade", "pl_insol")
+  required_cols = c("objectid", "pl_rade", "pl_insol", "st_lum", "pl_orbsmax")
+  if (!any(is.na(data$pl_insol))) {
+    required_cols = required_cols[!required_cols %in% c("st_lum", "pl_orbsmax")]
+  }
+
+  if (!(any(is.na(data$pl_orbsmax)) && any(is.na(data$st_lum)))) {
+    required_cols = required_cols[!required_cols %in% c("pl_insol")]
+  }
+
   available_cols = colnames(data)
   missing_cols = setdiff(required_cols, available_cols)
   if (length(missing_cols) > 0) {
