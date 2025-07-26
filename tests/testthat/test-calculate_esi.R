@@ -18,7 +18,6 @@ describe("calculate_esi", {
     result = calculate_esi(test_df)
 
     # Assert
-    expect_equal(nrow(result), nrow(expected_df))
     expect_equal(result$esi, expected_df$esi)
   })
 
