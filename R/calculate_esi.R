@@ -42,14 +42,13 @@ calculate_esi = function(data) {
     stop(paste("Invalid data provided. Missing columns:", paste0(missing_cols, collapse = ", ")))
   }
 
-  data = data %>%
+  data %>%
     mutate(
       # Compute flux if pl_insol is NA
       stellar_flux = coalesce(pl_insol, 10^st_lum / pl_orbsmax^2),
       esi_radius = (1 - abs((pl_rade - 1) / (pl_rade + 1)))^0.57,
       esi_flux = (1 - abs((stellar_flux - 1) / (stellar_flux + 1)))^0.7,
       esi = sqrt(esi_radius * esi_flux)
-    )
-
-  data %>% select(objectid, esi)
+    ) %>%
+      select(objectid, esi)
 }
