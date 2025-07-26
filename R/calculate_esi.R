@@ -50,5 +50,5 @@ calculate_esi = function(data) {
       esi_flux = (1 - abs((stellar_flux - 1) / (stellar_flux + 1)))^0.7,
       esi = sqrt(esi_radius * esi_flux)
     ) %>%
-      select(objectid, esi)
+    select(objectid, esi)
 }
