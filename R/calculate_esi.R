@@ -59,10 +59,9 @@ calculate_esi = function(data) {
 
   data %>%
     mutate(
-      # Compute flux if pl_insol is NA
-      stellar_flux = coalesce(pl_insol, 10^st_lum / pl_orbsmax^2),
+      pl_insol = calculate_stellar_flux(data)$pl_insol,
       esi_radius = (1 - abs((pl_rade - 1) / (pl_rade + 1)))^0.57,
-      esi_flux = (1 - abs((stellar_flux - 1) / (stellar_flux + 1)))^0.7,
+      esi_flux = (1 - abs((pl_insol - 1) / (pl_insol + 1)))^0.7,
       esi = sqrt(esi_radius * esi_flux)
     ) %>%
     select(objectid, esi)
