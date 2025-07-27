@@ -37,6 +37,7 @@ calculate_esi = function(pl_rade, pl_insol) {
     stop("Invalid data type. `pl_insol` must be `numeric`.")
   }
 
+  # Disallow setting pl_rade and pl_insol to -1 to prevent division by 0.
   if (pl_rade == -1 || pl_insol == -1) {
     stop("Invalid input: `pl_rade` or `pl_insol` cannot be -1.")
   }
