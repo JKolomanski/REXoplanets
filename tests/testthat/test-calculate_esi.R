@@ -23,11 +23,11 @@ describe("calculate_esi", {
   it("throws error when pl_rade or pl_insol is NA", {
     expect_error(
       calculate_esi(NA, 1),
-      "Missing arguments"
+      "Missing arguments: pl_rade"
     )
     expect_error(
       calculate_esi(1, NA),
-      "Missing arguments"
+      "Missing arguments: pl_insol"
     )
   })
 
