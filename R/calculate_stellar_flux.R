@@ -51,9 +51,10 @@ calculate_stellar_flux = function(st_lum, pl_orbsmax,
     st_lum = 10 ^ st_lum
   }
 
+  stellar_flux = st_lum / pl_orbsmax^2
   if (unit == "wm2") {
-    (st_lum / pl_orbsmax^2) * 1361
-  } else {
-    st_lum / pl_orbsmax^2
+    stellar_flux = stellar_flux * 1361
   }
+
+  stellar_flux
 }
