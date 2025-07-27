@@ -22,7 +22,11 @@
 #' @export
 calculate_esi = function(pl_rade, pl_insol) {
   if (is.na(pl_rade) || is.na(pl_insol)) {
-    stop("Missing arguments. Both `pl_rade` and `pl_insol` must be provided.")
+    missing = c()
+    if (is.na(pl_rade)) missing = c(missing, "pl_rade")
+    if (is.na(pl_insol)) missing = c(missing, "pl_insol")
+
+    stop("Missing arguments: ", paste(missing, collapse = ", "))
   }
 
   if (!is.numeric(pl_rade)) {
