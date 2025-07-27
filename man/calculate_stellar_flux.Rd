@@ -4,23 +4,33 @@
 \alias{calculate_stellar_flux}
 \title{Calculate stellar flux value}
 \usage{
-calculate_stellar_flux(data, log = TRUE, unit = "relative")
+calculate_stellar_flux(
+  st_lum,
+  pl_orbsmax,
+  pl_insol = NA,
+  log_lum = TRUE,
+  unit = "relative"
+)
 }
 \arguments{
-\item{data}{A data frame containing \code{objectid}, \code{st_lum}, and \code{pl_orbsmax}.}
+\item{st_lum}{Numeric. Stellar luminosity (log10(L/Lsun) or linear).}
+
+\item{pl_orbsmax}{Numeric. Orbital distance in AU.}
+
+\item{pl_insol}{Optional numeric. Precomputed flux value. If provided, it is returned as-is.}
+
+\item{log_lum}{Logical. If TRUE, assumes \code{st_lum} is in log10(L / Lsun). Defaults to TRUE.}
 
 \item{unit}{Character. Either \code{"relative"} (default) or \code{"wm2"} to convert to W/m².}
-
-\item{log_lum}{Logical. If TRUE, assumes \code{st_lum} is in log10(L / L☉). Defaults to TRUE.}
 }
 \value{
-A data frame with columns \code{objectid} and \code{pl_insol}.
+Numeric. Stellar flux (relative or in W/m²).
 }
 \description{
 Calculate stellar flux value
 }
 \details{
-This function calculates the stellar flux for each entry in the input data frame.
+This function calculates the stellar flux based on provided values.
 It assumes luminosity is either logarithmic (log10 of L/Lsun) or linear, and optionally
 converts flux to absolute units (W/m²) if requested.
 
