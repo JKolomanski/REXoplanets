@@ -1,68 +1,43 @@
 #' Calculate the Earth Similarity Index (ESI)
 #'
 #' @details
-#' The function takes in data frame and calculates the ESI for each entry.
+#' The function calculates the ESI based on stellar flux and planetary radius.
 #'
 #' ESI (Earth Simillarity Index) is a characterization of how simmilar a planetary-mass object
 #' or natural satelite is to earth. It was designed to be a scale from zero to one,
 #' with Earth having a value of 1.
 #'
-#' This implementation bases it's calculation on planetary `stellar flux` and radius
 #'
 #' @references
 #' Schulze-Makuch, D., Méndez, A., Fairén, A. G., von Paris, P., Turse, C., Boyer, G.,
 #' Davila, A. F., Resendes de Sousa António, M., Irwin, L. N., and Catling, D. (2011)
 #' A Two-Tiered Approach to Assess the Habitability of Exoplanets. Astrobiology 11(10): 1041-1052.
 #'
-#' @param data A data frame with data from `ps` or `pscomppars` table.
-#'              It must contain columns: `objectid` `st_lum`, `pl_orbsmax`, `pl_rade` and pl_insol.
-#' @returns A data frame containing:
-#'              - `objectid` column with object ID.
-#'              - `esi` column with the ESI
+#' @param pl_rade Numeric. Planetary radius in Earth radii.
+#' @param pl_insol Optional numeric. Stellar flux in Earth units.
+#'
+#' @returns Numeric. Earth Similarity Index (ESI).
 #'
 #' @importFrom dplyr `%>%` coalesce select
 #' @export
-calculate_esi = function(data) {
-  if (!"data.frame" %in% class(data)) {
-    stop("Data must be a `data.frame`.")
+calculate_esi = function(pl_rade, pl_insol) {
+  if (is.na(pl_rade) || is.na(pl_insol)) {
+    stop("Missing arguments. Both `pl_rade` and `pl_insol` must be provided.")
   }
 
-  if (nrow(data) == 0) {
-    warning("Empty data.")
-    return(NULL)
+  if (!is.numeric(pl_rade)) {
+    stop("Invalid data type. `pl_rade` must be `numeric`.")
   }
 
-  # Not all columns are required at once.
-  # Allow `pl_orbmax` and `st_lum` columns to be missing
-  # if there are no NA's in `pl_insol` and vice versa.
-  required_cols = c("objectid", "pl_rade")
-
-  # Check which optional columns exist
-  has_insol = "pl_insol" %in% names(data)
-  has_lum = "st_lum" %in% names(data)
-  has_orb = "pl_orbsmax" %in% names(data)
-
-  if (has_insol && all(!is.na(data$pl_insol))) {
-    optional_cols = c()
-  } else if (has_lum && has_orb && all(!is.na(data$st_lum)) && all(!is.na(data$pl_orbsmax))) {
-    optional_cols = c()
-  } else {
-    optional_cols = c("pl_insol", "st_lum", "pl_orbsmax")
+  if (!is.numeric(pl_insol)) {
+    stop("Invalid data type. `pl_insol` must be `numeric`.")
   }
 
-  required_cols = c(required_cols, optional_cols)
-
-  missing_cols = setdiff(required_cols, names(data))
-  if (length(missing_cols) > 0) {
-    stop("Invalid data provided. Missing columns: ", paste(missing_cols, collapse = ", "))
+  if (pl_rade == -1 || pl_insol == -1) {
+    stop("Invalid input: `pl_rade` or `pl_insol` cannot be -1.")
   }
 
-  data %>%
-    mutate(
-      pl_insol = calculate_stellar_flux(data)$pl_insol,
-      esi_radius = (1 - abs((pl_rade - 1) / (pl_rade + 1)))^0.57,
-      esi_flux = (1 - abs((pl_insol - 1) / (pl_insol + 1)))^0.7,
-      esi = sqrt(esi_radius * esi_flux)
-    ) %>%
-    select(objectid, esi)
+  esi_radius = (1 - abs((pl_rade - 1) / (pl_rade + 1)))^0.57
+  esi_flux = (1 - abs((pl_insol - 1) / (pl_insol + 1)))^0.7
+  sqrt(esi_radius * esi_flux)
 }

@@ -4,28 +4,25 @@
 \alias{calculate_esi}
 \title{Calculate the Earth Similarity Index (ESI)}
 \usage{
-calculate_esi(data)
+calculate_esi(pl_rade, pl_insol)
 }
 \arguments{
-\item{data}{A data frame with data from \code{ps} or \code{pscomppars} table.
-It must contain columns: \code{objectid} \code{st_lum}, \code{pl_orbsmax}, \code{pl_rade} and pl_insol.}
+\item{pl_rade}{Numeric. Planetary radius in Earth radii.}
+
+\item{pl_insol}{Optional numeric. Stellar flux in Earth units.}
 }
 \value{
-A data frame containing:
-- \code{objectid} column with object ID.
-- \code{esi} column with the ESI
+Numeric. Earth Similarity Index (ESI).
 }
 \description{
 Calculate the Earth Similarity Index (ESI)
 }
 \details{
-The function takes in data frame and calculates the ESI for each entry.
+The function calculates the ESI based on stellar flux and planetary radius.
 
 ESI (Earth Simillarity Index) is a characterization of how simmilar a planetary-mass object
 or natural satelite is to earth. It was designed to be a scale from zero to one,
 with Earth having a value of 1.
-
-This implementation bases it's calculation on planetary \verb{stellar flux} and radius
 }
 \references{
 Schulze-Makuch, D., Méndez, A., Fairén, A. G., von Paris, P., Turse, C., Boyer, G.,
