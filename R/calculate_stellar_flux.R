@@ -32,8 +32,27 @@ calculate_stellar_flux = function(st_lum, pl_orbsmax,
     if (is.na(st_lum)) missing = c(missing, "st_lum")
     if (is.na(pl_orbsmax)) missing = c(missing, "pl_orbsmax")
 
-    warning("Missing arguments: ", paste(missing, collapse = ", "))
-    return(NA)
+    stop("Missing arguments: ", paste(missing, collapse = ", "))
+  }
+
+  if (!is.numeric(st_lum)) {
+    stop("Invalid data type. `st_lum` must be `numeric`.")
+  }
+
+  if (!is.numeric(pl_orbsmax)) {
+    stop("Invalid data type. `pl_orbsmax` must be `numeric`.")
+  }
+
+  if (!is.logical(log_lum)) {
+    stop("Invalid data type. `log_lum` must be `logical`.")
+  }
+
+  if (!is.character(unit)) {
+    stop("Invalid data type. `unit` must be `character`.")
+  }
+
+  if (!unit %in% c("relative", "wm2")) {
+    stop("Invalid data value. `unit` must be `relative` or `wm2`.")
   }
 
   if (log_lum) {

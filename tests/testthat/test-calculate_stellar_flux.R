@@ -22,24 +22,24 @@ describe("calculate_stellar_flux", {
     expect_equal(result, expected)
   })
 
-  it("returns NA and warns when st_lum is missing", {
-    expect_warning({
-      result = calculate_stellar_flux(st_lum = NA, pl_orbsmax = 1)
-      expect_true(is.na(result))
-    }, "Missing arguments: st_lum")
+  it("throws error when st_lum is missing", {
+    expect_error(
+      calculate_stellar_flux(st_lum = NA, pl_orbsmax = 1),
+      "Missing arguments: st_lum"
+    )
   })
 
-  it("returns NA and warns when pl_orbsmax is missing", {
-    expect_warning({
-      result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = NA)
-      expect_true(is.na(result))
-    }, "Missing arguments: pl_orbsmax")
+  it("throws error when pl_orbsmax is missing", {
+    expect_error(
+      calculate_stellar_flux(st_lum = 1, pl_orbsmax = NA),
+      "Missing arguments: pl_orbsmax"
+    )
   })
 
-  it("returns NA and warns when both st_lum and pl_orbsmax are missing", {
-    expect_warning({
-      result = calculate_stellar_flux(st_lum = NA, pl_orbsmax = NA)
-      expect_true(is.na(result))
-    }, "Missing arguments: st_lum, pl_orbsmax")
+  it("throws error when both st_lum and pl_orbsmax are missing", {
+    expect_error(
+      calculate_stellar_flux(st_lum = NA, pl_orbsmax = NA),
+      "Missing arguments: st_lum, pl_orbsmax"
+    )
   })
 })
