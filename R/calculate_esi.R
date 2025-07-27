@@ -17,8 +17,6 @@
 #' @param pl_insol Optional numeric. Stellar flux in Earth units.
 #'
 #' @returns Numeric. Earth Similarity Index (ESI).
-#'
-#' @importFrom dplyr `%>%` coalesce select
 #' @export
 calculate_esi = function(pl_rade, pl_insol) {
   if (!is.numeric(pl_rade)) {
