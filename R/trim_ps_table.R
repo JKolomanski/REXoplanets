@@ -15,6 +15,7 @@
 #'   \item pl_bmasse – Planetary mass (Earth masses)
 #'   \item pl_orbper – Orbital period (days)
 #'   \item pl_orbsmax – Semi-major axis (AU)
+#'   \item pl_orbeccen – Orbital eccentricity
 #'   \item pl_insol – Incident stellar flux (Earth units)
 #'   \item st_teff – Stellar effective temperature (K)
 #'   \item st_rad – Stellar radius (Solar radii)
@@ -32,8 +33,8 @@
 trim_ps_table = function(data) {
   required_cols = c(
     "objectid", "pl_name", "hostname", "sy_dist", "pl_rade",
-    "pl_bmasse", "pl_orbper", "pl_orbsmax", "pl_insol", "st_teff",
-    "st_rad", "st_mass", "st_lum", "pl_eqt", "pl_dens",
+    "pl_bmasse", "pl_orbper", "pl_orbsmax", "pl_orbeccen", "pl_insol",
+    "st_teff", "st_rad", "st_mass", "st_lum", "pl_eqt", "pl_dens",
     "disc_year", "sy_snum", "sy_pnum", "discoverymethod"
   )
 

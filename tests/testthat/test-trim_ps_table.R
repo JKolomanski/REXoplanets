@@ -1,6 +1,6 @@
 describe("trim_ps_table", {
-  it("returns data frame with exactly 19 columns", {
-    expect_equal(ncol(trim_ps_table(closest_50_exoplanets)), 19)
+  it("returns data frame with exactly 20 columns", {
+    expect_equal(ncol(trim_ps_table(closest_50_exoplanets)), 20)
   })
 
   it("throws an error if required columns are missing", {
