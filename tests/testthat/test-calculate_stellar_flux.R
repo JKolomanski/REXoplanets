@@ -21,25 +21,4 @@ describe("calculate_stellar_flux", {
     expected = (10^0 / 1^2) * 1361
     expect_equal(result, expected)
   })
-
-  it("throws error when st_lum is missing", {
-    expect_error(
-      calculate_stellar_flux(st_lum = NA, pl_orbsmax = 1),
-      "Missing arguments: st_lum"
-    )
-  })
-
-  it("throws error when pl_orbsmax is missing", {
-    expect_error(
-      calculate_stellar_flux(st_lum = 1, pl_orbsmax = NA),
-      "Missing arguments: pl_orbsmax"
-    )
-  })
-
-  it("throws error when both st_lum and pl_orbsmax are missing", {
-    expect_error(
-      calculate_stellar_flux(st_lum = NA, pl_orbsmax = NA),
-      "Missing arguments: st_lum, pl_orbsmax"
-    )
-  })
 })

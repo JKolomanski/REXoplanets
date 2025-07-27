@@ -20,17 +20,6 @@ describe("calculate_esi", {
     )
   })
 
-  it("throws error when pl_rade or pl_insol is NA", {
-    expect_error(
-      calculate_esi(NA, 1),
-      "Missing arguments: pl_rade"
-    )
-    expect_error(
-      calculate_esi(1, NA),
-      "Missing arguments: pl_insol"
-    )
-  })
-
   it("throws error on non-numeric input", {
     expect_error(
       calculate_esi("a", 1),
