@@ -3,6 +3,7 @@
 export(calculate_esi)
 export(calculate_stellar_flux)
 export(summarize_star_occurances)
+export(trim_ps_table)
 importFrom(dplyr,`%>%`)
 importFrom(dplyr,group_by)
 importFrom(dplyr,mutate)
