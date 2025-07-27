@@ -1,85 +1,45 @@
 describe("calculate_stellar_flux", {
-  it("calculates stellar flux correctly and fills NA in pl_insol", {
-    test_df = data.frame(
-      objectid = c(1, 2, 3),
-      st_lum = c(-0.1, 0.3, 1),
-      pl_orbsmax = c(1, 2, 1.5),
-      pl_insol = c(NA, 0.3, NA)
-    )
-
-    expected_sf = c(
-      10^(-0.1) / 1^2,
-      0.3, # Already present, should be unchanged
-      10^(1) / 1.5^2
-    )
-
-    result = calculate_stellar_flux(test_df, log = TRUE, unit = "relative")
-
-    expect_equal(result$pl_insol, expected_sf, tolerance = 1e-6)
+  it("returns precomputed pl_insol if provided", {
+    result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = 1, pl_insol = 5)
+    expect_equal(result, 5)
   })
 
-  it("calculates stellar flux correctly with linear luminosity (log = FALSE)", {
-    test_df = data.frame(
-      objectid = c(1, 2, 3),
-      st_lum = c(0.8, 0.3, 2),
-      pl_orbsmax = c(1, 2, 1.5),
-      pl_insol = c(NA, 0.3, NA)
-    )
-
-    expected_sf = c(
-      0.8 / 1^2,
-      0.3,
-      2 / 1.5^2
-    )
-
-    result = calculate_stellar_flux(test_df, log = FALSE, unit = "relative")
-
-    expect_equal(result$pl_insol, expected_sf, tolerance = 1e-6)
+  it("calculates stellar flux with logarithmic luminosity (default)", {
+    result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = 1)
+    expected = 10^1 / 1^2
+    expect_equal(result, expected)
   })
 
-  it("calculates stellar flux correctly in W/m² (unit = 'wm2')", {
-    test_df = data.frame(
-      objectid = c(1, 2, 3),
-      st_lum = c(-0.1, 0.3, 1),
-      pl_orbsmax = c(1, 2, 1.5),
-      pl_insol = c(NA, 400, NA)
-    )
-
-    solar_const = 1361
-    expected_sf = c(
-      (10^(-0.1) / 1^2) * solar_const,
-      400,
-      (10^(1) / 1.5^2) * solar_const
-    )
-
-    result = calculate_stellar_flux(test_df, log = TRUE, unit = "wm2")
-
-    expect_equal(result$pl_insol, expected_sf, tolerance = 1e-6)
+  it("calculates stellar flux with linear luminosity (log_lum = FALSE)", {
+    result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = 2, log_lum = FALSE)
+    expected = 1 / 2^2
+    expect_equal(result, expected)
   })
 
-
-  it("throws an error if input is not a data frame", {
-    expect_error(
-      calculate_stellar_flux(""),
-      "Data must be a `data.frame`."
-    )
+  it("calculates stellar flux with unit = 'wm2'", {
+    result = calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1, unit = "wm2")
+    expected = (10^0 / 1^2) * 1361
+    expect_equal(result, expected)
   })
 
-  it("returns NULL if input has zero rows", {
-    test_df = data.frame()
-
-    expect_warning(
-      calculate_stellar_flux(test_df),
-      "Empty data."
-    )
+  it("returns NA and warns when st_lum is missing", {
+    expect_warning({
+      result = calculate_stellar_flux(st_lum = NA, pl_orbsmax = 1)
+      expect_true(is.na(result))
+    }, "Missing arguments: st_lum")
   })
 
-  it("throws an error if input does not contain required columns", {
-    test_df = data.frame(objectid = c(1, 2, 3))
+  it("returns NA and warns when pl_orbsmax is missing", {
+    expect_warning({
+      result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = NA)
+      expect_true(is.na(result))
+    }, "Missing arguments: pl_orbsmax")
+  })
 
-    expect_error(
-      calculate_stellar_flux(test_df),
-      "Invalid data provided. Missing columns: st_lum, pl_orbsmax"
-    )
+  it("returns NA and warns when both st_lum and pl_orbsmax are missing", {
+    expect_warning({
+      result = calculate_stellar_flux(st_lum = NA, pl_orbsmax = NA)
+      expect_true(is.na(result))
+    }, "Missing arguments: st_lum, pl_orbsmax")
   })
 })
