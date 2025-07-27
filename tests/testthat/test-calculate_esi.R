@@ -1,48 +1,55 @@
 describe("calculate_esi", {
-  it("calculates esi value correctly per planet", {
-    # Arrange
-    test_df = data.frame(
-      objectid = c(1, 2, 3),
-      st_lum = c(-2, -0.1, 1),
-      pl_orbsmax = c(0.5, 3.5, 1),
-      pl_insol = c(0.5, NA, 1),
-      pl_rade = c(0.6, 14, 1)
+  it("calculates ESI correctly for valid inputs", {
+    # Earth-like planet
+    expect_equal(
+      calculate_esi(1, 1),
+      1.0,
+      tolerance = 1e-6
     )
 
-    expected_df = data.frame(
-      objectid = c(1, 2, 3),
-      esi = c(0.799393328, 0.269507240, 1.0000000)
+    expect_equal(
+      calculate_esi(0.6, 0.5),
+      0.7993933,
+      tolerance = 1e-6
     )
 
-    # Act
-    result = calculate_esi(test_df)
-
-    # Assert
-    expect_equal(result$esi, expected_df$esi)
+    expect_equal(
+      calculate_esi(14, 10^(-0.1) / 3.5^2),
+      0.2695072,
+      tolerance = 1e-6
+    )
   })
 
-  it("throws an error if input is not a data frame", {
+  it("throws error when pl_rade or pl_insol is NA", {
     expect_error(
-      calculate_esi(""),
-      "Data must be a `data.frame`."
+      calculate_esi(NA, 1),
+      "Missing arguments"
     )
-  })
-
-  it("returns NULL if input has zero rows", {
-    test_df = data.frame()
-
-    expect_warning(
-      calculate_esi(test_df),
-      "Empty data."
-    )
-  })
-
-  it("throws an error if input does not contain required columns", {
-    test_df = data.frame(objectid = c(1, 2, 3))
-
     expect_error(
-      calculate_esi(test_df),
-      "Invalid data provided. Missing columns: pl_rade, pl_insol, st_lum, pl_orbsmax"
+      calculate_esi(1, NA),
+      "Missing arguments"
+    )
+  })
+
+  it("throws error on non-numeric input", {
+    expect_error(
+      calculate_esi("a", 1),
+      "pl_rade.*numeric"
+    )
+    expect_error(
+      calculate_esi(1, "b"),
+      "pl_insol.*numeric"
+    )
+  })
+
+  it("throws error if input is -1", {
+    expect_error(
+      calculate_esi(-1, 1),
+      "cannot be -1"
+    )
+    expect_error(
+      calculate_esi(1, -1),
+      "cannot be -1"
     )
   })
 })
