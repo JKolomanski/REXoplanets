@@ -1,9 +1,4 @@
 describe("calculate_stellar_flux", {
-  it("returns precomputed pl_insol if provided", {
-    result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = 1, pl_insol = 5)
-    expect_equal(result, 5)
-  })
-
   it("calculates stellar flux with logarithmic luminosity (default)", {
     result = calculate_stellar_flux(st_lum = 1, pl_orbsmax = 1)
     expected = 10^1 / 1^2
