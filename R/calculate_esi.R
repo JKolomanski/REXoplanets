@@ -7,7 +7,6 @@
 #' or natural satelite is to earth. It was designed to be a scale from zero to one,
 #' with Earth having a value of 1.
 #'
-#'
 #' @references
 #' Schulze-Makuch, D., Méndez, A., Fairén, A. G., von Paris, P., Turse, C., Boyer, G.,
 #' Davila, A. F., Resendes de Sousa António, M., Irwin, L. N., and Catling, D. (2011)
