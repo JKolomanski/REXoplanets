@@ -1,6 +1,10 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
+<<<<<<< HEAD
 Version: 0.0.0.9010
+=======
+Version: 0.0.0.9009
+>>>>>>> 1498828 (chore: bumped package version)
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
 Description: TBA
