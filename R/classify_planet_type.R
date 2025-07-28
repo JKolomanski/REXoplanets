@@ -8,7 +8,7 @@
 #' The classification code is composed of four parts:
 #'
 #' 1. **Mass class:**
-#'    - `"M"`: Mercury-like planets (< 0.22 Earth masses)
+#'    - `M`: Mercury-like planets (< 0.22 Earth masses)
 #'    - `"E"`: Earth-like planets (0.22–2.2 Earth masses)
 #'    - `"S"`: Super-Earths (2.2–22 Earth masses)
 #'    - `"N"`: Neptune-like planets (22–127 Earth masses)
