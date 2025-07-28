@@ -16,12 +16,13 @@
 #'
 #' @export
 calculate_stellar_flux = function(st_lum, pl_orbsmax, log_lum = TRUE, unit = "relative") {
+  # st_lum can be negative, so we don't check that
   if (!is.numeric(st_lum)) {
     stop("Invalid data type. `st_lum` must be `numeric`.")
   }
 
-  if (!is.numeric(pl_orbsmax)) {
-    stop("Invalid data type. `pl_orbsmax` must be `numeric`.")
+  if (!is.numeric(pl_orbsmax) || pl_orbsmax <= 0) {
+    stop("Invalid data. `pl_orbsmax` must be `numeric` and larger than 0.")
   }
 
   if (!is.logical(log_lum)) {
