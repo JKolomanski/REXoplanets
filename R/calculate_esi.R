@@ -18,17 +18,12 @@
 #' @returns Numeric. Earth Similarity Index (ESI).
 #' @export
 calculate_esi = function(pl_rade, pl_insol) {
-  if (!is.numeric(pl_rade)) {
-    stop("Invalid data type. `pl_rade` must be `numeric`.")
+  if (!is.numeric(pl_rade) || pl_rade <= 0) {
+    stop("Invalid data type. `pl_rade` must be `numeric` and larger than 0.")
   }
 
-  if (!is.numeric(pl_insol)) {
-    stop("Invalid data type. `pl_insol` must be `numeric`.")
-  }
-
-  # Disallow setting pl_rade and pl_insol to -1 to prevent division by 0.
-  if (pl_rade == -1 || pl_insol == -1) {
-    stop("Invalid input: `pl_rade` or `pl_insol` cannot be -1.")
+  if (!is.numeric(pl_insol) || pl_insol <= 0) {
+    stop("Invalid data type. `pl_insol` must be `numeric` and larger than 0.")
   }
 
   esi_radius = (1 - abs((pl_rade - 1) / (pl_rade + 1)))^0.57
