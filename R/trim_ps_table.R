@@ -29,6 +29,7 @@
 #'   \item sy_pnum – Number of planets in system
 #' }
 #'
+#' @importFrom dplyr select all_of
 #' @export
 trim_ps_table = function(data) {
   required_cols = c(
@@ -43,5 +44,5 @@ trim_ps_table = function(data) {
     stop("Missing required columns: ", paste(missing, collapse = ", "))
   }
 
-  data[, required_cols, drop = FALSE]
+  select(data, all_of(required_cols))
 }
