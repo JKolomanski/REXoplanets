@@ -20,6 +20,7 @@ A data frame containing:
 \item pl_bmasse – Planetary mass (Earth masses)
 \item pl_orbper – Orbital period (days)
 \item pl_orbsmax – Semi-major axis (AU)
+\item pl_orbeccen – Orbital eccentricity
 \item pl_insol – Incident stellar flux (Earth units)
 \item st_teff – Stellar effective temperature (K)
 \item st_rad – Stellar radius (Solar radii)
@@ -31,8 +32,6 @@ A data frame containing:
 \item disc_year – Year of discovery
 \item sy_snum – Number of stars in system
 \item sy_pnum – Number of planets in system
-\item pl_tsystemref – System parameter reference
-\item pl_refname – Main reference publication
 }
 }
 \description{
