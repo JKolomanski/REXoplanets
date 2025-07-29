@@ -16,6 +16,12 @@
 #' @param pl_insol Numeric. Stellar flux in Earth units. Optional.
 #'
 #' @returns Numeric. Earth Similarity Index (ESI).
+#'
+#' @examples
+#' calculate_esi(1, 1)        # Earth:   1
+#' calculate_esi(0.53, 0.43)  # Mars:    0.753
+#' calculate_esi(11.2, 0.037) # Jupiter: 0.24
+#'
 #' @export
 calculate_esi = function(pl_rade, pl_insol) {
   if (!is.numeric(pl_rade) || pl_rade <= 0) {
