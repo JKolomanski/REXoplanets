@@ -36,4 +36,16 @@ describe("classify_planet_type", {
       "Invalid data type. `pl_bmasse` must be `numeric` and larger than 0."
     )
   })
+
+  it("displays a warning if pl_orbeccen is >= 1", {
+    test_bmasse = 1
+    test_eqt = 392
+    test_orbeccen = 2
+    test_dens = 5.51
+
+    expect_warning(
+      classify_planet_type(1, 1, 1, 5),
+      "Eccentricity value >= 1"
+    )
+  })
 })
