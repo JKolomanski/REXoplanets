@@ -41,7 +41,7 @@
 #'
 #' @examples
 #' classify_planet_type(1.0, 288, 0.0167, 5.5)   # Earth-like: "EW0t"
-#' classify_planet_type(318, 1300, 0.05, 1.3)    # Hot Jupiter: "JR1w"
+#' classify_planet_type(318, 1300, 0.05, 1.3)    # Hot Jupiter: "JR3w"
 #' classify_planet_type(0.1, 180, 0.2, 0.1)      # Cold, light, low-density: "MF2g"
 #'
 #' @export
@@ -56,6 +56,11 @@ classify_planet_type = function(pl_bmasse, pl_eqt, pl_orbeccen, pl_dens) {
 
   if (!is.numeric(pl_orbeccen) || pl_orbeccen <= 0) {
     stop("Invalid data type. `pl_orbeccen` must be `numeric` and larger than 0.")
+  }
+
+  if (pl_orbeccen >= 1) {
+    warning("Eccentricity value >= 1. This is physically possible
+    (e.g., hyperbolic orbit) but extremely rare. Likely a data error.")
   }
 
   if (!is.numeric(pl_dens) || pl_dens <= 0) {
