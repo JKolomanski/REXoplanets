@@ -3,7 +3,9 @@ Title: Creates interface with NASA exoplanets API
 Version: 0.0.0.9010
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: TBA
+Description: Provides a user-friendly interface to the NASA Exoplanets Archive API, 
+    enabling retrieval and analysis of exoplanetary and stellar data. Includes functions for querying, 
+    filtering, summarizing, and computing derived parameters from the Exoplanets catalog. 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
