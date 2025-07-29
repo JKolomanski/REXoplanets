@@ -9,7 +9,7 @@ calculate_esi(pl_rade, pl_insol)
 \arguments{
 \item{pl_rade}{Numeric. Planetary radius in Earth radii.}
 
-\item{pl_insol}{Optional numeric. Stellar flux in Earth units.}
+\item{pl_insol}{Numeric. Stellar flux in Earth units. Optional.}
 }
 \value{
 Numeric. Earth Similarity Index (ESI).
