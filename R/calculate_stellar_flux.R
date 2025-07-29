@@ -14,13 +14,14 @@
 #'
 #' @returns Numeric. Stellar flux (relative or in W/m²).
 #'
+#' @importFrom checkmate assert_numeric assert_logical assert_choice
 #' @export
 calculate_stellar_flux = function(st_lum, pl_orbsmax, log_lum = TRUE, unit = "relative") {
   # st_lum can be negative, so we don't check that
   assert_numeric(st_lum)
   assert_numeric(pl_orbsmax, lower = 0)
   assert_logical(log_lum)
-  assertChoice(unit, c("relative", "wm2"))
+  assert_choice(unit, c("relative", "wm2"))
 
   if (log_lum) {
     st_lum = 10 ^ st_lum
