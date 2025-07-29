@@ -23,7 +23,7 @@
 #'
 #' 3. **Eccentricity:**
 #'    - First decimal digit of orbital eccentricity.
-#'      For example, 0.26 → `"3"` → appended as `"3"`.
+#'      For example, 0.26 → `3` → appended as `3`.
 #'
 #' 4. **Density-based surface/composition class:**
 #'    - `g`: Gas-dominated (< 0.25 g/cm³)
