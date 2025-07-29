@@ -27,11 +27,11 @@ describe("calculate_esi", {
   it("throws error if input is negative", {
     expect_error(
       calculate_esi(-1, 1),
-      "larger than 0"
+      "not >= 0"
     )
     expect_error(
       calculate_esi(1, -1),
-      "larger than 0"
+      "not >= 0"
     )
   })
 })
