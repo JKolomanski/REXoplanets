@@ -13,7 +13,12 @@
 #' @param unit Character. Either `"relative"` (default) or `"wm2"` to convert to W/m².
 #'
 #' @returns Numeric. Stellar flux (relative or in W/m²).
-#'
+#' 
+#' @examples
+#' calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1)                  # Solar-type star, Earth-like orbit
+#' calculate_stellar_flux(st_lum = 5, pl_orbsmax = 2, log_lum = FALSE) # Linear luminosity input (not log), 5x Sun at 2 AU
+#' calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1, unit = "wm2")    # Output in absolute units (W/m²), Earth-like conditions
+#' 
 #' @export
 calculate_stellar_flux = function(st_lum, pl_orbsmax, log_lum = TRUE, unit = "relative") {
   # st_lum can be negative, so we don't check that
