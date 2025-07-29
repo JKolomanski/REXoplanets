@@ -62,46 +62,38 @@ classify_planet_type = function(pl_bmasse, pl_eqt, pl_orbeccen, pl_dens) {
     stop("Invalid data type. `pl_dens` must be `numeric` and larger than 0.")
   }
 
-  class_code = ""
+  pl_bmasse_classes = c(
+    "M" = 0.22,
+    "E" = 2.2,
+    "S" = 22,
+    "N" = 127,
+    "J" = 4450,
+    "D" = Inf
+  )
 
-  if (pl_bmasse < 0.22) {
-    class_code = paste0(class_code, "M")
-  } else if (pl_bmasse < 2.2) {
-    class_code = paste0(class_code, "E")
-  } else if (pl_bmasse < 22) {
-    class_code = paste0(class_code, "S")
-  } else if (pl_bmasse < 127) {
-    class_code = paste0(class_code, "N")
-  } else if (pl_bmasse < 4450) {
-    class_code = paste0(class_code, "J")
-  } else {
-    class_code = paste0(class_code, "D")
-  }
+  pl_eqt_classes = c(
+    "F" = 250,
+    "W" = 450,
+    "G" = 1000,
+    "R" = Inf
+  )
 
-  if (pl_eqt < 250) {
-    class_code = paste0(class_code, "F")
-  } else if (pl_eqt < 450) {
-    class_code = paste0(class_code, "W")
-  } else if (pl_eqt < 1000) {
-    class_code = paste0(class_code, "G")
-  } else {
-    class_code = paste0(class_code, "R")
-  }
+  pl_dens_classes = c(
+    "g" = 0.25,
+    "w" = 2,
+    "t" = 6,
+    "i" = 13,
+    "s" = Inf
+  )
 
-  eccen_first_decimal = round(pl_orbeccen, 1) * 10
-  class_code = paste0(class_code, as.character(eccen_first_decimal))
+  paste0(
+    .find_class(pl_bmasse, pl_bmasse_classes),
+    .find_class(pl_eqt, pl_eqt_classes),
+    as.character(round(pl_orbeccen, 1) * 10), # First decimal of rounded pl_orbeccen
+    .find_class(pl_dens, pl_dens_classes)
+  )
+}
 
-  if (pl_dens < 0.25) {
-    class_code = paste0(class_code, "g")
-  } else if (pl_dens < 2) {
-    class_code = paste0(class_code, "w")
-  } else if (pl_dens < 6) {
-    class_code = paste0(class_code, "t")
-  } else if (pl_dens < 13) {
-    class_code = paste0(class_code, "i")
-  } else {
-    class_code = paste0(class_code, "s")
-  }
-
-  class_code
+.find_class = function(value, classes) {
+  names(classes)[findInterval(value, classes) + 1]
 }
