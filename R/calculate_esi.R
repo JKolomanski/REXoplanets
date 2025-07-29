@@ -13,7 +13,7 @@
 #' A Two-Tiered Approach to Assess the Habitability of Exoplanets. Astrobiology 11(10): 1041-1052.
 #'
 #' @param pl_rade Numeric. Planetary radius in Earth radii.
-#' @param pl_insol Numeric. Stellar flux in Earth units. Optional.
+#' @param pl_insol Numeric. Stellar flux in Earth units.
 #'
 #' @returns Numeric. Earth Similarity Index (ESI).
 #'
