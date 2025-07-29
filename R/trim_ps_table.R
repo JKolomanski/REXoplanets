@@ -30,8 +30,8 @@
 #' }
 #'
 #' @importFrom dplyr select all_of
-#' 
-#' @examples trim_ps_table(ps_data) # Trim data from planetary systems table 
+#'
+#' @examples trim_ps_table(ps_data) # Trim data from planetary systems table
 #'
 #' @export
 trim_ps_table = function(data) {
