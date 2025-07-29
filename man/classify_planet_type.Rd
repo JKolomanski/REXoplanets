@@ -27,19 +27,19 @@ The classification code is composed of four parts:
 \enumerate{
 \item \strong{Mass class:}
 \itemize{
-\item \code{"M"}: Mercury-like planets (< 0.22 Earth masses)
-\item \code{"E"}: Earth-like planets (0.22–2.2 Earth masses)
-\item \code{"S"}: Super-Earths (2.2–22 Earth masses)
-\item \code{"N"}: Neptune-like planets (22–127 Earth masses)
-\item \code{"J"}: Jupiter-like giants (127–4450 Earth masses)
-\item \code{"D"}: Degenerate-matter/brown dwarf-like objects (≥ 4450 Earth masses)
+\item \code{M}: Mercury-like planets (< 0.22 Earth masses)
+\item \code{E}: Earth-like planets (0.22–2.2 Earth masses)
+\item \code{S}: Super-Earths (2.2–22 Earth masses)
+\item \code{N}: Neptune-like planets (22–127 Earth masses)
+\item \code{J}: Jupiter-like giants (127–4450 Earth masses)
+\item \code{D}: Degenerate-matter/brown dwarf-like objects (≥ 4450 Earth masses)
 }
 \item \strong{Temperature class:}
 \itemize{
-\item \code{"F"}: Frozen (T < 250 K)
-\item \code{"W"}: Temperate/water zone (250–450 K)
-\item \code{"G"}: Gaseous (450–1000 K)
-\item \code{"R"}: Roasters (≥ 1000 K)
+\item \code{F}: Frozen (T < 250 K)
+\item \code{W}: Temperate/water zone (250–450 K)
+\item \code{G}: Gaseous (450–1000 K)
+\item \code{R}: Roasters (≥ 1000 K)
 }
 \item \strong{Eccentricity:}
 \itemize{
@@ -48,11 +48,11 @@ For example, 0.26 → \code{"3"} → appended as \code{"3"}.
 }
 \item \strong{Density-based surface/composition class:}
 \itemize{
-\item \code{"g"}: Gas-dominated (< 0.25 g/cm³)
-\item \code{"w"}: Water/ice-rich (0.25–2 g/cm³)
-\item \code{"t"}: Terrestrial/rocky (2–6 g/cm³)
-\item \code{"i"}: Iron-rich (6–13 g/cm³)
-\item \code{"s"}: Super-dense (≥ 13 g/cm³)
+\item \code{g}: Gas-dominated (< 0.25 g/cm³)
+\item \code{w}: Water/ice-rich (0.25–2 g/cm³)
+\item \code{t}: Terrestrial/rocky (2–6 g/cm³)
+\item \code{i}: Iron-rich (6–13 g/cm³)
+\item \code{s}: Super-dense (≥ 13 g/cm³)
 }
 }
 }

@@ -9,28 +9,28 @@
 #'
 #' 1. **Mass class:**
 #'    - `M`: Mercury-like planets (< 0.22 Earth masses)
-#'    - `"E"`: Earth-like planets (0.22–2.2 Earth masses)
-#'    - `"S"`: Super-Earths (2.2–22 Earth masses)
-#'    - `"N"`: Neptune-like planets (22–127 Earth masses)
-#'    - `"J"`: Jupiter-like giants (127–4450 Earth masses)
-#'    - `"D"`: Degenerate-matter/brown dwarf-like objects (≥ 4450 Earth masses)
+#'    - `E`: Earth-like planets (0.22–2.2 Earth masses)
+#'    - `S`: Super-Earths (2.2–22 Earth masses)
+#'    - `N`: Neptune-like planets (22–127 Earth masses)
+#'    - `J`: Jupiter-like giants (127–4450 Earth masses)
+#'    - `D`: Degenerate-matter/brown dwarf-like objects (≥ 4450 Earth masses)
 #'
 #' 2. **Temperature class:**
-#'    - `"F"`: Frozen (T < 250 K)
-#'    - `"W"`: Temperate/water zone (250–450 K)
-#'    - `"G"`: Gaseous (450–1000 K)
-#'    - `"R"`: Roasters (≥ 1000 K)
+#'    - `F`: Frozen (T < 250 K)
+#'    - `W`: Temperate/water zone (250–450 K)
+#'    - `G`: Gaseous (450–1000 K)
+#'    - `R`: Roasters (≥ 1000 K)
 #'
 #' 3. **Eccentricity:**
 #'    - First decimal digit of orbital eccentricity.
 #'      For example, 0.26 → `"3"` → appended as `"3"`.
 #'
 #' 4. **Density-based surface/composition class:**
-#'    - `"g"`: Gas-dominated (< 0.25 g/cm³)
-#'    - `"w"`: Water/ice-rich (0.25–2 g/cm³)
-#'    - `"t"`: Terrestrial/rocky (2–6 g/cm³)
-#'    - `"i"`: Iron-rich (6–13 g/cm³)
-#'    - `"s"`: Super-dense (≥ 13 g/cm³)
+#'    - `g`: Gas-dominated (< 0.25 g/cm³)
+#'    - `w`: Water/ice-rich (0.25–2 g/cm³)
+#'    - `t`: Terrestrial/rocky (2–6 g/cm³)
+#'    - `i`: Iron-rich (6–13 g/cm³)
+#'    - `s`: Super-dense (≥ 13 g/cm³)
 #'
 #' @param pl_bmasse Numeric. Planetary mass in Earth masses. Must be > 0.
 #' @param pl_eqt Numeric. Planetary equilibrium temperature in Kelvin. Must be > 0.
