@@ -1,0 +1,30 @@
+name: Test package
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  spellcheck:
+    name: Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install dependencies
+        shell: Rscript {0}
+        run: |
+          install.packages('remotes')
+          remotes::install_local(dependencies = TRUE)
+
+      - name: Run spellcheck
+        uses: insightsengineering/r-spellcheck-action@v3
