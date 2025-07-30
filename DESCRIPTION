@@ -1,9 +1,12 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
 Version: 0.0.0.9014
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: TBA
+Authors@R: c(
+    person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
+    person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
+Description: Provides a user-friendly interface to the NASA Exoplanets Archive API, 
+    enabling retrieval and analysis of exoplanetary and stellar data. Includes functions for querying, 
+    filtering, summarizing, and computing derived parameters from the Exoplanets catalog. 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
