@@ -14,10 +14,12 @@ RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2,
-    spelling
+    spelling,
+    devtools,
+    lintr
 Config/testthat/edition: 3
 Depends: 
-    R (>= 2.10),
+    R (>= 4.1),
     dplyr
 LazyData: true
 Language: en-US
