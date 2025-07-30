@@ -1,11 +1,11 @@
-#' Summarize star occurances
+#' Summarize star occurences
 #'
 #' @details
 #' The function takes in KOI data frame and summarizes the number of planets that appear in a
 #' given dataset for each star.
 #'
 #' @param data A data frame with KOI data. Must contain `kepoi_name` column.
-#' @returns A data farme containing:
+#' @returns A data frame containing:
 #'           - `Star` column with star ID.
 #'           - `Count` column with number of planets.
 #'

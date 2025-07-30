@@ -9,7 +9,7 @@ calculate_esi(pl_rade, pl_insol)
 \arguments{
 \item{pl_rade}{Numeric. Planetary radius in Earth radii.}
 
-\item{pl_insol}{Optional numeric. Stellar flux in Earth units.}
+\item{pl_insol}{Numeric. Stellar flux in Earth units. Optional.}
 }
 \value{
 Numeric. Earth Similarity Index (ESI).
@@ -20,8 +20,8 @@ Calculate the Earth Similarity Index (ESI)
 \details{
 The function calculates the ESI based on stellar flux and planetary radius.
 
-ESI (Earth Simillarity Index) is a characterization of how simmilar a planetary-mass object
-or natural satelite is to earth. It was designed to be a scale from zero to one,
+ESI (Earth Similarity Index) is a characterization of how similar a planetary-mass object
+or natural satellite is to earth. It was designed to be a scale from zero to one,
 with Earth having a value of 1.
 }
 \references{

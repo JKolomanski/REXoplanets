@@ -7,26 +7,26 @@
 #' @param data A data frame with planetary systems data.
 #' @returns A data frame containing:
 #' \itemize{
-#'   \item objectid - Object ID
-#'   \item pl_name – Planet name
-#'   \item hostname – Host star name
-#'   \item sy_dist – Distance to the system (parsecs)
-#'   \item pl_rade – Planetary radius (Earth radii)
-#'   \item pl_bmasse – Planetary mass (Earth masses)
-#'   \item pl_orbper – Orbital period (days)
-#'   \item pl_orbsmax – Semi-major axis (AU)
-#'   \item pl_orbeccen – Orbital eccentricity
-#'   \item pl_insol – Incident stellar flux (Earth units)
-#'   \item st_teff – Stellar effective temperature (K)
-#'   \item st_rad – Stellar radius (Solar radii)
-#'   \item st_mass – Stellar mass (Solar masses)
-#'   \item st_lum – Stellar luminosity (log10 L/Lsun)
-#'   \item pl_eqt – Planetary equilibrium temperature (K)
-#'   \item pl_dens – Planetary density
-#'   \item discoverymethod – Discovery method
-#'   \item disc_year – Year of discovery
-#'   \item sy_snum – Number of stars in system
-#'   \item sy_pnum – Number of planets in system
+#'   \item `objectid` - Object ID
+#'   \item `pl_name` – Planet name
+#'   \item `hostname` – Host star name
+#'   \item `sy_dist` – Distance to the system (parsecs)
+#'   \item `pl_rade` – Planetary radius (Earth radii)
+#'   \item `pl_bmasse` – Planetary mass (Earth masses)
+#'   \item `pl_orbper` – Orbital period (days)
+#'   \item `pl_orbsmax` – Semi-major axis (AU)
+#'   \item `pl_orbeccen` – Orbital eccentricity
+#'   \item `pl_insol` – Incident stellar flux (Earth units)
+#'   \item `st_teff` – Stellar effective temperature (K)
+#'   \item `st_rad` – Stellar radius (Solar radii)
+#'   \item `st_mass` – Stellar mass (Solar masses)
+#'   \item `st_lum` – Stellar luminosity (log10 L/Lsun)
+#'   \item `pl_eqt` – Planetary equilibrium temperature (K)
+#'   \item `pl_dens` – Planetary density
+#'   \item `discoverymethod` – Discovery method
+#'   \item `disc_year` – Year of discovery
+#'   \item `sy_snum` – Number of stars in system
+#'   \item `sy_pnum` – Number of planets in system
 #' }
 #'
 #' @importFrom dplyr select all_of

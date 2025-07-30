@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.R
 \name{summarize_star_occurances}
 \alias{summarize_star_occurances}
-\title{Summarize star occurances}
+\title{Summarize star occurences}
 \usage{
 summarize_star_occurances(data)
 }
@@ -10,12 +10,12 @@ summarize_star_occurances(data)
 \item{data}{A data frame with KOI data. Must contain \code{kepoi_name} column.}
 }
 \value{
-A data farme containing:
+A data frame containing:
 - \code{Star} column with star ID.
 - \code{Count} column with number of planets.
 }
 \description{
-Summarize star occurances
+Summarize star occurences
 }
 \details{
 The function takes in KOI data frame and summarizes the number of planets that appear in a
