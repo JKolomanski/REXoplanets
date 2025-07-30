@@ -1,6 +1,6 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
-Version: 0.0.0.9012
+Version: 0.0.0.9014
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
 Description: Provides a user-friendly interface to the NASA Exoplanets Archive API, 
