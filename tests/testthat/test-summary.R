@@ -1,5 +1,5 @@
-describe("summarize_star_occurances", {
-  it("summarizes planet occurances correctly per star", {
+describe("summarize_star_occurrences", {
+  it("summarizes planet occurrences correctly per star", {
     # Arrange
     test_df = data.frame(
       kepoi_name = c("a", "a", "a", "b", "b", "c")
@@ -11,7 +11,7 @@ describe("summarize_star_occurances", {
     )
 
     # Act
-    result = summarize_star_occurances(test_df)
+    result = summarize_star_occurrences(test_df)
 
     # Assert
     expect_equal(nrow(result), 3)
@@ -22,11 +22,11 @@ describe("summarize_star_occurances", {
     test_df = data.frame()
 
     expect_warning(
-      summarize_star_occurances(test_df),
+      summarize_star_occurrences(test_df),
       "Empty exoplanets data"
     )
 
-    result = suppressWarnings(summarize_star_occurances(test_df))
+    result = suppressWarnings(summarize_star_occurrences(test_df))
 
     expect_equal(nrow(result), 0)
     expect_equal(names(result), c("Star", "Count"))
@@ -34,14 +34,14 @@ describe("summarize_star_occurances", {
 
   it("throws an error if input is not a data frame", {
     expect_error(
-      summarize_star_occurances(""),
+      summarize_star_occurrences(""),
       "Exoplanets data must be a `data.frame`"
     )
   })
 
   it("throws an error if input does not contain required columns", {
     expect_error(
-      summarize_star_occurances(data.frame(Star = c(1, 2, 3))),
+      summarize_star_occurrences(data.frame(Star = c(1, 2, 3))),
       "Exoplanets data must contain `kepoi_name` column."
     )
   })
