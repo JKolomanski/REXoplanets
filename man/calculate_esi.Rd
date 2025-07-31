@@ -20,8 +20,8 @@ Calculate the Earth Similarity Index (ESI)
 \details{
 The function calculates the ESI based on stellar flux and planetary radius.
 
-ESI (Earth Simillarity Index) is a characterization of how simmilar a planetary-mass object
-or natural satelite is to earth. It was designed to be a scale from zero to one,
+ESI (Earth Similarity Index) is a characterization of how similar a planetary-mass object
+or natural satellite is to earth. It was designed to be a scale from zero to one,
 with Earth having a value of 1.
 }
 \references{
