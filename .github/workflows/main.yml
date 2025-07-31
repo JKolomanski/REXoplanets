@@ -54,7 +54,12 @@ jobs:
       - name: Run lintr
         shell: Rscript {0}
         run: |
-          devtools::lint()
+          lints <- devtools::lint()
+          if (length(lints) > 0) {
+            print(lints)
+            stop("Lint errors found.")
+          }
+          
 
   test:
     name: Test
