@@ -22,15 +22,11 @@
 #' calculate_esi(0.53, 0.43)  # Mars:    0.753
 #' calculate_esi(11.2, 0.037) # Jupiter: 0.24
 #'
+#' @importFrom checkmate assert_numeric
 #' @export
 calculate_esi = function(pl_rade, pl_insol) {
-  if (!is.numeric(pl_rade) || pl_rade <= 0) {
-    stop("Invalid data type. `pl_rade` must be `numeric` and larger than 0.")
-  }
-
-  if (!is.numeric(pl_insol) || pl_insol <= 0) {
-    stop("Invalid data type. `pl_insol` must be `numeric` and larger than 0.")
-  }
+  assert_numeric(pl_rade, lower = 0)
+  assert_numeric(pl_insol, lower = 0)
 
   esi_radius = (1 - abs((pl_rade - 1) / (pl_rade + 1)))^0.57
   esi_flux = (1 - abs((pl_insol - 1) / (pl_insol + 1)))^0.7

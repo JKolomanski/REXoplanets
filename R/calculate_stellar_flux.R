@@ -22,28 +22,14 @@
 #' # Output in absolute units (W/m²), Earth-like conditions
 #' calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1, unit = "wm2")
 #'
+#' @importFrom checkmate assert_numeric assert_logical assert_choice
 #' @export
 calculate_stellar_flux = function(st_lum, pl_orbsmax, log_lum = TRUE, unit = "relative") {
   # st_lum can be negative, so we don't check that
-  if (!is.numeric(st_lum)) {
-    stop("Invalid data type. `st_lum` must be `numeric`.")
-  }
-
-  if (!is.numeric(pl_orbsmax) || pl_orbsmax <= 0) {
-    stop("Invalid data. `pl_orbsmax` must be `numeric` and larger than 0.")
-  }
-
-  if (!is.logical(log_lum)) {
-    stop("Invalid data type. `log_lum` must be `logical`.")
-  }
-
-  if (!is.character(unit)) {
-    stop("Invalid data type. `unit` must be `character`.")
-  }
-
-  if (!unit %in% c("relative", "wm2")) {
-    stop("Invalid data value. `unit` must be `relative` or `wm2`.")
-  }
+  assert_numeric(st_lum)
+  assert_numeric(pl_orbsmax, lower = 0)
+  assert_logical(log_lum)
+  assert_choice(unit, c("relative", "wm2"))
 
   if (log_lum) {
     st_lum = 10 ^ st_lum
