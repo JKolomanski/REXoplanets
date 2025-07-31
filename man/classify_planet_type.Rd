@@ -44,7 +44,7 @@ The classification code is composed of four parts:
 \item \strong{Eccentricity:}
 \itemize{
 \item First decimal digit of orbital eccentricity.
-For example, 0.26 → \code{"3"} → appended as \code{"3"}.
+For example, 0.26 → \code{3} → appended as \code{3}.
 }
 \item \strong{Density-based surface/composition class:}
 \itemize{
@@ -58,7 +58,7 @@ For example, 0.26 → \code{"3"} → appended as \code{"3"}.
 }
 \examples{
 classify_planet_type(1.0, 288, 0.0167, 5.5)   # Earth-like: "EW0t"
-classify_planet_type(318, 1300, 0.05, 1.3)    # Hot Jupiter: "JR1w"
+classify_planet_type(318, 1300, 0.05, 1.3)    # Hot Jupiter: "JR3w"
 classify_planet_type(0.1, 180, 0.2, 0.1)      # Cold, light, low-density: "MF2g"
 
 }

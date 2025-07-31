@@ -14,7 +14,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 3.0.0),
-    roxygen2
+    roxygen2,
+    spelling
 Config/testthat/edition: 3
 Depends: 
     R (>= 4.1),
@@ -24,3 +25,4 @@ Depends:
     readr,
     utils
 LazyData: true
+Language: en-US
