@@ -30,6 +30,10 @@
 #' }
 #'
 #' @importFrom dplyr select all_of
+#'
+#' @examples
+#' trim_ps_table(closest_50_exoplanets)
+#'
 #' @export
 trim_ps_table = function(data) {
   required_cols = c(

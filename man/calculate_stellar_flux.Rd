@@ -28,3 +28,12 @@ converts flux to absolute units (W/m²) if requested.
 
 Stellar flux is the amount of energy from a star that reaches a given area per unit time.
 }
+\examples{
+# Solar-type star, Earth-like orbit
+calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1)
+# Linear luminosity input (not log), 5x Sun at 2 AU
+calculate_stellar_flux(st_lum = 5, pl_orbsmax = 2, log_lum = FALSE)
+# Output in absolute units (W/m²), Earth-like conditions
+calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1, unit = "wm2")
+
+}

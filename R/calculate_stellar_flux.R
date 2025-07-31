@@ -14,6 +14,14 @@
 #'
 #' @returns Numeric. Stellar flux (relative or in W/m²).
 #'
+#' @examples
+#' # Solar-type star, Earth-like orbit
+#' calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1)
+#' # Linear luminosity input (not log), 5x Sun at 2 AU
+#' calculate_stellar_flux(st_lum = 5, pl_orbsmax = 2, log_lum = FALSE)
+#' # Output in absolute units (W/m²), Earth-like conditions
+#' calculate_stellar_flux(st_lum = 0, pl_orbsmax = 1, unit = "wm2")
+#'
 #' @importFrom checkmate assert_numeric assert_logical assert_choice
 #' @export
 calculate_stellar_flux = function(st_lum, pl_orbsmax, log_lum = TRUE, unit = "relative") {

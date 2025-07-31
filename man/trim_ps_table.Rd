@@ -41,3 +41,7 @@ Trim planetary systems table
 The function takes in a planetary systems data frame,
 and trims it to include only 20 most important columns.
 }
+\examples{
+trim_ps_table(closest_50_exoplanets)
+
+}

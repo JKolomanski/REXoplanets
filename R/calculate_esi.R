@@ -13,9 +13,15 @@
 #' A Two-Tiered Approach to Assess the Habitability of Exoplanets. Astrobiology 11(10): 1041-1052.
 #'
 #' @param pl_rade Numeric. Planetary radius in Earth radii.
-#' @param pl_insol Numeric. Stellar flux in Earth units. Optional.
+#' @param pl_insol Numeric. Stellar flux in Earth units.
 #'
 #' @returns Numeric. Earth Similarity Index (ESI).
+#'
+#' @examples
+#' calculate_esi(1, 1)        # Earth:   1
+#' calculate_esi(0.53, 0.43)  # Mars:    0.753
+#' calculate_esi(11.2, 0.037) # Jupiter: 0.24
+#'
 #' @importFrom checkmate assert_numeric
 #' @export
 calculate_esi = function(pl_rade, pl_insol) {
