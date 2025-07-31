@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         shell: Rscript {0}
         run: |
-          install.packages('remotes')
+          install.packages(c('remotes', 'devtools'))
           remotes::install_local(dependencies = TRUE)
 
       - name: Run lintr
@@ -60,7 +60,6 @@ jobs:
             stop("Lint errors found.")
           }
           
-
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -80,7 +79,7 @@ jobs:
       - name: Install dependencies
         shell: Rscript {0}
         run: |
-          install.packages('remotes')
+          install.packages(c('remotes', 'devtools'))
           remotes::install_local(dependencies = TRUE)
 
       - name: Run tests
@@ -109,7 +108,7 @@ jobs:
       - name: Install dependencies
         shell: Rscript {0}
         run: |
-          install.packages('remotes')
+          install.packages(c('remotes', 'devtools'))
           remotes::install_local(dependencies = TRUE)
 
       - name: Run R CMD check
