@@ -12,7 +12,8 @@
 #'   \item `stellarhosts` – Stellar Hosts table
 #'   \item `keplernames` – Kepler Confirmed Names
 #' }
-#' @param filters Optional ADQL WHERE clause as a string, e.g., "pl_bmasse > 1 AND st_teff < 6000".
+#' @param query_string
+#'  Optional ADQL WHERE clause as a string, e.g., "pl_bmasse > 1 AND st_teff < 6000".
 #'
 #' @returns A data frame containing fetched data.
 #'
@@ -26,21 +27,23 @@
 #'  # All entries from Stellar Hosts table
 #'  fetch_table("stellarhosts")
 #'  # Entries from Planetary Systems table where planetary mass > 3 times the earth mass
-#'  fetch_table("ps", filters = "pl_bmasse > 3")
+#'  fetch_table("ps", query_string
+#'  = "pl_bmasse > 3")
 #'  # Planets orbiting Teegarden's Star with radius > 1 Earth radius
-#'  fetch_table("pscomppars", filters = "hostname = 'Teegarden''s Star' and pl_rade > 1")
+#'  fetch_table("pscomppars", query_string
+#'  = "hostname = 'Teegarden''s Star' and pl_rade > 1")
 #' }
 #'
 #' @export
-fetch_table = function(table, filters = NULL) {
+fetch_table = function(table, query_string = NULL) {
   assert_choice(table, c("ps", "pscomppars", "stellarhosts", "keplernames"))
-  if (!is.null(filters)) {
-    assert_string(filters)
+  if (!is.null(query_string)) {
+    assert_string(query_string)
   }
 
   query = paste0("select * from ", table)
-  if (!is.null(filters)) {
-    query = paste0(query, " where ", filters)
+  if (!is.null(query_string)) {
+    query = paste0(query, " where ", query_string)
   }
 
   url = paste0(

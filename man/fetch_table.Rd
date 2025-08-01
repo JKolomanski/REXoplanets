@@ -4,7 +4,7 @@
 \alias{fetch_table}
 \title{Fetch Exoplanets table}
 \usage{
-fetch_table(table, filters = NULL)
+fetch_table(table, query_string = NULL)
 }
 \arguments{
 \item{table}{A string specifying the table to query. Must be one of:
@@ -15,7 +15,7 @@ fetch_table(table, filters = NULL)
 \item \code{keplernames} – Kepler Confirmed Names
 }}
 
-\item{filters}{Optional ADQL WHERE clause as a string, e.g., "pl_bmasse > 1 AND st_teff < 6000".}
+\item{query_string}{Optional ADQL WHERE clause as a string, e.g., "pl_bmasse > 1 AND st_teff < 6000".}
 }
 \value{
 A data frame containing fetched data.
@@ -26,16 +26,18 @@ Fetch Exoplanets table
 \details{
 Fetches data from an exoplanets TAP (Table Access Protocol) service
 and returns it as a data frame.
-You can optionally specify a \code{WHERE} clause to filter rows based on conditions.
+You can optionally specify \code{WHERE} ADQL clause to filter rows based on conditions.
 }
 \examples{
 \dontrun{
  # All entries from Stellar Hosts table
  fetch_table("stellarhosts")
  # Entries from Planetary Systems table where planetary mass > 3 times the earth mass
- fetch_table("pscomppars", filters = "pl_bmasse > 3")
+ fetch_table("ps", query_string
+ = "pl_bmasse > 3")
  # Planets orbiting Teegarden's Star with radius > 1 Earth radius
- fetch_table("pscomppars", filters = "hostname = 'Teegarden''s Star' and pl_rade > 1")
+ fetch_table("pscomppars", query_string
+ = "hostname = 'Teegarden''s Star' and pl_rade > 1")
 }
 
 }
