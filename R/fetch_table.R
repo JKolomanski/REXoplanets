@@ -28,11 +28,9 @@
 #'  # All entries from Stellar Hosts table
 #'  fetch_table("stellarhosts")
 #'  # Entries from Planetary Systems table where planetary mass > 3 times the earth mass
-#'  fetch_table("ps", query_string
-#'  = "pl_bmasse > 3")
+#'  fetch_table("ps", query_string = "pl_bmasse > 3")
 #'  # Planets orbiting Teegarden's Star with radius > 1 Earth radius
-#'  fetch_table("pscomppars", query_string
-#'  = "hostname = 'Teegarden''s Star' and pl_rade > 1")
+#'  fetch_table("pscomppars", query_string = "hostname = 'Teegarden''s Star' and pl_rade > 1")
 #' }
 #'
 #' @export
