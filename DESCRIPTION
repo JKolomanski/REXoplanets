@@ -21,5 +21,6 @@ Depends:
     dplyr,
     checkmate,
     httr2,
-    readr
+    readr,
+    utils
 LazyData: true
