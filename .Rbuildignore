@@ -1,2 +1,6 @@
 ^Praktyki\.Rproj$
 ^\.Rproj\.user$
+.lintr
+.github
+^.*\.tex$
+^LICENSE\.md$
