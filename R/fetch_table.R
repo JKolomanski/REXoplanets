@@ -50,14 +50,16 @@ fetch_table = function(table, query_string = NULL) {
     "&format=csv"
   )
 
-  req = request(url) %>% req_options(followlocation = TRUE) # issue: can't get httr2 to redirect
+  req = request(url) %>%
+    req_options(followlocation = TRUE) # issue: can't get httr2 to redirect
   res = tryCatch(
     req_perform(req),
     error = function(e) {
       stop("Request failed. Check your filter syntax. Original error: ", e$message, call. = FALSE)
     }
   )
-  csv_data = resp_body_string(res)
 
-  read_csv(csv_data, show_col_types = FALSE) # should definee col_types explicitly?
+  res %>%
+    resp_body_string() %>%
+    read_csv(show_col_types = FALSE)
 }
