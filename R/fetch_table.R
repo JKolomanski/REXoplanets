@@ -21,6 +21,7 @@
 #' @importFrom readr read_csv
 #' @importFrom dplyr `%>%`
 #' @importFrom checkmate assert_choice assert_string
+#' @importFrom utils URLencode
 #'
 #' @examples
 #' \dontrun{
