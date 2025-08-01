@@ -1,5 +1,5 @@
 ^Praktyki\.Rproj$
 ^\.Rproj\.user$
-\.lintr
-\.github
-*\.tex
+.lintr
+.github
+^.*\.tex$
