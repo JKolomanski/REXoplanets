@@ -37,12 +37,10 @@
 #' @export
 fetch_table = function(table, query_string = NULL) {
   assert_choice(table, c("ps", "pscomppars", "stellarhosts", "keplernames"))
-  if (!is.null(query_string)) {
-    assert_string(query_string)
-  }
 
   query = paste0("select * from ", table)
   if (!is.null(query_string)) {
+    assert_string(query_string)
     query = paste0(query, " where ", query_string)
   }
 
