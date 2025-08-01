@@ -115,4 +115,4 @@ jobs:
         uses: r-lib/actions/check-r-package@v2
         with:
           args: 'c("--as-cran")'
-          error-on: '"warnings"'
+          error-on: '"warning"'
