@@ -50,7 +50,12 @@ fetch_table = function(table, filters = NULL) {
   )
 
   req = request(url) %>% req_options(followlocation = TRUE) # issue: can't get httr2 to redirect
-  res = req_perform(req)
+  res = tryCatch(
+    req_perform(req),
+    error = function(e) {
+      stop("Request failed. Check your filter syntax. Original error: ", e$message, call. = FALSE)
+    }
+  )
   csv_data = resp_body_string(res)
 
   read_csv(csv_data, show_col_types = FALSE) # should definee col_types explicitly?
