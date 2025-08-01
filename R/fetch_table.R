@@ -3,7 +3,7 @@
 #' @details
 #' Fetches data from an exoplanets TAP (Table Access Protocol) service
 #' and returns it as a data frame.
-#' You can optionally specify a `WHERE` clause to filter rows based on conditions.
+#' You can optionally specify `WHERE` ADQL clause to filter rows based on conditions.
 #'
 #' @param table A string specifying the table to query. Must be one of:
 #'   \itemize{
