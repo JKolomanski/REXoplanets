@@ -104,7 +104,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libfontconfig1-dev libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev \
             libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev \
-            texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+            texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra \
+            tidy
 
       - name: Install dependencies
         shell: Rscript {0}
