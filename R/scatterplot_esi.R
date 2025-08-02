@@ -35,7 +35,7 @@ scatterplot_esi = function(data) {
 
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
     geom_point(size = 3) +
-    scale_color_gradient(low = "red", high = "green", name = "ESI") +
+    scale_color_gradient(low = "darkgoldenrod1", high = "darkorchid4", name = "ESI") +
     scale_x_log10(
       limits = c(0.1, 15),
       name = expression("Stellar Flux (" * F[p] * ")") # nolint
