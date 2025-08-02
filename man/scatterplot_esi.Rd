@@ -4,7 +4,7 @@
 \alias{scatterplot_esi}
 \title{Generate a Scatterplot of the Earth Similarity Index (ESI)}
 \usage{
-scatterplot_esi(data, data_limits = c(0.1, 10))
+scatterplot_esi(data, plot_limits = c(0.1, 10))
 }
 \arguments{
 \item{data}{A data frame containing exoplanet data. Must include the columns:
@@ -14,7 +14,7 @@ scatterplot_esi(data, data_limits = c(0.1, 10))
 \item \code{esi}: Earth Similarity Index (numeric).
 }}
 
-\item{data_limits}{A numeric vector of length 2 specifying the lower and upper bounds.
+\item{plot_limits}{A numeric vector of length 2 specifying the lower and upper bounds.
 Default is \code{c(0.1, 10)}.}
 }
 \value{
@@ -28,8 +28,7 @@ colored by the Earth Similarity Index (ESI).
 Dashed lines at (1,1) indicate Earth's reference values for stellar flux and radius.
 }
 \examples{
-\dontrun{
-  data = read.csv("some_esi_dataset.csv")
-  scatterplot_esi(data)
-}
+  closest_50_exoplanets \%>\%
+  dplyr::mutate(esi = calculate_esi(pl_rade, pl_insol)) \%>\%
+  scatterplot_esi()
 }

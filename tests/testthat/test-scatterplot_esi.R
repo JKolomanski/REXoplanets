@@ -7,17 +7,17 @@ describe("scatterplot_esi", {
     )
   })
 
-  it("throws an error when data_limits is not a numeric vector of length 2", {
+  it("throws an error when plot_limits is not a numeric vector of length 2", {
     test_data = data.frame(
       "pl_insol" = c(1, 2, 3),
       "pl_rade" = c(1, 2, 3),
       "esi" = c(1, 2, 3)
     )
-    test_data_limits = c(1)
+    test_plot_limits = c(1)
 
     expect_error(
-      scatterplot_esi(test_data, test_data_limits),
-      "Assertion on 'data_limits' failed: *"
+      scatterplot_esi(test_data, test_plot_limits),
+      "Assertion on 'plot_limits' failed: *"
     )
   })
 
