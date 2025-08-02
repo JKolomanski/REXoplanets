@@ -1,12 +1,33 @@
+#'
+#' @import shiny shinyjs bslib
 app = function(...) {
   check_app_dependencies()
 
-  print("app startup")
+  ui = bslib::page_sidebar(
+    title = "REXoplanets application",
+    sidebar = bslib::sidebar(
+      "Sidebar goes here"
+    ),
+    "Main app body",
+    shinyjs::useShinyjs()
+  )
+
+  server = function(input, output, session) {
+    message("REXoplanets application initialized.")
+  }
+
+  shiny::shinyApp(
+    ui = ui,
+    server = server
+  ) |>
+    shiny::runApp(...)
 }
 
 #' Checks if packages required for shiny application are installed on user machine. If not,
 #' asks if the user wants to install them. If yes, installs the packages using `pak`.
+#' @importFrom purrr keep
 #' @noRd
+#' @keywords internal
 check_app_dependencies = function() {
   APP_PACKAGES = c(
     "shiny",
@@ -47,11 +68,13 @@ check_app_dependencies = function() {
   }
 }
 
+#' @keywords internal
 assert_valid_answer = function(answer) {
   valid_answers = c("yes", "no", "y", "n")
   tolower(answer) %in% valid_answers
 }
 
+#' @keywords internal
 assert_no = function(answer) {
   no_answers = c("no", "n")
   tolower(answer) %in% no_answers

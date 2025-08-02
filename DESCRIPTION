@@ -11,7 +11,8 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 4.1),
     dplyr,
-    checkmate
+    checkmate,
+    purrr
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2,
