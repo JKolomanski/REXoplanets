@@ -21,6 +21,7 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 4.1),
     dplyr,
-    checkmate
+    checkmate,
+    ggplot2
 LazyData: true
 Language: en-US
