@@ -20,10 +20,9 @@
 #' @importFrom checkmate assert_names assert_data_frame assert_numeric
 #'
 #' @examples
-#' \dontrun{
-#'   data = read.csv("some_esi_dataset.csv")
-#'   scatterplot_esi(data)
-#' }
+#'   closest_50_exoplanets %>%
+#'   dplyr::mutate(esi = calculate_esi(pl_rade, pl_insol)) %>%
+#'   scatterplot_esi()
 #' @export
 
 scatterplot_esi = function(data, data_limits = c(0.1, 10)) {
