@@ -29,7 +29,6 @@ scatterplot_esi = function(data, plot_limits = c(0.1, 10)) {
   assert_names(colnames(data), must.include = c("pl_insol", "pl_rade", "esi"))
   assert_numeric(plot_limits, len = 2, lower = 0, any.missing = FALSE)
 
-
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
     geom_vline(xintercept = 1, linetype = "dashed") +
     geom_hline(yintercept = 1, linetype = "dashed") +
