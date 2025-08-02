@@ -24,7 +24,7 @@ Depends:
     checkmate,
     httr2,
     readr,
-    utils
+    utils,
     ggplot2
 LazyData: true
 Language: en-US
