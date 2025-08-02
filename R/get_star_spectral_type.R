@@ -4,7 +4,7 @@
 #' The function takes in effectrive stellar temperature (in K),
 #' and return letter for the star's spectral type based on Morgan–Keenan (MK) system.
 #'
-#' @param st_teff Numeric. effectrive stellar temperature (in K)
+#' @param st_teff Numeric. effective stellar temperature (in K)
 #'
 #' @returns Character. spectral type classification with a letter:
 #'    - `M`: Mercury-like planets (< 0.22 Earth masses)
