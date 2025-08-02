@@ -17,7 +17,7 @@
 #' @importFrom ggplot2 ggplot aes geom_point scale_color_viridis_c scale_x_log10
 #'   scale_y_log10 ggtitle theme_bw theme element_blank geom_vline
 #'   geom_hline scale_color_gradient
-#' @importFrom checkmate assert_names assert_data_frame
+#' @importFrom checkmate assert_names assert_data_frame assert_numeric
 #'
 #' @examples
 #' \dontrun{
