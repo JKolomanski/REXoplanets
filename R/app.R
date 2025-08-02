@@ -1,5 +1,9 @@
-#'
-#' @import shiny shinyjs bslib
+#' Function responsible for initializing and running the REXoplanets shiny application.
+#' @param ... Additional arguments passed to `shiny::runApp()`.
+#' @importFrom shiny shinyApp runApp
+#' @importFrom shinyjs useShinyjs
+#' @importFrom bslib page_sidebar sidebar
+#' @export
 app = function(...) {
   check_app_dependencies()
 
@@ -9,11 +13,14 @@ app = function(...) {
       "Sidebar goes here"
     ),
     "Main app body",
+    test_ui("test_module"),
     shinyjs::useShinyjs()
   )
 
   server = function(input, output, session) {
     message("REXoplanets application initialized.")
+
+    test_server("test_module")
   }
 
   shiny::shinyApp(
