@@ -33,8 +33,8 @@ scatterplot_esi = function(data, plot_limits = c(0.1, 10)) {
     geom_hline(yintercept = 1, linetype = "dashed") +
     geom_point(size = 3) +
     scale_color_gradient(
-                         low = "darkgoldenrod1",
-                         high = "darkorchid4",
+                         low = "firebrick",
+                         high = "skyblue1",
                          name = "ESI",
                          breaks = seq(0.1, 1.0, by = 0.1)) +
     scale_x_log10(limits = plot_limits) +
