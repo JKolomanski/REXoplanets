@@ -1,6 +1,6 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
-Version: 0.0.0.9015
+Version: 0.0.0.9016
 Authors@R: c(
     person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
     person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
@@ -21,6 +21,7 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 4.1),
     dplyr,
-    checkmate
+    checkmate,
+    ggplot2
 LazyData: true
 Language: en-US
