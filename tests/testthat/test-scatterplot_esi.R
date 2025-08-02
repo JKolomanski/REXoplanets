@@ -1,4 +1,14 @@
 describe("scatterplot_esi", {
+  it("returns a ggplot2 object", {
+    test_data = data.frame(
+      "pl_insol" = c(1, 2, 3),
+      "pl_rade" = c(1, 2, 3),
+      "esi" = c(1, 2, 3)
+    )
+
+    expect_s3_class(scatterplot_esi(test_data), "ggplot")
+  })
+
   it("throws an error when input data is not a data frame", {
     test_data = ""
     expect_error(

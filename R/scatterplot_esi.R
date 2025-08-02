@@ -15,7 +15,7 @@
 #' @return A ggplot2 object representing the scatterplot.
 #'
 #' @importFrom ggplot2 ggplot aes geom_point scale_color_viridis_c scale_x_log10
-#'   scale_y_log10 ggtitle theme_bw theme element_blank geom_vline
+#'   scale_y_log10 labs theme_bw theme element_blank geom_vline
 #'   geom_hline scale_color_gradient
 #' @importFrom checkmate assert_names assert_data_frame assert_numeric
 #'
@@ -32,22 +32,20 @@ scatterplot_esi = function(data, plot_limits = c(0.1, 10)) {
 
 
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
+    geom_vline(xintercept = 1, linetype = "dashed") +
+    geom_hline(yintercept = 1, linetype = "dashed") +
     geom_point(size = 3) +
     scale_color_gradient(
                          low = "darkgoldenrod1",
                          high = "darkorchid4",
                          name = "ESI",
                          breaks = seq(0.1, 1.0, by = 0.1)) +
-    scale_x_log10(
-      limits = plot_limits,
-      name = expression("Stellar Flux (" * F[p] * ")") # nolint
+    scale_x_log10(limits = plot_limits) +
+    scale_y_log10(limits = plot_limits) +
+    labs(
+      title = "Earth Similarity Index Scatterplot",
+      x = expression("Stellar Flux (" * F[p] * ")"), #nolint
+      y = expression("Planet Radius (" * R[p] * ")")
     ) +
-    scale_y_log10(
-      limits = plot_limits,
-      name = expression("Planet Radius (" * R[p] * ")")
-    ) +
-    ggtitle("Earth Similarity Index Scatterplot") +
-    theme_bw(base_size = 14) +
-    geom_vline(xintercept = 1, linetype = "dashed") +
-    geom_hline(yintercept = 1, linetype = "dashed")
+    theme_bw(base_size = 14)
 }
