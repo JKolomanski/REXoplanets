@@ -24,7 +24,14 @@
 #' @export
 
 scatterplot_esi = function(data) {
-  # todo: add input checks
+  required_cols = c(
+    "pl_insol", "pl_rade", "esi"
+  )
+
+  missing = setdiff(required_cols, colnames(data))
+  if (length(missing) > 0) {
+    stop("Missing required columns: ", paste(missing, collapse = ", "))
+  }
 
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
     geom_point(size = 3) +
