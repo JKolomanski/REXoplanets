@@ -4,7 +4,7 @@
 \alias{scatterplot_esi}
 \title{Generate a Scatterplot of the Earth Similarity Index (ESI)}
 \usage{
-scatterplot_esi(data)
+scatterplot_esi(data, data_limits = c(0.1, 10))
 }
 \arguments{
 \item{data}{A data frame containing exoplanet data. Must include the columns:
@@ -13,6 +13,9 @@ scatterplot_esi(data)
 \item \code{pl_rade}: planetary radius (in Earth radii),
 \item \code{esi}: Earth Similarity Index (numeric).
 }}
+
+\item{data_limits}{A numeric vector of length 2 specifying the lower and upper bounds.
+Default is \code{c(0.1, 10)}.}
 }
 \value{
 A ggplot2 object representing the scatterplot.
