@@ -9,6 +9,8 @@
 #'   - `pl_insol`: incident stellar flux (in Earth flux units),
 #'   - `pl_rade`: planetary radius (in Earth radii),
 #'   - `esi`: Earth Similarity Index (numeric).
+#' @param data_limits A numeric vector of length 2 specifying the lower and upper bounds.
+#'  Default is \code{c(0.1, 10)}.
 #'
 #' @return A ggplot2 object representing the scatterplot.
 #'
@@ -24,9 +26,11 @@
 #' }
 #' @export
 
-scatterplot_esi = function(data) {
+scatterplot_esi = function(data, data_limits = c(0.1, 10)) {
   assert_data_frame(data)
   assert_names(colnames(data), must.include = c("pl_insol", "pl_rade", "esi"))
+  assert_numeric(data_limits, len = 2, lower = 0, any.missing = FALSE)
+
 
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
     geom_point(size = 3) +
@@ -36,11 +40,11 @@ scatterplot_esi = function(data) {
                          name = "ESI",
                          breaks = seq(0.1, 1.0, by = 0.1)) +
     scale_x_log10(
-      limits = c(0.1, 15),
+      limits = data_limits,
       name = expression("Stellar Flux (" * F[p] * ")") # nolint
     ) +
     scale_y_log10(
-      limits = c(0.1, 15),
+      limits = data_limits,
       name = expression("Planet Radius (" * R[p] * ")")
     ) +
     ggtitle("Earth Simillarity Index Scatterplot") +
