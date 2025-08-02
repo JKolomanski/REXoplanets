@@ -14,9 +14,8 @@
 #'
 #' @return A ggplot2 object representing the scatterplot.
 #'
-#' @importFrom ggplot2 ggplot aes geom_point scale_color_viridis_c scale_x_log10
-#'   scale_y_log10 labs theme_bw theme element_blank geom_vline
-#'   geom_hline scale_color_gradient
+#' @importFrom ggplot2 ggplot aes geom_point scale_x_log10 geom_hline
+#'   scale_y_log10 labs theme_bw theme geom_vline scale_color_gradient
 #' @importFrom checkmate assert_names assert_data_frame assert_numeric
 #'
 #' @examples
