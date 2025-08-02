@@ -1,10 +1,12 @@
 #' Function responsible for initializing and running the REXoplanets shiny application.
 #' @param ... Additional arguments passed to `shiny::runApp()`.
+#' @param run If true, runs the application. If false, returns an app object.
+#' @return App object.
 #' @importFrom shiny shinyApp runApp
 #' @importFrom shinyjs useShinyjs
 #' @importFrom bslib page_sidebar sidebar
 #' @export
-app = function(...) {
+app = function(..., run = TRUE) {
   check_app_dependencies()
 
   ui = bslib::page_sidebar(
@@ -23,11 +25,16 @@ app = function(...) {
     test_server("test_module")
   }
 
-  shiny::shinyApp(
+  app_obj = shiny::shinyApp(
     ui = ui,
     server = server
-  ) |>
-    shiny::runApp(...)
+  )
+
+  if (run) {
+    shiny::runApp(app_obj)
+  } else {
+    app_obj
+  }
 }
 
 #' Checks if packages required for shiny application are installed on user machine. If not,

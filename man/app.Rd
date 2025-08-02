@@ -4,10 +4,15 @@
 \alias{app}
 \title{Function responsible for initializing and running the REXoplanets shiny application.}
 \usage{
-app(...)
+app(..., run = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments passed to \code{shiny::runApp()}.}
+
+\item{run}{If true, runs the application. If false, returns an app object.}
+}
+\value{
+App object.
 }
 \description{
 Function responsible for initializing and running the REXoplanets shiny application.

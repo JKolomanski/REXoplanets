@@ -1,8 +1,14 @@
-#' This is a test moduel for boilerplate purposes.
+#' Test module
+#' @name module_test
+#' @details
+#' This is just a test module for reference for further developement.
+NULL
+
 #' @param id A unique identifier for the module.
-#' @return A Shiny UI element.
+#' @returns A Shiny UI object.
 #' @importFrom shiny NS div
-#' @rdname test_module
+#' @describeIn module_test UI function for the module.
+#' @export
 test_ui = function(id) {
   ns = NS(id)
 
@@ -11,11 +17,11 @@ test_ui = function(id) {
   )
 }
 
-#' This is a test server function for the test module.
 #' @param id A unique identifier for the module.
-#' @return A Shiny server function.
+#' @returns A Shiny server module.
 #' @importFrom shiny moduleServer
-#' @rdname test_module
+#' @describeIn module_test Server function for the module.
+#' @export
 test_server = function(id) {
   moduleServer(id, function(input, output, session) {
     message("Test module server initialized.")
