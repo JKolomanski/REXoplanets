@@ -47,7 +47,7 @@ scatterplot_esi = function(data, data_limits = c(0.1, 10)) {
       limits = data_limits,
       name = expression("Planet Radius (" * R[p] * ")")
     ) +
-    ggtitle("Earth Simillarity Index Scatterplot") +
+    ggtitle("Earth Similarity Index Scatterplot") +
     theme_bw(base_size = 14) +
     geom_vline(xintercept = 1, linetype = "dashed") +
     geom_hline(yintercept = 1, linetype = "dashed")
