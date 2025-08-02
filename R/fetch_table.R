@@ -61,6 +61,7 @@ fetch_table = function(table, query_string = NULL) {
   res %>%
     resp_body_string() %>%
     read_csv(show_col_types = FALSE) %>%
-    # api output is not very clean, read_csv sometimes can't assign correct column types
+    # Due to messy data read_csv fails to assign column types.
+    # To avoid polluting the console, warnings are suppressed.
     suppressWarnings()
 }
