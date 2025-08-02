@@ -13,8 +13,9 @@
 #' @return A ggplot2 object representing the scatterplot.
 #'
 #' @importFrom ggplot2 ggplot aes geom_point scale_color_viridis_c scale_x_log10
-#'   scale_y_log10 ggtitle theme_minimal theme element_blank geom_vline
+#'   scale_y_log10 ggtitle theme_bw theme element_blank geom_vline
 #'   geom_hline scale_color_gradient
+#' @importFrom checkmate assert_names assert_data_frame
 #'
 #' @examples
 #' \dontrun{
@@ -24,14 +25,8 @@
 #' @export
 
 scatterplot_esi = function(data) {
-  required_cols = c(
-    "pl_insol", "pl_rade", "esi"
-  )
-
-  missing = setdiff(required_cols, colnames(data))
-  if (length(missing) > 0) {
-    stop("Missing required columns: ", paste(missing, collapse = ", "))
-  }
+  assert_data_frame(data)
+  assert_names(colnames(data), must.include = c("pl_insol", "pl_rade", "esi"))
 
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
     geom_point(size = 3) +
