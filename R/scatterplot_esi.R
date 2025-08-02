@@ -35,7 +35,11 @@ scatterplot_esi = function(data) {
 
   ggplot(data, aes(x = pl_insol, y = pl_rade, color = esi)) +
     geom_point(size = 3) +
-    scale_color_gradient(low = "darkgoldenrod1", high = "darkorchid4", name = "ESI") +
+    scale_color_gradient(
+                         low = "darkgoldenrod1",
+                         high = "darkorchid4",
+                         name = "ESI",
+                         breaks = seq(0.1, 1.0, by = 0.1)) +
     scale_x_log10(
       limits = c(0.1, 15),
       name = expression("Stellar Flux (" * F[p] * ")") # nolint
@@ -45,8 +49,7 @@ scatterplot_esi = function(data) {
       name = expression("Planet Radius (" * R[p] * ")")
     ) +
     ggtitle("Earth Simillarity Index Scatterplot") +
-    theme_minimal(base_size = 14) +
-    theme(panel.grid.minor = element_blank()) +
+    theme_bw(base_size = 14) +
     geom_vline(xintercept = 1, linetype = "dashed") +
     geom_hline(yintercept = 1, linetype = "dashed")
 }
