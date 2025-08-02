@@ -50,7 +50,7 @@ fetch_table = function(table, query_string = NULL) {
   )
 
   req = request(url) %>%
-    req_options(followlocation = TRUE) # issue: can't get httr2 to redirect
+    req_options(followlocation = TRUE) # todo: add handling 3xx responses
   res = tryCatch(
     req_perform(req),
     error = function(e) {
@@ -60,5 +60,7 @@ fetch_table = function(table, query_string = NULL) {
 
   res %>%
     resp_body_string() %>%
-    read_csv(show_col_types = FALSE)
+    read_csv(show_col_types = FALSE) %>%
+    # api output is not very clean, read_csv sometimes can't assign correct column types
+    suppressWarnings()
 }
