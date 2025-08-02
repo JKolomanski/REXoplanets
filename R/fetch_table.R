@@ -13,7 +13,7 @@
 #'   \item `keplernames` – Kepler Confirmed Names
 #' }
 #' @param query_string
-#'  Optional ADQL WHERE clause as a string, e.g., "pl_bmasse > 1 AND st_teff < 6000".
+#'  Optional ADQL WHERE clause as a string, e.g., `pl_bmasse > 1 AND st_teff < 6000`.
 #'
 #' @returns A data frame containing fetched data.
 #'
