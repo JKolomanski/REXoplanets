@@ -15,7 +15,7 @@ fetch_table(table, query_string = NULL)
 \item \code{keplernames} – Kepler Confirmed Names
 }}
 
-\item{query_string}{Optional ADQL WHERE clause as a string, e.g., "pl_bmasse > 1 AND st_teff < 6000".}
+\item{query_string}{Optional ADQL \code{WHERE} clause as a string, e.g., \verb{pl_bmasse > 1 AND st_teff < 6000}.}
 }
 \value{
 A data frame containing fetched data.
