@@ -14,7 +14,7 @@ test_server(id)
 \item{id}{A unique identifier for the module.}
 }
 \value{
-A Shiny UI object.
+A Shiny \code{UI} object.
 
 A Shiny server module.
 }
@@ -22,11 +22,11 @@ A Shiny server module.
 Test module
 }
 \details{
-This is just a test module for reference for further developement.
+This is just a test module for reference for further development.
 }
 \section{Functions}{
 \itemize{
-\item \code{test_ui()}: UI function for the module.
+\item \code{test_ui()}: \code{UI} function for the module.
 
 \item \code{test_server()}: Server function for the module.
 
