@@ -45,7 +45,7 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   plot_data = data.frame(
     orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
     pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
-    pl_rade = c(17, planet_data$pl_rade),
+    pl_rade = c(17, planet_data$pl_rade), # Ensure star is the largest object
     col = c(.map_star_color(spectral_type), .map_color(planet_data$pl_dens))
   )
 
@@ -89,5 +89,6 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   log_vals = log10(pl_orbsmax)
   min_val = min(log_vals)
   max_val = max(log_vals)
+  # Limit max planet size to keep it distinct from star
   ((log_vals - min_val) / (max_val - min_val)) * (7 - 1) + 1
 }
