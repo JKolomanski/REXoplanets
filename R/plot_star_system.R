@@ -45,7 +45,7 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   plot_data = data.frame(
     orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
     pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
-    pl_rade = c(15, planet_data$pl_rade),
+    pl_rade = c(17, planet_data$pl_rade),
     col = c(.map_star_color(spectral_type), .map_color(planet_data$pl_dens))
   )
 
@@ -53,7 +53,7 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +
-    scale_size_continuous(range = c(2, 17)) +
+    scale_size_continuous(range = c(2, 17)) + # Limit object size to prevent it from overlapping
     coord_polar(theta = "x") +
     theme_void() +
     theme(legend.position = "none", panel.background = element_rect(fill = "black", color = NA))
