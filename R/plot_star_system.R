@@ -22,6 +22,7 @@
 #'
 #' @importFrom ggplot2 ggplot aes geom_point geom_hline scale_color_identity
 #'   scale_size_continuous coord_polar theme_void theme element_rect
+#' @importFrom checkmate assert_names assert_data_frame assert_numeric
 #'
 #' @examples
 #' # Plot system GJ 682 (with hostid = "2.582960")
@@ -33,15 +34,22 @@
 #'
 #' @export
 plot_star_system = function(planet_data, spectral_type = NULL) {
-  data = data.frame(
+  assert_data_frame(planet_data)
+  assert_names(colnames(planet_data), must.include = c("pl_orbsmax", "pl_rade", "pl_dens"))
+  if (!is.null(spectral_type)) {
+    assert_character(spectral_type, len = 1, any.missing = FALSE)
+    assert_choice(spectral_type, choices = c("O", "B", "A", "F", "G", "K", "M"))
+  }
+
+  plot_data = data.frame(
     offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
     pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
     pl_rade = c(15, planet_data$pl_rade),
     col = c(.map_star_color(spectral_type), .map_color(planet_data$pl_dens))
   )
 
-  ggplot(data, aes(x = offset, y = pl_orbsmax, size = pl_rade, color = col)) +
-    geom_hline(yintercept = data$pl_orbsmax, color = "grey15") +
+  ggplot(plot_data, aes(x = offset, y = pl_orbsmax, size = pl_rade, color = col)) +
+    geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +
     scale_size_continuous(range = c(2, 17)) +
