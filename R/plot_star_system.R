@@ -42,13 +42,13 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   }
 
   plot_data = data.frame(
-    offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
+    orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
     pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
     pl_rade = c(15, planet_data$pl_rade),
     col = c(.map_star_color(spectral_type), .map_color(planet_data$pl_dens))
   )
 
-  ggplot(plot_data, aes(x = offset, y = pl_orbsmax, size = pl_rade, color = col)) +
+  ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = col)) +
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +
