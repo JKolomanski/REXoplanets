@@ -7,13 +7,13 @@
 #' @param st_teff Numeric. effective stellar temperature (in K)
 #'
 #' @returns Character. spectral type classification with a letter:
-#'    - `M`: Mercury-like planets (< 0.22 Earth masses)
-#'    - `K`: Earth-like planets (0.22–2.2 Earth masses)
-#'    - `G`: Super-Earths (2.2–22 Earth masses)
-#'    - `F`: Neptune-like planets (22–127 Earth masses)
-#'    - `A`: Jupiter-like giants (127–4450 Earth masses)
-#'    - `B`: Degenerate-matter/brown dwarf-like objects (>= 4450 Earth masses)
-#'    - `O`: Degenerate-matter/brown dwarf-like objects (>= 4450 Earth masses)
+#'    - `M`: 2,500 - 3,500
+#'    - `K`: 3,500 - 5,000
+#'    - `G`: 5,000 - 6,000
+#'    - `F`: 6,000 - 7,500
+#'    - `A`: 7,500 - 10,000
+#'    - `B`: 10,000 - 28,000
+#'    - `O`: 28,000 - 50,000
 #'
 #' @examples
 #' get_star_spectral_type(5778)

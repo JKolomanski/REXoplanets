@@ -7,18 +7,18 @@
 get_star_spectral_type(st_teff)
 }
 \arguments{
-\item{st_teff}{Numeric. effectrive stellar temperature (in K)}
+\item{st_teff}{Numeric. effective stellar temperature (in K)}
 }
 \value{
 Character. spectral type classification with a letter:
 \itemize{
-\item \code{M}: Mercury-like planets (< 0.22 Earth masses)
-\item \code{K}: Earth-like planets (0.22–2.2 Earth masses)
-\item \code{G}: Super-Earths (2.2–22 Earth masses)
-\item \code{F}: Neptune-like planets (22–127 Earth masses)
-\item \code{A}: Jupiter-like giants (127–4450 Earth masses)
-\item \code{B}: Degenerate-matter/brown dwarf-like objects (>= 4450 Earth masses)
-\item \code{O}: Degenerate-matter/brown dwarf-like objects (>= 4450 Earth masses)
+\item \code{M}: 2,500 - 3,500
+\item \code{K}: 3,500 - 5,000
+\item \code{G}: 5,000 - 6,000
+\item \code{F}: 6,000 - 7,500
+\item \code{A}: 7,500 - 10,000
+\item \code{B}: 10,000 - 28,000
+\item \code{O}: 28,000 - 50,000
 }
 }
 \description{
