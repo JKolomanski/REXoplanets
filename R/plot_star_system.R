@@ -35,7 +35,7 @@
 plot_star_system = function(planet_data, spectral_type = NULL) {
   data = data.frame(
     offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
-    pl_orbsmax = c(0, planet_data$pl_orbsmax),
+    pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
     pl_rade = c(15, planet_data$pl_rade),
     col = c(.map_star_color(spectral_type), .map_color(planet_data$pl_dens))
   )
@@ -45,7 +45,7 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
     # geom_hline here to render below points
     geom_hline(yintercept = data$pl_orbsmax, color = "grey15") +
     geom_point() +
-    scale_size_continuous(range = c(2, 15)) +
+    scale_size_continuous(range = c(2, 17)) +
     coord_polar(theta = "x") +
     theme_void() +
     theme(legend.position = "none", panel.background = element_rect(fill = "black", color = NA))
@@ -75,4 +75,11 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
     spectral_type == "B" ~ "lightsteelblue1",
     spectral_type == "O" ~ "slateblue1"
   )
+}
+
+.rescale_orbsmax = function(pl_orbsmax) {
+  log_vals = log10(pl_orbsmax)
+  min_val = min(log_vals)
+  max_val = max(log_vals)
+  ((log_vals - min_val) / (max_val - min_val)) * (7 - 1) + 1
 }
