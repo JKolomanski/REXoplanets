@@ -22,7 +22,8 @@
 #'
 #' @importFrom ggplot2 ggplot aes geom_point geom_hline scale_color_identity
 #'   scale_size_continuous coord_polar theme_void theme element_rect
-#' @importFrom checkmate assert_names assert_data_frame assert_numeric
+#' @importFrom checkmate assert_names assert_data_frame assert_character assert_choice
+#' @importFrom stats runif
 #'
 #' @examples
 #' # Plot system GJ 682 (with hostid = "2.582960")
