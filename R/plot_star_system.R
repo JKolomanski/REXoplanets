@@ -67,12 +67,12 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   }
 
   case_when(
-    spectral_type == "M" ~ "#ffb56c",
-    spectral_type == "K" ~ "#ffdab5",
-    spectral_type == "G" ~ "#ffede3",
-    spectral_type == "F" ~ "#f9f5ff",
-    spectral_type == "A" ~ "#d5e0ff",
-    spectral_type == "B" ~ "#a2c0ff",
-    spectral_type == "O" ~ "#92b5ff"
+    spectral_type == "M" ~ "red2",
+    spectral_type == "K" ~ "indianred2",
+    spectral_type == "G" ~ "yellow1",
+    spectral_type == "F" ~ "lightyellow",
+    spectral_type == "A" ~ "lavenderblush",
+    spectral_type == "B" ~ "lightsteelblue1",
+    spectral_type == "O" ~ "slateblue1"
   )
 }
