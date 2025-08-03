@@ -15,7 +15,7 @@ plot_star_system(planet_data, spectral_type = NULL)
 }}
 
 \item{spectral_type}{Optional character string indicating the star's spectral type.
-Accepted values: \code{"O"}, \code{"B"}, \code{"A"}, \code{"F"}, \code{"G"}, \code{"K"}, \code{"M"}.}
+Accepted values: \code{O}, \code{B}, \code{A}, \code{F}, \code{G}, \code{K}, \code{M}.}
 }
 \value{
 A \code{ggplot2} object representing the planetary system visualization.
@@ -25,7 +25,7 @@ Creates a stylized polar plot of a planetary system,
 displaying planets in circular orbits
 around a central star. Planet size is scaled by radius,
 orbit position is randomized for aesthetics,
-and planet color is mapped by density.
+planet color is mapped by density.
 The star's color is optionally based on spectral type.
 }
 \details{

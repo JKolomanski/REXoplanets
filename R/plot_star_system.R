@@ -4,7 +4,7 @@
 #' displaying planets in circular orbits
 #' around a central star. Planet size is scaled by radius,
 #' orbit position is randomized for aesthetics,
-#' and planet color is mapped by density.
+#' planet color is mapped by density.
 #' The star's color is optionally based on spectral type.
 #'
 #' The central star is positioned at the origin
@@ -16,7 +16,7 @@
 #'   - `pl_rade`: planetary radius (in Earth radii),
 #'   - `pl_dens`: planetary density (g/cm³).
 #' @param spectral_type Optional character string indicating the star's spectral type.
-#'   Accepted values: `"O"`, `"B"`, `"A"`, `"F"`, `"G"`, `"K"`, `"M"`.
+#'   Accepted values: `O`, `B`, `A`, `F`, `G`, `K`, `M`.
 #'
 #' @returns A `ggplot2` object representing the planetary system visualization.
 #'
@@ -41,10 +41,9 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   )
 
   ggplot(data, aes(x = offset, y = pl_orbsmax, size = pl_rade, color = col)) +
-    scale_color_identity() +
-    # geom_hline here to render below points
     geom_hline(yintercept = data$pl_orbsmax, color = "grey15") +
     geom_point() +
+    scale_color_identity() +
     scale_size_continuous(range = c(2, 17)) +
     coord_polar(theta = "x") +
     theme_void() +
