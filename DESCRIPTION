@@ -9,7 +9,8 @@ Description: Provides a user-friendly interface to the NASA Exoplanets Archive A
     filtering, summarizing, and computing derived parameters from the Exoplanets catalog. 
 License: MIT + file LICENSE
 Depends: 
-    R (>= 4.1),
+    R (>= 4.1)
+Imports:
     dplyr,
     checkmate,
     purrr,
@@ -22,6 +23,7 @@ Suggests:
     roxygen2,
     lintr,
     devtools,
+    pak,
     spelling,
     shiny,
     shinyjs,

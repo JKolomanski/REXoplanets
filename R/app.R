@@ -2,9 +2,6 @@
 #' @param ... Additional arguments passed to `shiny::runApp()`.
 #' @param run If true, runs the application. If false, returns an app object.
 #' @return App object.
-#' @importFrom shiny shinyApp runApp
-#' @importFrom shinyjs useShinyjs
-#' @importFrom bslib page_sidebar sidebar
 #' @export
 app = function(..., run = TRUE) {
   check_app_dependencies()
@@ -40,6 +37,7 @@ app = function(..., run = TRUE) {
 #' Checks if packages required for shiny application are installed on user machine. If not,
 #' asks if the user wants to install them. If yes, installs the packages using `pak`.
 #' @importFrom purrr keep
+#' @importFrom utils install.packages
 #' @noRd
 #' @keywords internal
 check_app_dependencies = function() {
@@ -76,6 +74,7 @@ check_app_dependencies = function() {
 
     if (!requireNamespace("pak", silently = TRUE)) {
       install.packages("pak")
+      requireNamespace("pak", quietly = TRUE)
     }
 
     pak::pak(missing_packages)

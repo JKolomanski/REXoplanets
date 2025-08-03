@@ -6,24 +6,22 @@ NULL
 
 #' @param id A unique identifier for the module.
 #' @returns A Shiny `UI` object.
-#' @importFrom shiny NS div
 #' @describeIn module_test `UI` function for the module.
 #' @export
 test_ui = function(id) {
-  ns = NS(id)
+  ns = shiny::NS(id)
 
-  div(
+  shiny::div(
     "Test module body"
   )
 }
 
 #' @param id A unique identifier for the module.
 #' @returns A Shiny server module.
-#' @importFrom shiny moduleServer
 #' @describeIn module_test Server function for the module.
 #' @export
 test_server = function(id) {
-  moduleServer(id, function(input, output, session) {
+  shiny::moduleServer(id, function(input, output, session) {
     message("Test module server initialized.")
   })
 }
