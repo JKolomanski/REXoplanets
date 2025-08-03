@@ -9,7 +9,7 @@
 #'
 #' The central star is positioned at the origin
 #' with planets arranged in orbits of increasing radius.
-#' Orbit lines are shown in grey for clarity.
+#' Orbit lines are shown in gray for clarity.
 #'
 #' @param planet_data A data frame containing planetary system data. Must include:
 #'   - `pl_orbsmax`: semi-major axis (orbital distance),

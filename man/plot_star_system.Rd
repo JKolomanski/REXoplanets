@@ -31,7 +31,7 @@ The star's color is optionally based on spectral type.
 \details{
 The central star is positioned at the origin
 with planets arranged in orbits of increasing radius.
-Orbit lines are shown in grey for clarity.
+Orbit lines are shown in gray for clarity.
 }
 \examples{
 # Plot system GJ 682 (with hostid = "2.582960")
