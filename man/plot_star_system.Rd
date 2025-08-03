@@ -35,8 +35,10 @@ Orbit lines are shown in grey for clarity.
 }
 \examples{
 # Plot system GJ 682 (with hostid = "2.582960")
-gj_682 = closest_50_exoplanets \%>\%
- filter(hostid == 2.101289)
-plot_star_system(gj_682 , spectral_type = get_star_spectral_type(gj_682$st_teff[1]))
+closest_50_exoplanets \%>\%
+  filter(hostid == 2.101289) \%>\%
+  {
+    plot_star_system(., spectral_type = get_star_spectral_type(.$st_teff[1]))
+  }
 
 }
