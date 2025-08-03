@@ -22,7 +22,7 @@ Character. spectral type classification with a letter:
 }
 }
 \description{
-The function takes in effectrive stellar temperature (in K),
+The function takes in effective stellar temperature (in K),
 and return letter for the star's spectral type based on Morgan–Keenan (MK) system.
 }
 \examples{
