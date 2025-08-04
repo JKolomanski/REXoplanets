@@ -4,7 +4,7 @@
 \alias{fetch_table}
 \title{Fetch Exoplanets table}
 \usage{
-fetch_table(table, query_string = NULL)
+fetch_table(table, query_string = NULL, pretty_colnames = FALSE)
 }
 \arguments{
 \item{table}{A string specifying the table to query. Must be one of:
@@ -16,6 +16,9 @@ fetch_table(table, query_string = NULL)
 }}
 
 \item{query_string}{Optional ADQL \code{WHERE} clause as a string, e.g., \verb{pl_bmasse > 1 AND st_teff < 6000}.}
+
+\item{pretty_colnames}{Optional \code{bool} value. If \code{TRUE} replaces database column names with their
+labels / descriptions. Defaults to \code{FALSE}}
 }
 \value{
 A data frame containing fetched data.
