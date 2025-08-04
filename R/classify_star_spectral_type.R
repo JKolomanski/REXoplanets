@@ -1,4 +1,4 @@
-#' Get spectral type of a star
+#' Classify spectral type of a star
 #'
 #' @description
 #' The function takes in effective stellar temperature (in K),
@@ -16,13 +16,13 @@
 #'    - `O`: 28,000 - 50,000
 #'
 #' @examples
-#' get_star_spectral_type(5778)
+#' classify_star_spectral_type(5778)
 #'
 #' @importFrom dplyr case_when
 #' @importFrom checkmate assert_numeric
 #'
 #' @export
-get_star_spectral_type = function(st_teff) {
+classify_star_spectral_type = function(st_teff) {
   assert_numeric(st_teff, lower = 0)
 
   if (st_teff < 2500 || st_teff > 50000) {

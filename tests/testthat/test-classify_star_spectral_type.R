@@ -1,14 +1,14 @@
-describe("get_star_spectral_type", {
+describe("classify_star_spectral_type", {
   it("correctly classifies a star", {
     test_st_teff = 5778
     expected = "G"
-    expect_equal(get_star_spectral_type(test_st_teff), expected)
+    expect_equal(classify_star_spectral_type(test_st_teff), expected)
   })
 
   it("throws and error if input is not numeric", {
     test_st_teff = ""
     expect_error(
-      get_star_spectral_type(test_st_teff),
+      classify_star_spectral_type(test_st_teff),
       "st_teff.*numeric"
     )
   })
@@ -18,7 +18,7 @@ describe("get_star_spectral_type", {
     expected = "M"
 
     expect_warning({
-                    result = get_star_spectral_type(test_st_teff
+                    result = classify_star_spectral_type(test_st_teff
                     )}, "`st_teff` exceedes expected bounds:*"
     )
     expect_equal(result, expected)

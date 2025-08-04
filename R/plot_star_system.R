@@ -30,7 +30,7 @@
 #' closest_50_exoplanets %>%
 #'   filter(hostid == 2.101289) %>%
 #'   {
-#'     plot_star_system(., spectral_type = get_star_spectral_type(.$st_teff[1]))
+#'     plot_star_system(., spectral_type = classify_star_spectral_type(.$st_teff[1]))
 #'   }
 #'
 #' @export
