@@ -42,6 +42,12 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
     assert_choice(spectral_type, choices = c("O", "B", "A", "F", "G", "K", "M"))
   }
 
+  # Create data frame for plotting the star system:
+  # First row is always the host star and following rows are the planets.
+  #    - randomize position on the orbit, with the star being in the center (0)
+  #    - rescale orbit for the visualization, keep the star at center (0)
+  #    - ensure star is the largest object with size 17
+  #    - map color based on spectral type or density
   plot_data = data.frame(
     orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
     pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
