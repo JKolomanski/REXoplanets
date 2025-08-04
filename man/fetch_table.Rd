@@ -18,7 +18,8 @@ fetch_table(table, query_string = NULL, pretty_colnames = FALSE)
 \item{query_string}{Optional ADQL \code{WHERE} clause as a string, e.g., \verb{pl_bmasse > 1 AND st_teff < 6000}.}
 
 \item{pretty_colnames}{Optional \code{bool} value. If \code{TRUE} replaces database column names with their
-labels / descriptions. Defaults to \code{FALSE}}
+labels / descriptions. Defaults to \code{FALSE}.
+Currently only tables \code{ps} and \code{pscomppars} are supported.}
 }
 \value{
 A data frame containing fetched data.
