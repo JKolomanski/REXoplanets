@@ -10,6 +10,8 @@
     "esi_radius",
     "esi_flux",
     "objectid",
-    "esi"
+    "esi",
+    "df",
+    "name_map"
   ))
 }

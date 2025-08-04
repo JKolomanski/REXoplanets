@@ -14,12 +14,15 @@
 #' }
 #' @param query_string
 #'  Optional ADQL `WHERE` clause as a string, e.g., `pl_bmasse > 1 AND st_teff < 6000`.
+#' @param pretty_colnames
+#'  Optional `bool` value. If `TRUE` replaces database column names with their
+#'  labels / descriptions. Defaults to `FALSE`
 #'
 #' @returns A data frame containing fetched data.
 #'
 #' @importFrom httr2 request req_perform resp_body_string req_options
 #' @importFrom readr read_csv
-#' @importFrom dplyr `%>%`
+#' @importFrom dplyr `%>%` case_when
 #' @importFrom checkmate assert_choice assert_string
 #' @importFrom utils URLencode
 #'
@@ -34,7 +37,7 @@
 #' }
 #'
 #' @export
-fetch_table = function(table, query_string = NULL) {
+fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
   assert_choice(table, c("ps", "pscomppars", "stellarhosts", "keplernames"))
 
   query = paste0("select * from ", table)
@@ -58,10 +61,28 @@ fetch_table = function(table, query_string = NULL) {
     }
   )
 
-  res %>%
+  res_data = res %>%
     resp_body_string() %>%
     read_csv(show_col_types = FALSE) %>%
     # Due to messy data read_csv fails to assign column types.
     # To avoid polluting the console, warnings are suppressed.
     suppressWarnings()
+
+  if (pretty_colnames) {
+    res_data = case_when(
+      table == "ps" ~ .replace_column_names(res_data, ps_colnames),
+      table == "pscomppars" ~ .replace_column_names(res_data, pscomppars_colnames)
+    )
+  }
+
+  res_data
+}
+
+#' Replace column names of a data frame with values for matching keys in a named list.
+#' @keywords internal
+#' @noRd
+.replace_column_names = function(df, name_map) {
+  cols_to_replace = names(df) %in% names(name_map)
+  names(df)[cols_to_replace] = unlist(name_map[names(df)[cols_to_replace]])
+  df
 }
