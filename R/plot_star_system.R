@@ -46,7 +46,7 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
     orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
     pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
     pl_rade = c(17, planet_data$pl_rade), # Ensure star is the largest object
-    col = c(.map_star_color(spectral_type), .map_color(planet_data$pl_dens))
+    col = c(.map_star_color(spectral_type), .map_planet_color(planet_data$pl_dens))
   )
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = col)) +
@@ -59,7 +59,7 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
     theme(legend.position = "none", panel.background = element_rect(fill = "black", color = NA))
 }
 
-.map_color = function(pl_dens) {
+.map_planet_color = function(pl_dens) {
   case_when(
     pl_dens < 0.25 ~ "lightblue",
     pl_dens < 2 ~ "deepskyblue",
