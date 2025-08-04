@@ -1,6 +1,6 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
-Version: 0.0.0.9017
+Version: 0.0.0.9018
 Authors@R: c(
     person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
     person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
@@ -8,23 +8,30 @@ Description: Provides a user-friendly interface to the NASA Exoplanets Archive A
     enabling retrieval and analysis of exoplanetary and stellar data. Includes functions for querying, 
     filtering, summarizing, and computing derived parameters from the Exoplanets catalog. 
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+Depends: 
+    R (>= 4.1)
+Imports:
+    dplyr,
+    checkmate,
+    purrr,
+    httr2,
+    readr,
+    utils,
+    ggplot2
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2,
     lintr,
     devtools,
-    spelling
+    pak,
+    spelling,
+    shiny,
+    shinyjs,
+    bslib,
+    shinytest2
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
 Config/testthat/edition: 3
-Depends: 
-    R (>= 4.1),
-    dplyr,
-    checkmate,
-    httr2,
-    readr,
-    utils,
-    ggplot2
 LazyData: true
 Language: en-US
