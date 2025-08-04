@@ -16,7 +16,8 @@
 #'  Optional ADQL `WHERE` clause as a string, e.g., `pl_bmasse > 1 AND st_teff < 6000`.
 #' @param pretty_colnames
 #'  Optional `bool` value. If `TRUE` replaces database column names with their
-#'  labels / descriptions. Defaults to `FALSE`
+#'  labels / descriptions. Defaults to `FALSE`.
+#'  Currently only tables `ps` and `pscomppars` are supported.
 #'
 #' @returns A data frame containing fetched data.
 #'
@@ -69,10 +70,14 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
     suppressWarnings()
 
   if (pretty_colnames) {
-    res_data = case_when(
-      table == "ps" ~ .replace_column_names(res_data, ps_colnames),
-      table == "pscomppars" ~ .replace_column_names(res_data, pscomppars_colnames)
-    )
+    if (table == "ps") {
+      res_data = .replace_column_names(res_data, ps_colnames)
+    } else if (table == "pscomppars") {
+      res_data = .replace_column_names(res_data, pscomppars_colnames)
+    } else {
+      warning(paste0("Table `", table, "` doesn't currently support pretty names.
+      Database column names provided instead."))
+    }
   }
 
   res_data

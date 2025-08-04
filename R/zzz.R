@@ -12,6 +12,8 @@
     "objectid",
     "esi",
     "df",
-    "name_map"
+    "name_map",
+    "ps_colnames",
+    "pscomppars_colnames"
   ))
 }
