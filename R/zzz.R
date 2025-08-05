@@ -13,6 +13,7 @@
     "esi",
     "df",
     "name_map",
-    "exoplanets_col_labels"
+    "exoplanets_col_labels",
+    "orbit_offset"
   ))
 }
