@@ -10,6 +10,7 @@
     "esi_radius",
     "esi_flux",
     "objectid",
-    "esi"
+    "esi",
+    "orbit_offset"
   ))
 }
