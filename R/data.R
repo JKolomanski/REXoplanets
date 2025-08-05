@@ -9,13 +9,14 @@
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/}
 "closest_50_exoplanets"
 
-#' col_labels
+
+#' exoplanets_col_labels
 #' A collection of Exoplanets archive columns names and their respective labels / comments.
 #' Currently only supports `ps` and `pscomppars` tables
 #'
-#' @format A nested list.
+#' @format named vectors nested in a list.
 #' @examples
 #' col_labels[["ps"]][["pl_name"]]
 #'
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html#columns}
-"col_labels"
+"exoplanets_col_labels"
