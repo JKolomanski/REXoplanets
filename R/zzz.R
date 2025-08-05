@@ -13,7 +13,6 @@
     "esi",
     "df",
     "name_map",
-    "col_labels",
-    "setNames"
+    "exoplanets_col_labels"
   ))
 }

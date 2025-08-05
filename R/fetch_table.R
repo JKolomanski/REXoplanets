@@ -70,19 +70,14 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
     suppressWarnings()
 
   if (pretty_colnames) {
-    switch(
-      table,
-      "ps" = {
-        res_data = res_data %>%
-          rename(any_of(setNames(names(col_labels[["ps"]]), col_labels[["ps"]])))
-      },
-      "pscomppars" = {
-        res_data = res_data %>%
-          rename(any_of(setNames(names(col_labels[["pscomppars"]]), col_labels[["pscomppars"]])))
-      },
-      warning(paste0("Table `", table, "` doesn't currently support pretty names.
-        Database column names provided instead."))
-    )
+    if (!(table %in% c("ps", "pscomppars"))) {
+      warning(paste0(
+        "Table `", table, "` doesn't currently support pretty names.
+        Database column names provided instead."
+      ))
+    } else {
+      res_data = rename(res_data, any_of(exoplanets_col_labels[[table]]))
+    }
   }
 
   res_data
