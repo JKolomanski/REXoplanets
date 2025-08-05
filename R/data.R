@@ -9,18 +9,13 @@
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/}
 "closest_50_exoplanets"
 
-#' ps_colnames
-#' A collection of Planetary Systems table database column names
-#' and their respective labels / comments.
+#' col_labes
+#' A collection of Exoplanets archive columns names and their respective labels / comments.
+#' Currently only supports `ps` and `pscomppars` tables
 #'
-#' @format A named list of 299 elements.
-#' @source \url{https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html#columns}
-"ps_colnames"
-
-#' pscomppars_colnames
-#' A collection of Planetary Systems Composite Parameters table database column names
-#' and their respective labels / comments.
+#' @format A nested list.
+#' @examples
+#' col_labels[["ps"]][["pl_name"]]
 #'
-#' @format A named list of 326 elements.
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html#columns}
-"pscomppars_colnames"
+"col_labels"

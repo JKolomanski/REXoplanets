@@ -13,7 +13,6 @@
     "esi",
     "df",
     "name_map",
-    "ps_colnames",
-    "pscomppars_colnames"
+    "col_labels"
   ))
 }
