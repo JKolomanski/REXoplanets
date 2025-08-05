@@ -3,7 +3,7 @@
 \docType{data}
 \name{col_labels}
 \alias{col_labels}
-\title{col_labes
+\title{col_labels
 A collection of Exoplanets archive columns names and their respective labels / comments.
 Currently only supports \code{ps} and \code{pscomppars} tables}
 \format{
@@ -16,7 +16,7 @@ A nested list.
 col_labels
 }
 \description{
-col_labes
+col_labels
 A collection of Exoplanets archive columns names and their respective labels / comments.
 Currently only supports \code{ps} and \code{pscomppars} tables
 }
