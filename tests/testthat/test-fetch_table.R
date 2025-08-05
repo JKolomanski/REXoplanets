@@ -1,7 +1,7 @@
 describe("fetch_table", {
   it("performs simple fetch and returns a data frame", {
     mock_data = function(req) {
-      response(
+      httr2::response(
         status_code = 200,
         body = charToRaw("
           pl_name,pl_rade,pl_insol,esi\nPlanetA,1.0,1.0,0.9\nPlanetB,1.2,0.8,0.85
@@ -24,7 +24,7 @@ describe("fetch_table", {
   # TODO: Extend these tests and cover more code responses.
   it("throws an error for non-200 response", {
     mock_data = function(req) {
-      response(status_code = 404, body = charToRaw("Not Found"))
+      httr2::response(status_code = 404, body = charToRaw("Not Found"))
     }
     httr2::with_mocked_responses(
       mock_data,
