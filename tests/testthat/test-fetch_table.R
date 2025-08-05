@@ -8,7 +8,7 @@ describe("fetch_table", {
         ")
       )
     }
-    with_mocked_responses(
+    httr2::with_mocked_responses(
       mock_data,
       {
         result = fetch_table("ps")
@@ -26,7 +26,7 @@ describe("fetch_table", {
     mock_data = function(req) {
       response(status_code = 404, body = charToRaw("Not Found"))
     }
-    with_mocked_responses(
+    httr2::with_mocked_responses(
       mock_data,
       {
         expect_error(fetch_table("ps"), "*.404 Not Found")
