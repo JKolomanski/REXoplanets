@@ -73,9 +73,9 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
 
   if (pretty_colnames) {
     if (table == "ps") {
-      res_data = .replace_column_names(res_data, ps_colnames)
+      res_data = .replace_column_names(res_data, col_labels[["ps"]])
     } else if (table == "pscomppars") {
-      res_data = .replace_column_names(res_data, pscomppars_colnames)
+      res_data = .replace_column_names(res_data, col_labels[["pscomppars"]])
     } else {
       warning(paste0("Table `", table, "` doesn't currently support pretty names.
       Database column names provided instead."))

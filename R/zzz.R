@@ -11,6 +11,12 @@
     "esi_flux",
     "objectid",
     "esi",
+<<<<<<< HEAD
     "orbit_offset"
+=======
+    "df",
+    "name_map",
+    "col_labels"
+>>>>>>> e6e7a27 (refactor: merged ps_colnames and pscomppars_colnames into one nested list)
   ))
 }
