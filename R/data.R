@@ -9,7 +9,7 @@
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/}
 "closest_50_exoplanets"
 
-#' col_labes
+#' col_labels
 #' A collection of Exoplanets archive columns names and their respective labels / comments.
 #' Currently only supports `ps` and `pscomppars` tables
 #'
