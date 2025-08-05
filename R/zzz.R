@@ -11,8 +11,6 @@
     "esi_flux",
     "objectid",
     "esi",
-    "orbit_offset",
-    "df",
-    "name_map"
+    "orbit_offset"
   ))
 }

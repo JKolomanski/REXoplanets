@@ -16,7 +16,7 @@
 #'
 #' @format named vectors nested in a list.
 #' @examples
-#' col_labels[["ps"]][["pl_name"]]
+#' exoplanets_col_labels[["ps"]][["Planet Name"]]
 #'
 #' @source \url{https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html#columns}
 "exoplanets_col_labels"
