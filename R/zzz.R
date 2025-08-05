@@ -13,6 +13,7 @@
     "esi",
     "df",
     "name_map",
-    "col_labels"
+    "col_labels",
+    "setNames"
   ))
 }

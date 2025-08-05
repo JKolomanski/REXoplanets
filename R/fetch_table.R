@@ -23,7 +23,7 @@
 #'
 #' @importFrom httr2 request req_perform resp_body_string req_options
 #' @importFrom readr read_csv
-#' @importFrom dplyr `%>%` case_when
+#' @importFrom dplyr `%>%` rename any_of
 #' @importFrom checkmate assert_choice assert_string
 #' @importFrom utils URLencode
 #'
@@ -70,24 +70,20 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
     suppressWarnings()
 
   if (pretty_colnames) {
-    if (table == "ps") {
-      res_data = .replace_column_names(res_data, col_labels[["ps"]])
-    } else if (table == "pscomppars") {
-      res_data = .replace_column_names(res_data, col_labels[["pscomppars"]])
-    } else {
+    switch(
+      table,
+      "ps" = {
+        res_data = res_data %>%
+          rename(any_of(setNames(names(col_labels[["ps"]]), col_labels[["ps"]])))
+      },
+      "pscomppars" = {
+        res_data = res_data %>%
+          rename(any_of(setNames(names(col_labels[["pscomppars"]]), col_labels[["pscomppars"]])))
+      },
       warning(paste0("Table `", table, "` doesn't currently support pretty names.
-      Database column names provided instead."))
-    }
+        Database column names provided instead."))
+    )
   }
 
   res_data
-}
-
-#' Replace column names of a data frame with values for matching keys in a named list.
-#' @keywords internal
-#' @noRd
-.replace_column_names = function(df, name_map) {
-  cols_to_replace = names(df) %in% names(name_map)
-  names(df)[cols_to_replace] = unlist(name_map[names(df)[cols_to_replace]])
-  df
 }
