@@ -21,7 +21,7 @@ A collection of Exoplanets archive columns names and their respective labels / c
 Currently only supports \code{ps} and \code{pscomppars} tables
 }
 \examples{
-col_labels[["ps"]][["pl_name"]]
+exoplanets_col_labels[["ps"]][["Planet Name"]]
 
 }
 \keyword{datasets}
