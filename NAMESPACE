@@ -2,7 +2,7 @@
 
 export(app)
 export(calculate_esi)
-export(calculate_star_goldilocks_zone)
+export(calculate_star_habitable_zone)
 export(calculate_stellar_flux)
 export(classify_planet_type)
 export(classify_star_spectral_type)

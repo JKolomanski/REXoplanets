@@ -1,7 +1,7 @@
-#' Calculate star's Goldilocks zone
+#' Calculate star's habitable zone
 #'
 #' @description
-#' Calculates star's Goldilocks zone inner and outer radius,
+#' Calculates star's habitable zone inner and outer radius,
 #' based on star's luminosity.
 #'
 #' @param st_lum A numeric Stellar luminosity value (log10(L/Lsun) or linear).
@@ -9,14 +9,14 @@
 #'
 #' @returns
 #' A numeric vector of 2 elements
-#' where first is Goldilocks zone inner radius and second is the outer radius.
+#' where first is habitable zone inner radius and second is the outer radius.
 #'
 #' @examples
-#' calculate_star_goldilocks_zone(0) # goldilocks zone for sun, with logarithmic units
-#' calculate_star_goldilocks_zone(1, log_lum = FALSE) # goldilocks zone for sun, with linear units
+#' calculate_star_habitable_zone(0) # habitable zone for sun, with logarithmic units
+#' calculate_star_habitable_zone(1, log_lum = FALSE) # habitable zone for sun, with linear units
 #'
 #' @export
-calculate_star_goldilocks_zone = function(st_lum, log_lum = TRUE) {
+calculate_star_habitable_zone = function(st_lum, log_lum = TRUE) {
   assert_numeric(st_lum)
   assert_logical(log_lum)
 
