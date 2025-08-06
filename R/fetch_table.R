@@ -22,7 +22,7 @@
 #' @importFrom dplyr `%>%`
 #' @importFrom checkmate assert_choice assert_string
 #' @importFrom utils URLencode
-#' @importFrom logger log_info log_success log_error log_debug
+#' @importFrom logger log_info log_success log_error log_debug log_trace
 #'
 #' @examples
 #' \dontrun{
@@ -59,16 +59,18 @@ fetch_table = function(table, query_string = NULL) {
     req_perform(req),
     error = function(e) {
       log_error("Request failed. Check your filter syntax. Original error: {e$message}")
-      stop()
+      stop(e$message)
     }
   )
 
-  log_success("Table {table} fetched successfully, parsing response...")
+  log_trace("Response status: {res$status_code}")
 
-  res %>%
+  result = res %>%
     resp_body_string() %>%
     read_csv(show_col_types = FALSE) %>%
     # Due to messy data read_csv fails to assign column types.
     # To avoid polluting the console, warnings are suppressed.
     suppressWarnings()
+
+  log_success("Table {table} fetched successfully.")
 }
