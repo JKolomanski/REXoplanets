@@ -34,11 +34,10 @@ with planets arranged in orbits of increasing radius.
 Orbit lines are shown in gray for clarity.
 }
 \examples{
-# Plot system GJ 682 (with hostid = "2.582960")
-closest_50_exoplanets \%>\%
-  filter(hostid == 2.101289) \%>\%
-  {
-    plot_star_system(., spectral_type = classify_star_spectral_type(.$st_teff[1]))
-  }
+# Plot system GJ 682 (with hostid == "2.101289")
+data = closest_50_exoplanets |>
+  subset(hostid == 2.101289)
+spectral_type = classify_star_spectral_type(data$st_teff[1])
+plot_star_system(data, spectral_type)
 
 }
