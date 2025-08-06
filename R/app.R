@@ -31,6 +31,7 @@ app = function(..., run = TRUE) {
   )
 
   if (run) {
+    logger::log_info("REXoplanets application startup.")
     shiny::runApp(app_obj, ...)
   } else {
     app_obj
