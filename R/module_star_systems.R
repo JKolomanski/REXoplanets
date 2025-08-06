@@ -8,8 +8,8 @@
 NULL
 
 #' @param id A unique identifier for the module.
-#' @returns A Shiny `UI` object.
-#' @describeIn module_star_systems `UI` function for the module.
+#' @returns A Shiny UI object.
+#' @describeIn module_star_systems UI function for the module.
 #' @export
 star_systems_ui = function(id) {
   ns = shiny::NS(id)
