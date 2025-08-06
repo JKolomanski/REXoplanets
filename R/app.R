@@ -6,20 +6,23 @@
 app = function(..., run = TRUE) {
   check_app_dependencies()
 
-  ui = bslib::page_sidebar(
-    title = "REXoplanets application",
-    sidebar = bslib::sidebar(
-      "Sidebar goes here"
+  ui = bslib::page_navbar(
+    title = "REXoplanets",
+    bslib::nav_panel(
+      shiny::span(bsicons::bs_icon("house"), "Home"),
+      shiny::h1("Welcome to REXoplanets"),
+      shiny::p("This is the home page of the REXoplanets application.")
     ),
-    "Main app body",
-    test_ui("test_module"),
-    shinyjs::useShinyjs()
+    bslib::nav_panel(
+      shiny::span(bsicons::bs_icon("stars"), "Star Systems"),
+      star_systems_ui("test_module")
+    )
   )
 
   server = function(input, output, session) {
     message("REXoplanets application initialized.")
 
-    test_server("test_module")
+    star_systems_server("test_module")
   }
 
   app_obj = shiny::shinyApp(
@@ -28,7 +31,7 @@ app = function(..., run = TRUE) {
   )
 
   if (run) {
-    shiny::runApp(app_obj)
+    shiny::runApp(app_obj, ...)
   } else {
     app_obj
   }
@@ -42,9 +45,11 @@ app = function(..., run = TRUE) {
 #' @keywords internal
 check_app_dependencies = function() {
   APP_PACKAGES = c(
+    "bsicons",
+    "bslib",
+    "htmltools",
     "shiny",
-    "shinyjs",
-    "bslib"
+    "shinyjs"
   )
 
   missing_packages = purrr::keep(APP_PACKAGES, \(dep) !requireNamespace(dep, quietly = TRUE))
