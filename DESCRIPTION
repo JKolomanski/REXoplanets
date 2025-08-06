@@ -17,7 +17,8 @@ Imports:
     httr2,
     readr,
     utils,
-    ggplot2
+    ggplot2,
+    logger
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2,
