@@ -22,7 +22,7 @@
 #'  Optional `char` value specifying output format. Can be either `"csv"` for data frame,
 #'  or `"json"` for a named list.
 #'
-#' @returns A data frame containing fetched data.
+#' @returns A data frame or named list containing fetched data.
 #'
 #' @importFrom httr2 request req_perform resp_body_string req_options
 #' @importFrom readr read_csv

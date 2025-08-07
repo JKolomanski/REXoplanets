@@ -30,7 +30,7 @@ Currently only tables \code{ps} and \code{pscomppars} are supported.}
 or \code{"json"} for a named list.}
 }
 \value{
-A data frame containing fetched data.
+A data frame or named list containing fetched data.
 }
 \description{
 Fetch Exoplanets table
