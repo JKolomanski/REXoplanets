@@ -30,6 +30,7 @@
 #' # Assumes third value is e.g. temperature in Kelvin
 #'
 #' @importFrom checkmate assert_numeric test_double
+#' @export
 calculate_esi = function(..., weights = c(0.57, 0.7)) {
   args = c(...)
 
