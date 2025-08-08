@@ -34,7 +34,7 @@ Alternatively, you can set up the package by cloning the repository through your
 git clone https://github.com/JKolomanski/REXoplanets.git
 ```
 
-and then loading it directly using [devtools](https://github.com/r-lib/devtools) in your IDE (e.g. RStudio) console:
+and then loading it directly using [`devtools`](https://github.com/r-lib/devtools) in your IDE (e.g. RStudio) console:
 
 ```r
 devtools::load_all()
