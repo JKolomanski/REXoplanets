@@ -73,15 +73,14 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
   res_data = res %>%
     resp_body_string()
 
-  if (format == "csv") {
-    res_data = res_data %>%
-      read_csv(show_col_types = FALSE) %>%
-      # Due to messy data read_csv fails to assign column types.
-      # To avoid polluting the console, warnings are suppressed.
-      suppressWarnings()
-  } else if (format == "json") {
-    res_data = res_data %>% jsonlite::fromJSON()
-  }
+  read_fn = list(
+    # Due to messy data read_csv fails to assign column types.
+    # To avoid polluting the console, warnings are suppressed.
+    csv = \(data) suppressWarnings(read_csv(data, show_col_types = FALSE)),
+    json = \(data) jsonlite::fromJSON(data)
+  )
+
+  res_data = read_fn[[format]](res_data)
 
   if (pretty_colnames) {
     if (!(table %in% c("ps", "pscomppars"))) {
