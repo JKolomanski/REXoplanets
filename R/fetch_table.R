@@ -86,8 +86,8 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
   if (pretty_colnames) {
     if (!(table %in% c("ps", "pscomppars"))) {
       warning(paste0(
-        "Table `", table, "` doesn't currently support pretty names.
-        Database column names provided instead."
+        "Table `", table, "` doesn't currently support pretty names.",
+        "Database column names provided instead."
       ))
     } else {
       res_data = rename(res_data, any_of(exoplanets_col_labels[[table]]))
