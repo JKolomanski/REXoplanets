@@ -27,14 +27,12 @@ or natural satellite is to earth. It was designed to be a scale from zero to one
 with Earth having a value of 1.
 }
 \examples{
+# ESI for radius and flux, returns 1 (Earth is perfectly similar to itself)
 calculate_esi(1, 1)
-# Returns: 1 (Earth is perfectly similar to itself)
-# Mars approximation using radius ≈ 0.532 and flux ≈ 0.43
+# Mars approximation using radius ≈ 0.532 and flux ≈ 0.43, returns: ~0.812
 calculate_esi(0.532, 0.43)
-# Returns: ~0.812 (Mars is moderately similar to Earth)
 # Custom 3-parameter ESI (e.g. radius, flux, temperature)
 calculate_esi(1.1, 1.2, 288, weights = c(0.5, 0.3, 0.2))
-# Assumes third value is e.g. temperature in Kelvin
 
 }
 \references{
