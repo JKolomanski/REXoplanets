@@ -15,6 +15,9 @@
     "esi_flux",
     "objectid",
     "esi",
+    "df",
+    "name_map",
+    "exoplanets_col_labels",
     "orbit_offset"
   ))
 }

@@ -14,12 +14,16 @@
 #' }
 #' @param query_string
 #'  Optional ADQL `WHERE` clause as a string, e.g., `pl_bmasse > 1 AND st_teff < 6000`.
+#' @param pretty_colnames
+#'  Optional `bool` value. If `TRUE` replaces database column names with their
+#'  labels / descriptions. Defaults to `FALSE`.
+#'  Currently only tables `ps` and `pscomppars` are supported.
 #'
 #' @returns A data frame containing fetched data.
 #'
 #' @importFrom httr2 request req_perform resp_body_string req_options
 #' @importFrom readr read_csv
-#' @importFrom dplyr `%>%`
+#' @importFrom dplyr `%>%` rename any_of
 #' @importFrom checkmate assert_choice assert_string
 #' @importFrom utils URLencode
 #' @importFrom logger log_info log_success log_error log_debug log_trace
@@ -35,7 +39,7 @@
 #' }
 #'
 #' @export
-fetch_table = function(table, query_string = NULL) {
+fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
   assert_choice(table, c("ps", "pscomppars", "stellarhosts", "keplernames"))
 
   query = paste0("select * from ", table)
@@ -60,18 +64,33 @@ fetch_table = function(table, query_string = NULL) {
     error = function(e) {
       # TODO: Handle specific error cases more gracefully.
       # For example, if the error is from 5XX range, it has nothing to do with filter syntax.
-      stop("Request failed. Check your filter syntax. Original error: ", e$message, call. = FALSE)
+      log_error("Request failed. Check your filter syntax. Original error: {e$message}")
+      stop(e$message)
     }
   )
 
   log_trace("Response status: {res$status_code}")
 
-  result = res %>%
+  res_data = res %>%
     resp_body_string() %>%
     read_csv(show_col_types = FALSE) %>%
     # Due to messy data read_csv fails to assign column types.
     # To avoid polluting the console, warnings are suppressed.
     suppressWarnings()
 
+
   log_success("Table {table} fetched successfully.")
+
+  if (pretty_colnames) {
+    if (!(table %in% c("ps", "pscomppars"))) {
+      warning(paste0(
+        "Table `", table, "` doesn't currently support pretty names.
+        Database column names provided instead."
+      ))
+    } else {
+      res_data = rename(res_data, any_of(exoplanets_col_labels[[table]]))
+    }
+  }
+
+  res_data
 }
