@@ -46,8 +46,8 @@ describe("fetch_table", {
       {
         result = fetch_table("ps", format = "json")
         expect_true(is.list(result))
-        expect_equal(nrow(result), 2)
-        expect_equal(ncol(result), 4)
+        expect_equal(length(result[[1]]), 2)
+        expect_equal(length(result), 4)
         expect_equal(colnames(result), c("pl_name", "pl_rade", "pl_insol", "esi"))
         expect_equal(result$pl_name, c("PlanetA", "PlanetB"))
       }
