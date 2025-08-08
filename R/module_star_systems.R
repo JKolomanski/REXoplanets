@@ -62,7 +62,7 @@ star_systems_ui = function(id) {
 #' @export
 star_systems_server = function(id, data) {
   shiny::moduleServer(id, function(input, output, session) {
-    logger::log_trace("{session$ns(id)} initialized.")
+    logger::log_trace("{id} initialized.")
 
     star_system_data = shiny::reactive({
       shiny::req(data())
@@ -72,9 +72,9 @@ star_systems_server = function(id, data) {
     })
 
     available_stars = shiny::reactive({
-      star_system_data() %>%
-        dplyr::pull(hostname) %>%
-        unique() %>%
+      star_system_data() |>
+        dplyr::pull(hostname) |>
+        unique() |>
         sort()
     })
 
