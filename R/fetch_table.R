@@ -58,6 +58,8 @@ fetch_table = function(table, query_string = NULL) {
   res = tryCatch(
     req_perform(req),
     error = function(e) {
+      # TODO: Handle specific error cases more gracefully.
+      # For example, if the error is from 5XX range, it has nothing to do with filter syntax.
       log_error("Request failed. Check your filter syntax. Original error: {e$message}")
       stop(e$message)
     }
