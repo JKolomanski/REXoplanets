@@ -4,7 +4,12 @@
 \alias{fetch_table}
 \title{Fetch Exoplanets table}
 \usage{
-fetch_table(table, query_string = NULL, pretty_colnames = FALSE)
+fetch_table(
+  table,
+  query_string = NULL,
+  pretty_colnames = FALSE,
+  format = "csv"
+)
 }
 \arguments{
 \item{table}{A string specifying the table to query. Must be one of:
@@ -20,16 +25,19 @@ fetch_table(table, query_string = NULL, pretty_colnames = FALSE)
 \item{pretty_colnames}{Optional \code{bool} value. If \code{TRUE} replaces database column names with their
 labels / descriptions. Defaults to \code{FALSE}.
 Currently only tables \code{ps} and \code{pscomppars} are supported.}
+
+\item{format}{Optional \code{char} value specifying output format. Can be either \code{"csv"} for data frame,
+or \code{"json"} for a named list.}
 }
 \value{
-A data frame containing fetched data.
+A data frame or named list containing fetched data.
 }
 \description{
 Fetch Exoplanets table
 }
 \details{
 Fetches data from an exoplanets TAP (Table Access Protocol) service
-and returns it as a data frame.
+and returns it as a data frame or a named list.
 You can optionally specify \code{WHERE} ADQL clause to filter rows based on conditions.
 }
 \examples{
