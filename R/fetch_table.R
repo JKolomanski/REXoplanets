@@ -26,6 +26,7 @@
 #' @importFrom dplyr `%>%` rename any_of
 #' @importFrom checkmate assert_choice assert_string
 #' @importFrom utils URLencode
+#' @importFrom logger log_info log_success log_error log_debug log_trace
 #'
 #' @examples
 #' \dontrun{
@@ -53,6 +54,9 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
     "&format=csv"
   )
 
+  log_info("Fetching table `{table}`...")
+  log_debug("Query URL: `{url}`")
+
   req = request(url) %>%
     req_options(followlocation = TRUE) # todo: add handling 3xx responses
   res = tryCatch(
@@ -60,9 +64,12 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
     error = function(e) {
       # TODO: Handle specific error cases more gracefully.
       # For example, if the error is from 5XX range, it has nothing to do with filter syntax.
-      stop("Request failed. Check your filter syntax. Original error: ", e$message, call. = FALSE)
+      log_error("Request failed. Check your filter syntax. Original error: {e$message}")
+      stop(e$message)
     }
   )
+
+  log_trace("Response status: {res$status_code}")
 
   res_data = res %>%
     resp_body_string() %>%
@@ -70,6 +77,9 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE) {
     # Due to messy data read_csv fails to assign column types.
     # To avoid polluting the console, warnings are suppressed.
     suppressWarnings()
+
+
+  log_success("Table {table} fetched successfully.")
 
   if (pretty_colnames) {
     if (!(table %in% c("ps", "pscomppars"))) {

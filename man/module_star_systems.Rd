@@ -14,7 +14,7 @@ star_systems_server(id)
 \item{id}{A unique identifier for the module.}
 }
 \value{
-A Shiny \code{UI} object.
+A Shiny UI object.
 
 A Shiny server module.
 }
@@ -29,7 +29,7 @@ particular planets. A legend is available for the plot.
 }
 \section{Functions}{
 \itemize{
-\item \code{star_systems_ui()}: \code{UI} function for the module.
+\item \code{star_systems_ui()}: UI function for the module.
 
 \item \code{star_systems_server()}: Server function for the module.
 

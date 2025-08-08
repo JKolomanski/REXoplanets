@@ -1,6 +1,6 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
-Version: 0.0.0.9021
+Version: 0.0.0.9023
 Authors@R: c(
     person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
     person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
@@ -17,7 +17,8 @@ Imports:
     httr2,
     readr,
     utils,
-    ggplot2
+    ggplot2,
+    logger
 Suggests: 
     testthat (>= 3.0.0),
     roxygen2,
