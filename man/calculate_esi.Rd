@@ -4,12 +4,13 @@
 \alias{calculate_esi}
 \title{Calculate the Earth Similarity Index (ESI)}
 \usage{
-calculate_esi(pl_rade, pl_insol)
+calculate_esi(..., weights = c(0.57, 0.7))
 }
 \arguments{
-\item{pl_rade}{Numeric. Planetary radius in Earth radii.}
+\item{...}{any number of numeric parameters representing the planet's characteristics.}
 
-\item{pl_insol}{Numeric. Stellar flux in Earth units.}
+\item{weights}{Numeric vector of weights for each parameter. Default is c(0.57, 0.7),
+assuming The first parameter is the radius, and the second is the stellar flux.}
 }
 \value{
 Numeric. Earth Similarity Index (ESI).
@@ -18,16 +19,22 @@ Numeric. Earth Similarity Index (ESI).
 Calculate the Earth Similarity Index (ESI)
 }
 \details{
-The function calculates the ESI based on stellar flux and planetary radius.
+The function calculates the ESI based for any parameter or number of parameters.
+By default, it uses the weights of 0.57 for radius and 0.7 for stellar flux.
 
 ESI (Earth Similarity Index) is a characterization of how similar a planetary-mass object
 or natural satellite is to earth. It was designed to be a scale from zero to one,
 with Earth having a value of 1.
 }
 \examples{
-calculate_esi(1, 1)        # Earth:   1
-calculate_esi(0.53, 0.43)  # Mars:    0.753
-calculate_esi(11.2, 0.037) # Jupiter: 0.24
+calculate_esi(1, 1)
+# Returns: 1 (Earth is perfectly similar to itself)
+# Mars approximation using radius ≈ 0.532 and flux ≈ 0.43
+calculate_esi(0.532, 0.43)
+# Returns: ~0.812 (Mars is moderately similar to Earth)
+# Custom 3-parameter ESI (e.g. radius, flux, temperature)
+calculate_esi(1.1, 1.2, 288, weights = c(0.5, 0.3, 0.2))
+# Assumes third value is e.g. temperature in Kelvin
 
 }
 \references{
