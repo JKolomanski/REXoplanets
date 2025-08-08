@@ -15,14 +15,16 @@ app = function(..., run = TRUE) {
     ),
     bslib::nav_panel(
       shiny::span(bsicons::bs_icon("stars"), "Star Systems"),
-      star_systems_ui("test_module")
+      star_systems_ui("star_systems")
     )
   )
 
   server = function(input, output, session) {
     message("REXoplanets application initialized.")
 
-    star_systems_server("test_module")
+    data = shiny::reactive(closest_50_exoplanets)
+
+    star_systems_server("star_systems", data)
   }
 
   app_obj = shiny::shinyApp(
