@@ -21,20 +21,6 @@ then you can install [REXoplanets](.) by running:
 remotes::install_github("JKolomanski/REXoplanets")
 ```
 
-### Via cloning the repository (for contributors)
-
-Alternatively, you can set up the package by cloning the repository through your terminal/shell:
-
-```bash
-git clone https://github.com/JKolomanski/REXoplanets.git
-```
-
-and then loading it directly using [`devtools`](https://github.com/r-lib/devtools) in your IDE (e.g. RStudio) console:
-
-```r
-devtools::load_all()
-```
-
 ## Quick start
 
 To load the library, simply run:
@@ -53,6 +39,25 @@ REXoplanets::app()
 
 This will start the Shiny server and open the application in your browser.
 
+## Contributing
+
+All contributions to REXoplanets are welcome.
+
+If you encounter a bug or request a new feature, report it by opening a new issue on our [Github](.) page. Please utilize the correct issue template.
+
+### Development setup
+
+If you wish to contribute to the code of the package, do so by cloning the repository through your terminal/shell:
+
+```bash
+git clone https://github.com/JKolomanski/REXoplanets.git
+```
+
+and then loading it directly using [`devtools`](https://github.com/r-lib/devtools) in your IDE (e.g. RStudio) console:
+
+```r
+devtools::load_all()
+```
 
 ### Log level
 The package and application utilize [logger](https://daroczig.github.io/logger/). As a default, the log level is set to **INFO**. If you wish to receive more (or less) in-depth logging information, you can specify the level by setting an environment variable `REXOPLANETS_LOG_LEVEL`. You can do that by running:
