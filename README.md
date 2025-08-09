@@ -42,7 +42,7 @@ devtools::load_all()
 
 ## Quick start
 
-To load the app, simply run:
+To load the library, simply run:
 
 ```r
 library("REXoplanets")
