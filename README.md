@@ -15,21 +15,52 @@ We recommend using [remotes](https://github.com/r-lib/remotes) for package insta
 ```r
 install.packages("remotes")
 ```
-then you can install [REXoplanets](.) by running:
+Now you can install [REXoplanets](.) by running:
 
 ```r
 remotes::install_github("JKolomanski/REXoplanets")
 ```
 
-## Quick start
-
-To load the library, simply run:
+Then, to load the library, simply run:
 
 ```r
 library("REXoplanets")
 ```
 
-### Running the application
+## Features
+
+### API access
+Fetch data from the NASA Exoplanet Archive’s TAP service using:
+
+```r
+fetch_table("[table name]")
+```
+
+Supports filtering and replacing column names with their descriptive labels:
+
+```r
+fetch_table("ps", query_string = "pl_bmasse > 3", pretty_colnames = TRUE)
+```
+### Calculations and Classifications
+Built-in functions for habitability and Earth similarity analysis, e.g.:
+
+  * `calculate_esi()` – Earth Similarity Index.
+  * `calculate_stellar_flux()` – Stellar flux based on orbital and stellar parameters.
+
+Quick body classification tools such as:
+  * `classify_planet_type()` – Classify planets into categories.
+
+### Visualizations
+Generate publication-ready visualizations:
+
+  * scatterplot_esi() – ESI vs. another parameter.
+
+  * plot_star_system() – Stylized star system maps.
+
+All visualizations return ggplot2 objects for easy customization.
+
+### Application
+The REXoplanets application provides an interactive interface for exploring data from the NASA Exoplanet Archive. It allows you to search for star systems, visualize their structure, and view key information about all known stellar bodies.
 
 To run the REXoplanets application invoke:
 
