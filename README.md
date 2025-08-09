@@ -1,10 +1,5 @@
 # REXoplanets
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Lifecycle: Experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/REXoplanets)](https://CRAN.R-project.org/package=REXoplanets)
-[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/REXoplanets)](https://cran.r-project.org/package=REXoplanets)
-
 ## Description
 
 **REXoplanets** is an R package that provides a user-friendly interface to NASA's Exoplanet Archive API. It includes functions for retrieving and analyzing exoplanet data, such as computing key parameters, classifying celestial bodies, and generating visualizations. The package emphasizes identifying potentially habitable and Earth-like planets.
@@ -69,8 +64,3 @@ or by creating `.Renviron` file in the root of your project:
 REXOPLANETS_LOG_LEVEL=ERROR
 ```
 For settings in the `.Renviron` file to be applied, you will need to either restart your R session or load the file explicitly by running `readRenviron(".Renviron")`.
-
-## Documentation and references
-
-
-- Please go to [our Website](.) (TBA) for further information on the **REXoplanets** library and application.
