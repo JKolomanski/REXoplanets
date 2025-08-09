@@ -53,9 +53,9 @@ Quick body classification tools such as:
 ### Visualizations
 Generate publication-ready visualizations:
 
-  * scatterplot_esi() – ESI vs. another parameter.
+  * `scatterplot_esi()` – ESI vs. another parameter.
 
-  * plot_star_system() – Stylized star system maps.
+  * `plot_star_system()` – Stylized star system maps.
 
 All visualizations return ggplot2 objects for easy customization.
 
@@ -74,7 +74,7 @@ This will start the Shiny server and open the application in your browser.
 
 All contributions to REXoplanets are welcome.
 
-If you encounter a bug or request a new feature, report it by opening a new issue on our [Github](.) page. Please utilize the correct issue template.
+If you encounter a bug or request a new feature, report it by opening a new issue on our [Github](https://github.com/JKolomanski/REXoplanets/issues) page. Please utilize the correct issue template.
 
 ### Development setup
 
