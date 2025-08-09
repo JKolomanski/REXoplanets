@@ -62,6 +62,6 @@ star_systems_ui = function(id) {
 #' @export
 star_systems_server = function(id) {
   shiny::moduleServer(id, function(input, output, session) {
-    message("Star systems module server initialized.")
+    logger::log_trace("Star systems module server initialized.")
   })
 }
