@@ -21,7 +21,7 @@
 #' @returns A `ggplot2` object representing the planetary system visualization.
 #'
 #' @importFrom ggplot2 ggplot aes geom_point geom_hline scale_color_identity
-#'   scale_size_continuous coord_polar theme_void theme element_rect
+#'   scale_size_continuous coord_polar theme_void theme element_rect annotate
 #' @importFrom checkmate assert_names assert_data_frame assert_character assert_choice
 #' @importFrom stats runif
 #'
@@ -33,7 +33,7 @@
 #' plot_star_system(data, spectral_type)
 #'
 #' @export
-plot_star_system = function(planet_data, spectral_type = NULL) {
+plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = NULL) {
   assert_data_frame(planet_data)
   assert_names(colnames(planet_data), must.include = c("pl_orbsmax", "pl_rade", "pl_dens"))
   if (!is.null(spectral_type)) {
@@ -55,6 +55,10 @@ plot_star_system = function(planet_data, spectral_type = NULL) {
   )
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = col)) +
+    annotate("rect",
+             xmin = -Inf, xmax = Inf,  # full width
+             ymin = min(habitable_zone), ymax = max(habitable_zone),
+             alpha = 0.3, fill = "green") +
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +

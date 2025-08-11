@@ -4,7 +4,7 @@
 \alias{plot_star_system}
 \title{Plot a Stylized Star System}
 \usage{
-plot_star_system(planet_data, spectral_type = NULL)
+plot_star_system(planet_data, spectral_type = NULL, habitable_zone = c(2, 4))
 }
 \arguments{
 \item{planet_data}{A data frame containing planetary system data. Must include:
