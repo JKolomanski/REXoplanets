@@ -8,7 +8,7 @@
 \usage{
 search_ui(id, label = "Search...", multiple = FALSE, random = FALSE)
 
-search_server(id, choices)
+search_server(id, choices, start_random = FALSE)
 }
 \arguments{
 \item{id}{A unique identifier for the module.}
@@ -20,6 +20,8 @@ search_server(id, choices)
 \item{random}{Whether to show a randomize button (default: FALSE).}
 
 \item{choices}{A reactive expression that returns a vector of choices for the select input.}
+
+\item{start_random}{Whether to select a random value when choices are updated.}
 }
 \value{
 A Shiny UI object.

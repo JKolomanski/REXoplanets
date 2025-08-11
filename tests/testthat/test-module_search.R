@@ -78,4 +78,24 @@ describe("module_search", {
     expect_false(vals$export$selected_val == "")
 
   })
+
+  it("starts with random value selected if start_random == TRUE", {
+    app = shinytest2::AppDriver$new(
+      shiny::shinyApp(
+        ui = search_ui("test_module", random = TRUE),
+        server = function(input, output, session) {
+          choices = shiny::reactive(c("Choice 1", "Choice 2", "Choice 3"))
+          selected_val = search_server("test_module", choices, start_random = TRUE)
+          shiny::exportTestValues(selected_val = {selected_val()}) # nolint
+        }
+      )
+    )
+
+    # Wait longer for the reactive updates to complete #
+    app$wait_for_idle(500)
+
+    # Select a choice and make sure returned value is the same #
+    vals = app$get_values(export = TRUE)
+    expect_false(vals$export$selected_val == "")
+  })
 })

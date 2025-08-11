@@ -29,10 +29,11 @@ search_ui = function(id, label = "Search...", multiple = FALSE, random = FALSE) 
 
 #' @param id A unique identifier for the module.
 #' @param choices A reactive expression that returns a vector of choices for the select input.
+#' @param start_random Whether to select a random value when choices are updated.
 #' @returns A reactive expression containing the selected value(s).
 #' @describeIn module_search Server function for the search module.
 #' @export
-search_server = function(id, choices) {
+search_server = function(id, choices, start_random = FALSE) {
   shiny::moduleServer(id, function(input, output, session) {
     logger::log_trace("{id} initialized.")
 
@@ -40,7 +41,8 @@ search_server = function(id, choices) {
       logger::log_trace("{id} updating choices.")
       shiny::updateSelectInput(
         inputId = "select",
-        choices = c("", choices())
+        choices = c("", choices()),
+        selected = if (start_random) sample(choices(), 1) else ""
       )
     })
 
