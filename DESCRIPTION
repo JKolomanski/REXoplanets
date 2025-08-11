@@ -1,6 +1,6 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
-Version: 0.0.0.9023
+Version: 0.0.0.9025
 Authors@R: c(
     person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
     person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
