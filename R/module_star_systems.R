@@ -80,7 +80,8 @@ star_systems_server = function(id, data) {
 
     selected_star = search_server(
       "search_star_systems",
-      choices = available_stars
+      choices = available_stars,
+      start_random = TRUE
     )
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
