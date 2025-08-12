@@ -95,7 +95,6 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
 
   res_data = read_fn[[format]](res_data)
 
-
   log_success("Table {table} fetched successfully.")
 
   if (pretty_colnames) {
