@@ -10,7 +10,7 @@ describe("module_star_systems", {
       shiny::shinyApp(
         ui = star_systems_ui("test_module"),
         server = function(input, output, session) {
-          star_systems_server("test_module")
+          star_systems_server("test_module", shiny::reactive(closest_50_exoplanets))
         }
       ),
     )
