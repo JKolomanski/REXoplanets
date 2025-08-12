@@ -40,10 +40,10 @@ calculate_esi = function(..., radius_w = 0.57, flux_w = 0.7) {
   assert_numeric(flux_w, lower = 0)
 
   # Assign default weights if missing
-  if ("radius" %in% names(args) && !"radius_w" %in% names(args)) {
+  if ("radius" %in% names(args)) {
     args$radius_w = radius_w
   }
-  if ("flux" %in% names(args) && !"flux_w" %in% names(args)) {
+  if ("flux" %in% names(args)) {
     args$flux_w = flux_w
   }
 
