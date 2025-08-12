@@ -2,7 +2,7 @@
 #'
 #' @details
 #' Fetches data from an exoplanets TAP (Table Access Protocol) service
-#' and returns it as a data frame.
+#' and returns it as a data frame or a named list.
 #' You can optionally specify `WHERE` ADQL clause to filter rows based on conditions.
 #'
 #' @param table A string specifying the table to query. Must be one of:
@@ -14,14 +14,23 @@
 #' }
 #' @param query_string
 #'  Optional ADQL `WHERE` clause as a string, e.g., `pl_bmasse > 1 AND st_teff < 6000`.
+#' @param pretty_colnames
+#'  Optional `bool` value. If `TRUE` replaces database column names with their
+#'  labels / descriptions. Defaults to `FALSE`.
+#'  Currently only tables `ps` and `pscomppars` are supported.
+#' @param format
+#'  Optional `char` value specifying output format. Can be either `"csv"` for data frame,
+#'  or `"json"` for a named list.
 #'
-#' @returns A data frame containing fetched data.
+#' @returns A data frame or named list containing fetched data.
 #'
 #' @importFrom httr2 request req_perform resp_body_string req_options
 #' @importFrom readr read_csv
-#' @importFrom dplyr `%>%`
+#' @importFrom dplyr `%>%` rename any_of
 #' @importFrom checkmate assert_choice assert_string
 #' @importFrom utils URLencode
+#' @importFrom jsonlite fromJSON
+#' @importFrom logger log_info log_success log_error log_debug log_trace
 #'
 #' @examples
 #' \dontrun{
@@ -34,8 +43,9 @@
 #' }
 #'
 #' @export
-fetch_table = function(table, query_string = NULL) {
+fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, format = "csv") {
   assert_choice(table, c("ps", "pscomppars", "stellarhosts", "keplernames"))
+  assert_choice(format, c("csv", "json"))
 
   query = paste0("select * from ", table)
   if (!is.null(query_string)) {
@@ -46,8 +56,12 @@ fetch_table = function(table, query_string = NULL) {
   url = paste0(
     TAP_URL,
     utils::URLencode(query, reserved = TRUE),
-    "&format=csv"
+    "&format=",
+    format
   )
+
+  log_info("Fetching table `{table}`...")
+  log_debug("Query URL: `{url}`")
 
   req = request(url) %>%
     req_options(followlocation = TRUE) # todo: add handling 3xx responses
@@ -56,14 +70,38 @@ fetch_table = function(table, query_string = NULL) {
     error = function(e) {
       # TODO: Handle specific error cases more gracefully.
       # For example, if the error is from 5XX range, it has nothing to do with filter syntax.
-      stop("Request failed. Check your filter syntax. Original error: ", e$message, call. = FALSE)
+      log_error("Request failed. Check your filter syntax. Original error: {e$message}")
+      stop(e$message)
     }
   )
 
-  res %>%
-    resp_body_string() %>%
-    read_csv(show_col_types = FALSE) %>%
+  log_trace("Response status: {res$status_code}")
+
+  res_data = res %>%
+    resp_body_string()
+
+  read_fn = list(
     # Due to messy data read_csv fails to assign column types.
     # To avoid polluting the console, warnings are suppressed.
-    suppressWarnings()
+    csv = \(data) suppressWarnings(read_csv(data, show_col_types = FALSE)),
+    json = \(data) jsonlite::fromJSON(data)
+  )
+
+  res_data = read_fn[[format]](res_data)
+
+
+  log_success("Table {table} fetched successfully.")
+
+  if (pretty_colnames) {
+    if (!(table %in% c("ps", "pscomppars"))) {
+      warning(paste0(
+        "Table `", table, "` doesn't currently support pretty names.",
+        "Database column names provided instead."
+      ))
+    } else {
+      res_data = rename(res_data, any_of(exoplanets_col_labels[[table]]))
+    }
+  }
+
+  res_data
 }

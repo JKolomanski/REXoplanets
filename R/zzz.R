@@ -1,4 +1,8 @@
 .onLoad = function(libname, pkgname) {
+  logger::log_layout(logger::layout_glue_colors)
+  logger::log_formatter(logger::formatter_glue)
+  logger::log_threshold(Sys.getenv("REXOPLANETS_LOG_LEVEL", "INFO"))
+
   utils::globalVariables(c(
     "kepoi_name",
     "Star",
@@ -11,6 +15,9 @@
     "esi_flux",
     "objectid",
     "esi",
+    "df",
+    "name_map",
+    "exoplanets_col_labels",
     "orbit_offset"
   ))
 }
