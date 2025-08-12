@@ -16,8 +16,7 @@ star_systems_ui = function(id) {
 
   bslib::layout_sidebar(
     sidebar = shiny::tagList(
-      shiny::h2("Options"),
-      shiny::p("This is a placeholder for the star systems module options.")
+      search_ui(ns("search_star_systems"), label = "Search star:", random = TRUE)
     ),
     shiny::div(
       style = htmltools::css(
@@ -57,11 +56,34 @@ star_systems_ui = function(id) {
 }
 
 #' @param id A unique identifier for the module.
+#' @param data A reactive expression that returns a data frame containing star system data.
 #' @returns A Shiny server module.
 #' @describeIn module_star_systems Server function for the module.
 #' @export
-star_systems_server = function(id) {
+star_systems_server = function(id, data) {
   shiny::moduleServer(id, function(input, output, session) {
-    logger::log_trace("Star systems module server initialized.")
+    logger::log_trace("{id} initialized.")
+
+    star_system_data = shiny::reactive({
+      shiny::req(data())
+
+      data() |>
+        trim_ps_table()
+    })
+
+    available_stars = shiny::reactive({
+      star_system_data() |>
+        dplyr::pull(hostname) |>
+        unique() |>
+        sort()
+    })
+
+    selected_star = search_server(
+      "search_star_systems",
+      choices = available_stars,
+      start_random = TRUE
+    )
+
+    shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
   })
 }

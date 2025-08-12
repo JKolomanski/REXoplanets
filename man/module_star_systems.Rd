@@ -8,10 +8,12 @@
 \usage{
 star_systems_ui(id)
 
-star_systems_server(id)
+star_systems_server(id, data)
 }
 \arguments{
 \item{id}{A unique identifier for the module.}
+
+\item{data}{A reactive expression that returns a data frame containing star system data.}
 }
 \value{
 A Shiny UI object.

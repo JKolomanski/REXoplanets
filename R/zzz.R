@@ -18,6 +18,8 @@
     "df",
     "name_map",
     "exoplanets_col_labels",
-    "orbit_offset"
+    "orbit_offset",
+    "hostname",
+    "closest_50_exoplanets"
   ))
 }
