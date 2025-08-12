@@ -33,7 +33,7 @@ Search Module
 }
 \details{
 This module provides a reusable search component with a select input and optional randomize
-button. It can be used to create searchable dropdowns with support for multiple selection and
+button. It can be used to create searchable drop-downs with support for multiple selection and
 random choice selection. The module handles updating choices dynamically and provides a reactive
 value for the selected item(s).
 }
