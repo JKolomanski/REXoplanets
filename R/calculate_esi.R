@@ -14,7 +14,7 @@
 #' A Two-Tiered Approach to Assess the Habitability of Exoplanets. Astrobiology 11(10): 1041-1052.
 #'
 #' @param ... Any number of numeric parameters representing the planet's characteristics.
-#'            Parameter names should have corresponding weight names endin in `_w`
+#'            Parameter names should have corresponding weight names ending in `_w`
 #'            (e.g., `mass`, `mass_w`).
 #' @param radius_w Numeric. Weight for radius. Default is 0.57.
 #' @param flux_w Numeric. Weight for stellar flux. Default is 0.7.
