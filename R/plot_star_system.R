@@ -1,6 +1,3 @@
-library(ggplot2)
-library(dplyr)
-library(checkmate)
 #' Plot a Stylized Star System
 #'
 #' Creates a stylized polar plot of a planetary system,
