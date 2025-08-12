@@ -58,11 +58,19 @@ calculate_esi = function(..., radius_w = 0.57, flux_w = 0.7) {
   unmatched_weights = setdiff(weight_names, val_names)
 
   if (length(unmatched_vals) > 0) {
-    warning("No matching weights for values: ", paste0(unmatched_vals, collapse = ", "))
+    warning(paste0(
+      "No matching weights for values: ",
+      paste0(unmatched_vals, collapse = ", "),
+      ". These values will be ignored."
+    ))
   }
 
   if (length(unmatched_weights) > 0) {
-    warning("Weights without matching values: ", paste0(unmatched_weights, collapse = ", "))
+    warning(paste0(
+      "Weights without matching values: ",
+      paste0(unmatched_vals, collapse = ", "),
+      ". These weights will be ignored."
+    ))
   }
 
   if (length(comp_names) == 0) {
