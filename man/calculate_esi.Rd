@@ -8,7 +8,7 @@ calculate_esi(..., radius_w = 0.57, flux_w = 0.7)
 }
 \arguments{
 \item{...}{Any number of numeric parameters representing the planet's characteristics.
-Parameter names should have corresponding weight names endin in \verb{_w}
+Parameter names should have corresponding weight names ending in \verb{_w}
 (e.g., \code{mass}, \code{mass_w}).}
 
 \item{radius_w}{Numeric. Weight for radius. Default is 0.57.}
