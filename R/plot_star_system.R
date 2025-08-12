@@ -50,14 +50,15 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
   # Create data frame for plotting the star system:
   # First row is always the host star and following rows are the planets.
   #    - randomize position on the orbit, with the star being in the center (0)
-  #    - rescale orbit for the visualization, keep the star at center (0)
+  #    - rescale orbit for the visualization, keep the star at center (0). Add habitable zone edges.
   #    - ensure star is the largest object with size 17
   #    - map color based on spectral type or density
   plot_data = data.frame(
     orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi), 0, 0),
-    pl_orbsmax = c(0, .rescale_orbsmax(c(planet_data$pl_orbsmax,
-                                         # Add habitable zone edges for scaling
-                                         min(habitable_zone), max(habitable_zone)))),
+    pl_orbsmax = c(0, .rescale_orbsmax(c(
+      planet_data$pl_orbsmax,
+      min(habitable_zone), max(habitable_zone)
+    ))),
     pl_rade = c(17, planet_data$pl_rade, 0, 0), # Ensure star is the largest object
     col = c(.map_star_color(spectral_type), .map_planet_color(planet_data$pl_dens), "", "")
   )
@@ -69,10 +70,12 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
 
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = col)) +
-    annotate("rect",
-             xmin = -Inf, xmax = Inf,  # full width
-             ymin = inner_hz, ymax = outer_hz,
-             alpha = 0.15, fill = "green") +
+    annotate(
+      "rect",
+      xmin = -Inf, xmax = Inf,  # full width
+      ymin = inner_hz, ymax = outer_hz,
+      alpha = 0.15, fill = "green"
+    ) +
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +
@@ -114,5 +117,5 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
   }
   rng = range(x, na.rm = TRUE)
   scaled = (x - rng[1]) / (rng[2] - rng[1])
-  return(new_min + scaled * (new_max - new_min))
+  new_min + scaled * (new_max - new_min)
 }
