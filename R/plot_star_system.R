@@ -1,3 +1,6 @@
+library(ggplot2)
+library(dplyr)
+library(checkmate)
 #' Plot a Stylized Star System
 #'
 #' Creates a stylized polar plot of a planetary system,
@@ -6,6 +9,7 @@
 #' orbit position is randomized for aesthetics,
 #' planet color is mapped by density.
 #' The star's color is optionally based on spectral type.
+#' Optionally, star's habitable zone visualization can be overlayed.
 #'
 #' The central star is positioned at the origin
 #' with planets arranged in orbits of increasing radius.
@@ -17,6 +21,8 @@
 #'   - `pl_dens`: planetary density (g/cm³).
 #' @param spectral_type Optional character string indicating the star's spectral type.
 #'   Accepted values: `O`, `B`, `A`, `F`, `G`, `K`, `M`.
+#' @param habitable_zone Optional numeric vector containing 2 values:
+#'   Inner and outer habitable zone edges in AU.
 #'
 #' @returns A `ggplot2` object representing the planetary system visualization.
 #'
@@ -30,11 +36,14 @@
 #' data = closest_50_exoplanets |>
 #'   subset(hostid == 2.101289)
 #' spectral_type = classify_star_spectral_type(data$st_teff[1])
-#' plot_star_system(data, spectral_type)
+#' plot_star_system(data,
+#'                  spectral_type,
+#'                  habitable_zone = calculate_star_habitable_zone(data$st_lum[1]))
 #'
 #' @export
-plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = NULL) {
+plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = c(0, 0)) {
   assert_data_frame(planet_data)
+  assert_numeric(habitable_zone, len = 2)
   assert_names(colnames(planet_data), must.include = c("pl_orbsmax", "pl_rade", "pl_dens"))
   if (!is.null(spectral_type)) {
     assert_character(spectral_type, len = 1, any.missing = FALSE)
@@ -48,17 +57,25 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
   #    - ensure star is the largest object with size 17
   #    - map color based on spectral type or density
   plot_data = data.frame(
-    orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi)),
-    pl_orbsmax = c(0, .rescale_orbsmax(planet_data$pl_orbsmax)),
-    pl_rade = c(17, planet_data$pl_rade), # Ensure star is the largest object
-    col = c(.map_star_color(spectral_type), .map_planet_color(planet_data$pl_dens))
+    orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi), 0, 0),
+    pl_orbsmax = c(0, .rescale_orbsmax(c(planet_data$pl_orbsmax,
+                                         # Add habitable zone edges for scaling
+                                         min(habitable_zone), max(habitable_zone)))),
+    pl_rade = c(17, planet_data$pl_rade, 0, 0), # Ensure star is the largest object
+    col = c(.map_star_color(spectral_type), .map_planet_color(planet_data$pl_dens), "", "")
   )
+
+  inner_hz = plot_data$pl_orbsmax[length(plot_data$pl_orbsmax) - 1]
+  outer_hz = plot_data$pl_orbsmax[length(plot_data$pl_orbsmax)]
+
+  plot_data = plot_data[1:(nrow(plot_data) - 2), ]
+
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = col)) +
     annotate("rect",
              xmin = -Inf, xmax = Inf,  # full width
-             ymin = min(habitable_zone), ymax = max(habitable_zone),
-             alpha = 0.3, fill = "green") +
+             ymin = inner_hz, ymax = outer_hz,
+             alpha = 0.15, fill = "green") +
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +
@@ -94,10 +111,11 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
   )
 }
 
-.rescale_orbsmax = function(pl_orbsmax) {
-  log_vals = log10(pl_orbsmax)
-  min_val = min(log_vals)
-  max_val = max(log_vals)
-  # Limit max planet size to keep it distinct from star
-  ((log_vals - min_val) / (max_val - min_val)) * (7 - 1) + 1
+.rescale_orbsmax = function(x, new_min = 2.5, new_max = 12) {
+  if (length(x) == 1 || all(x == x[1])) {
+    return(rep((new_min + new_max) / 2, length(x))) # constant vector fallback
+  }
+  rng = range(x, na.rm = TRUE)
+  scaled = (x - rng[1]) / (rng[2] - rng[1])
+  return(new_min + scaled * (new_max - new_min))
 }
