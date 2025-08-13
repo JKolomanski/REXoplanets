@@ -28,7 +28,7 @@ star_systems_ui = function(id) {
         "column-gap" = "1rem"
       ),
       bslib::card(
-        bslib::card_header("Star System"),
+        bslib::card_header("System map"),
         bslib::card_body(
           visualize_star_system_ui(ns("visualize_star_systems"))
         )
