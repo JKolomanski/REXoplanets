@@ -79,7 +79,7 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
     scale_color_identity() +
-    scale_size_continuous(range = c(2, 17)) + # Limit object size to prevent it from overlapping
+    scale_size_continuous(range = c(3.5, 17)) + # Limit object size to prevent it from overlapping
     coord_polar(theta = "x") +
     theme_void() +
     theme(legend.position = "none", panel.background = element_rect(fill = "black", color = NA))
@@ -111,7 +111,7 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
   )
 }
 
-.rescale_orbsmax = function(x, new_min = 2.5, new_max = 12) {
+.rescale_orbsmax = function(x, new_min = 3.5, new_max = 12) {
   if (length(x) == 1 || all(x == x[1])) {
     return(rep((new_min + new_max) / 2, length(x))) # constant vector fallback
   }
