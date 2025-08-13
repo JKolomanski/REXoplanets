@@ -30,7 +30,7 @@ star_systems_ui = function(id) {
       bslib::card(
         bslib::card_header("Star System"),
         bslib::card_body(
-          shiny::p("This is a placeholder for the star systems module content.")
+          visualize_star_system_ui(ns("visualize_star_systems"))
         )
       ),
       bslib::card(
@@ -66,9 +66,7 @@ star_systems_server = function(id, data) {
 
     star_system_data = shiny::reactive({
       shiny::req(data())
-
-      data() |>
-        trim_ps_table()
+      data() |> trim_ps_table()
     })
 
     available_stars = shiny::reactive({
@@ -83,6 +81,14 @@ star_systems_server = function(id, data) {
       choices = available_stars,
       start_random = TRUE
     )
+
+    system_data = shiny::reactive({
+      shiny::req(selected_star())
+      star_system_data() |>
+        dplyr::filter(hostname == selected_star())
+    })
+
+    visualize_star_system_server("visualize_star_systems", plot_data = system_data)
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
   })
