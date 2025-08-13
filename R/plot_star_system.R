@@ -111,7 +111,7 @@ plot_star_system = function(planet_data, spectral_type = NULL, habitable_zone = 
   )
 }
 
-.rescale_orbsmax = function(x, new_min = 3.5, new_max = 12) {
+.rescale_orbsmax = function(x, new_min = 2, new_max = 12) {
   if (length(x) == 1 || all(x == x[1])) {
     return(rep((new_min + new_max) / 2, length(x))) # constant vector fallback
   }
