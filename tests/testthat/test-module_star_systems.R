@@ -16,7 +16,7 @@ describe("module_star_systems", {
     )
 
     html = app$get_html("body")
-    expect_true(grepl('<div class="card-header">Star System</div>', html))
+    expect_true(grepl('<div class="card-header">System map</div>', html))
     expect_true(grepl('<div class="card-header">Planet details</div>', html))
     expect_true(grepl('<div class="card-header">System info</div>', html))
     expect_true(grepl('<div class="card-header">Legend</div>', html))
