@@ -2,7 +2,24 @@
 % Please edit documentation in R/module_visualize_star_system.R
 \name{module_visualize_star_system}
 \alias{module_visualize_star_system}
+\alias{visualize_star_system_ui}
+\alias{visualize_star_system_server}
 \title{Module Visualizing Star Systems}
+\usage{
+visualize_star_system_ui(id)
+
+visualize_star_system_server(id, plot_data)
+}
+\arguments{
+\item{id}{A unique identifier for the module.}
+
+\item{plot_data}{A reactive expression returning a data frame with information about the system.}
+}
+\value{
+A Shiny UI object.
+
+A reactive expression containing the selected value(s).
+}
 \description{
 Module Visualizing Star Systems
 }
@@ -10,3 +27,10 @@ Module Visualizing Star Systems
 This module provides a dynamically refreshing plot component
 for visualizing star systems based on data provided
 }
+\section{Functions}{
+\itemize{
+\item \code{visualize_star_system_ui()}: UI function for the system mapping module.
+
+\item \code{visualize_star_system_server()}: server function for the system mapping module.
+
+}}
