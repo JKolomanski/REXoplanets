@@ -16,7 +16,12 @@ visualize_star_system_server = function(id, plot_data) {
 
     output$system_plot = shiny::renderPlot({
       req(plot_data())
-      plot_star_system(plot_data())
+      plot_star_system(
+        plot_data(),
+        spectral_type = classify_star_spectral_type(plot_data()[["st_teff"]][1]),
+        habitable_zone = calculate_star_habitable_zone(plot_data()[["st_lum"]][1])
+      )
+
     })
   })
 }
