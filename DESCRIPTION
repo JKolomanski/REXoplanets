@@ -18,6 +18,7 @@ Imports:
     readr,
     utils,
     ggplot2,
+    jsonlite,
     logger
 Suggests: 
     testthat (>= 3.0.0),
