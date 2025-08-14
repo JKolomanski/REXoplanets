@@ -26,7 +26,7 @@ visualize_star_system_server = function(id, plot_data, show_hz) {
 
     output$system_plot = shiny::renderPlot({
       shiny::req(plot_data())
-      shiny::req(show_hz)
+      shiny::req(show_hz())
 
       hz = c(0, 0)
       if (show_hz()) {
