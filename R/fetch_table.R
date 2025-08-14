@@ -75,7 +75,7 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
         "400" = "The request was invalid, please check filter syntax",
         "500" = paste0(
           "The API encountered an unknown error. Try again later.",
-          "If the issue persists, please report a bug",
+          "If the issue persists, please report a bug"
         ),
         "503" = "The API is currently unavailable. Try again later.",
         "504" = "The API connection timed out. Try again later.",
