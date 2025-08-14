@@ -54,15 +54,50 @@ describe("fetch_table", {
     )
   })
 
-  # TODO: Extend these tests and cover more code responses.
-  it("throws an error for non-200 response", {
+  it("throws an error for 400 response", {
     mock_data = function(req) {
-      httr2::response(status_code = 404, body = charToRaw("Not Found"))
+      httr2::response(status_code = 400, body = charToRaw("Bad Request"))
     }
     httr2::with_mocked_responses(
       mock_data,
       {
-        expect_error(fetch_table("ps"), "*.404 Not Found")
+        expect_error(fetch_table("ps"), "*.Bad Request")
+      }
+    )
+  })
+
+  it("throws an error for 500 response", {
+    mock_data = function(req) {
+      httr2::response(status_code = 500, body = charToRaw("Internal Server Error"))
+    }
+    httr2::with_mocked_responses(
+      mock_data,
+      {
+        expect_error(fetch_table("ps"), "*.Internal Server Error")
+      }
+    )
+  })
+
+  it("throws an error for 503 response", {
+    mock_data = function(req) {
+      httr2::response(status_code = 503, body = charToRaw("Service Unavailable"))
+    }
+    httr2::with_mocked_responses(
+      mock_data,
+      {
+        expect_error(fetch_table("ps"), "*.Service Unavailable")
+      }
+    )
+  })
+
+  it("throws an error for 504 response", {
+    mock_data = function(req) {
+      httr2::response(status_code = 504, body = charToRaw("Gateway Timeout"))
+    }
+    httr2::with_mocked_responses(
+      mock_data,
+      {
+        expect_error(fetch_table("ps"), "*.Gateway Timeout")
       }
     )
   })
