@@ -90,11 +90,11 @@ star_systems_server = function(id, data) {
         dplyr::filter(hostname == selected_star())
     })
 
-    show_hz = system_plot_settings_server("system_plot_settings")
+    plot_options = system_plot_settings_server("system_plot_settings")
     visualize_star_system_server(
       "visualize_star_systems",
       plot_data = system_data,
-      show_hz = show_hz
+      show_hz = plot_options$show_hz
     )
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))

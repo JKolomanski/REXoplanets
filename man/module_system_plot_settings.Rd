@@ -16,7 +16,7 @@ system_plot_settings_server(id)
 \value{
 A Shiny UI object.
 
-A reactive boolean expression.
+A reactive  list.
 }
 \description{
 System Plot Settings Module

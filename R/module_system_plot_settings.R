@@ -21,7 +21,7 @@ system_plot_settings_ui = function(id) {
 }
 
 #' @param id A unique identifier for the module.
-#' @returns A reactive boolean expression.
+#' @returns A reactive  list.
 #' @describeIn module_system_plot_settings function for the search module.
 #' @export
 system_plot_settings_server = function(id) {
@@ -33,6 +33,8 @@ system_plot_settings_server = function(id) {
     }) |>
       shiny::bindEvent(input$show_hz)
 
-    shiny::reactive(input$show_hz)
+    shiny::reactive(list(
+      show_hz = input$show_hz
+    ))
   })
 }

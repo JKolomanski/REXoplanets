@@ -30,8 +30,8 @@ describe("module_system_plot_settings", {
       shiny::shinyApp(
         ui = system_plot_settings_ui("test_module"),
         server = function(input, output, session) {
-          show_hz = system_plot_settings_server("test_module")
-          shiny::exportTestValues(show_hz = {show_hz()}) # nolint
+          plot_options = system_plot_settings_server("test_module")
+          shiny::exportTestValues(plot_options = {plot_options()}) # nolint
         }
       )
     )
@@ -41,7 +41,7 @@ describe("module_system_plot_settings", {
 
     # Initially unchecked, expect FALSE
     vals = app$get_values(export = TRUE)
-    expect_false(vals$export$show_hz)
+    expect_false(vals$export$plot_options$show_hz)
 
     # Toggle the checkbox to TRUE
     app$set_inputs(`test_module-show_hz` = TRUE)
@@ -49,7 +49,7 @@ describe("module_system_plot_settings", {
 
     # Check that the reactive returned TRUE
     vals = app$get_values(export = TRUE)
-    expect_true(vals$export$show_hz)
+    expect_true(vals$export$plot_options$show_hz)
 
     # Toggle back to FALSE
     app$set_inputs(`test_module-show_hz` = FALSE)
@@ -57,6 +57,6 @@ describe("module_system_plot_settings", {
 
     # Check that the reactive returned FALSE
     vals = app$get_values(export = TRUE)
-    expect_false(vals$export$show_hz)
+    expect_false(vals$export$plot_options$show_hz)
   })
 })
