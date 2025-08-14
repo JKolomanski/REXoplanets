@@ -29,7 +29,7 @@ system_plot_settings_server = function(id) {
     logger::log_trace("{id} initialized.")
 
     shiny::observe({
-      logger::log_trace("{id} show_hz changed to: {input$show_hz}")
+      logger::log_trace("{id} changed to: {input$show_hz}")
     }) |>
       shiny::bindEvent(input$show_hz)
 
