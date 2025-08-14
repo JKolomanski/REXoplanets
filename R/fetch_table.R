@@ -70,13 +70,16 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
     error = function(e) {
       status_code = as.integer(sub(".*?(\\d{3}).*", "\\1", e$message))
       message = case_when(
-        status_code < 300 ~ "",
-        status_code < 400 ~ "Request returned a redirect, please check the URL or server status.",
-        status_code < 500 ~ "Request failed. Check your filter syntax.",
-        status_code < 600 ~ "Request failed because of an internal server error.",
-        TRUE ~ "Request failed with an unknown error."
-
+        status_code == 400 ~ paste0(
+          "The request was invalid or cannot be processed. ",
+          "Please check filter syntax."
+        ),
+        status_code == 404 ~ "The requested resource does not exist.",
+        status_code == 500 ~ "The API encountered an unexpected error. Try again later.",
+        status_code == 503 ~ "The API is currently unavailable. Try again later",
+        status_code == 504 ~ "The upstream server did not respond in time."
       )
+
       stop(paste0(message, " Original error: ", e$message), call. = FALSE)
     }
   )
