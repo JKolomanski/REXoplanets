@@ -68,16 +68,18 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
   res = tryCatch(
     req_perform(req),
     error = function(e) {
-      status_code = as.integer(sub(".*?(\\d{3}).*", "\\1", e$message))
-      message = case_when(
-        status_code == 400 ~ paste0(
-          "The request was invalid or cannot be processed. ",
-          "Please check filter syntax."
+      status_code = sub(".*?(\\d{3}).*", "\\1", e$message)
+
+      message = switch(
+        status_code,
+        "400" = "The request was invalid, please check filter syntax",
+        "500" = paste0(
+          "The API encountered an unknown error. Try again later.",
+          "If the issue persists, please report a bug",
         ),
-        status_code == 404 ~ "The requested resource does not exist.",
-        status_code == 500 ~ "The API encountered an unexpected error. Try again later.",
-        status_code == 503 ~ "The API is currently unavailable. Try again later",
-        status_code == 504 ~ "The upstream server did not respond in time."
+        "503" = "The API is currently unavailable. Try again later.",
+        "504" = "The API connection timed out. Try again later.",
+        "API request encountered an unexpected error."
       )
 
       stop(paste0(message, " Original error: ", e$message), call. = FALSE)
