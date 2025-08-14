@@ -8,12 +8,14 @@
 \usage{
 visualize_star_system_ui(id)
 
-visualize_star_system_server(id, plot_data)
+visualize_star_system_server(id, plot_data, show_hz)
 }
 \arguments{
 \item{id}{A unique identifier for the module.}
 
 \item{plot_data}{A reactive expression returning a data frame with information about the system.}
+
+\item{show_hz}{A reactive boolean expression determining whether to show habitable zone.}
 }
 \value{
 A Shiny UI object.

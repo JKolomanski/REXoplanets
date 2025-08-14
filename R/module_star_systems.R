@@ -16,7 +16,8 @@ star_systems_ui = function(id) {
 
   bslib::layout_sidebar(
     sidebar = shiny::tagList(
-      search_ui(ns("search_star_systems"), label = "Search star:", random = TRUE)
+      search_ui(ns("search_star_systems"), label = "Search star:", random = TRUE),
+      system_plot_settings_ui(ns("system_plot_settings"))
     ),
     shiny::div(
       style = htmltools::css(
@@ -88,7 +89,12 @@ star_systems_server = function(id, data) {
         dplyr::filter(hostname == selected_star())
     })
 
-    visualize_star_system_server("visualize_star_systems", plot_data = system_data)
+    show_hz = system_plot_settings_server("system_plot_settings")
+    visualize_star_system_server(
+      "visualize_star_systems",
+      plot_data = system_data,
+      show_hz = show_hz
+    )
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
   })
