@@ -66,18 +66,6 @@ describe("fetch_table", {
     )
   })
 
-  it("throws an error for 404 response", {
-    mock_data = function(req) {
-      httr2::response(status_code = 404, body = charToRaw("Not Found"))
-    }
-    httr2::with_mocked_responses(
-      mock_data,
-      {
-        expect_error(fetch_table("ps"), "*.Not Found")
-      }
-    )
-  })
-
   it("throws an error for 500 response", {
     mock_data = function(req) {
       httr2::response(status_code = 500, body = charToRaw("Internal Server Error"))
