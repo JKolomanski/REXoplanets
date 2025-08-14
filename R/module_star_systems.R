@@ -16,7 +16,8 @@ star_systems_ui = function(id) {
 
   bslib::layout_sidebar(
     sidebar = shiny::tagList(
-      search_ui(ns("search_star_systems"), label = "Search star:", random = TRUE)
+      search_ui(ns("search_star_systems"), label = "Search star:", random = TRUE),
+      system_plot_settings_ui(ns("system_plot_settings"))
     ),
     shiny::div(
       style = htmltools::css(
@@ -28,9 +29,10 @@ star_systems_ui = function(id) {
         "column-gap" = "1rem"
       ),
       bslib::card(
-        bslib::card_header("Star System"),
+        bslib::card_header("System map"),
         bslib::card_body(
-          shiny::p("This is a placeholder for the star systems module content.")
+          style = "padding: 0; margin: 0; aspect-ratio: 1 / 1;",
+          visualize_star_system_ui(ns("visualize_star_systems"))
         )
       ),
       bslib::card(
@@ -66,9 +68,7 @@ star_systems_server = function(id, data) {
 
     star_system_data = shiny::reactive({
       shiny::req(data())
-
-      data() |>
-        trim_ps_table()
+      data() |> trim_ps_table()
     })
 
     available_stars = shiny::reactive({
@@ -82,6 +82,19 @@ star_systems_server = function(id, data) {
       "search_star_systems",
       choices = available_stars,
       start_random = TRUE
+    )
+
+    system_data = shiny::reactive({
+      shiny::req(selected_star())
+      star_system_data() |>
+        dplyr::filter(hostname == selected_star())
+    })
+
+    plot_options = system_plot_settings_server("system_plot_settings")
+    visualize_star_system_server(
+      "visualize_star_systems",
+      plot_data = system_data,
+      show_hz = shiny::reactive(plot_options()$show_hz)
     )
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))

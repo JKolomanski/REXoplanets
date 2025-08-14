@@ -4,7 +4,7 @@
 \alias{plot_star_system}
 \title{Plot a Stylized Star System}
 \usage{
-plot_star_system(planet_data, spectral_type = NULL)
+plot_star_system(planet_data, spectral_type = NULL, habitable_zone = c(0, 0))
 }
 \arguments{
 \item{planet_data}{A data frame containing planetary system data. Must include:
@@ -16,6 +16,9 @@ plot_star_system(planet_data, spectral_type = NULL)
 
 \item{spectral_type}{Optional character string indicating the star's spectral type.
 Accepted values: \code{O}, \code{B}, \code{A}, \code{F}, \code{G}, \code{K}, \code{M}.}
+
+\item{habitable_zone}{Optional numeric vector containing 2 values:
+Inner and outer habitable zone edges in AU.}
 }
 \value{
 A \code{ggplot2} object representing the planetary system visualization.
@@ -27,6 +30,7 @@ around a central star. Planet size is scaled by radius,
 orbit position is randomized for aesthetics,
 planet color is mapped by density.
 The star's color is optionally based on spectral type.
+Optionally, star's habitable zone visualization can be overlayed.
 }
 \details{
 The central star is positioned at the origin
@@ -38,6 +42,8 @@ Orbit lines are shown in gray for clarity.
 data = closest_50_exoplanets |>
   subset(hostid == 2.101289)
 spectral_type = classify_star_spectral_type(data$st_teff[1])
-plot_star_system(data, spectral_type)
+plot_star_system(data,
+                 spectral_type,
+                 habitable_zone = calculate_star_habitable_zone(data$st_lum[1]))
 
 }
