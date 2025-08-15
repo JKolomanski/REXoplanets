@@ -100,7 +100,8 @@ star_systems_server = function(id, data) {
     visualize_star_system_server(
       "visualize_star_systems",
       plot_data = system_data,
-      show_hz = shiny::reactive(plot_options()$show_hz)
+      show_hz = shiny::reactive(plot_options()$show_hz),
+      show_legend = shiny::reactive(plot_options()$show_legend)
     )
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
