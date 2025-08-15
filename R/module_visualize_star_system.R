@@ -34,7 +34,8 @@ visualize_star_system_server = function(id, plot_data, show_hz) {
       plot_star_system(
         plot_data(),
         spectral_type = classify_star_spectral_type(plot_data()[["st_teff"]][1]),
-        habitable_zone = hz
+        habitable_zone = hz,
+        show_legend = TRUE
       )
     })
   })

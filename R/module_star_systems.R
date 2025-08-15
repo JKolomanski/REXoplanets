@@ -37,10 +37,10 @@ star_systems_ui = function(id) {
         bslib::card_body(
           style = htmltools::css(
             "padding" = "0",
+            "padding-bottom" = "5px",
             "margin" = "0",
           ),
           visualize_star_system_ui(ns("visualize_star_systems")),
-          shiny::div(shiny::h6("Legend"), style = htmltools::css("height" = "20%"))
         )
       ),
       bslib::card(

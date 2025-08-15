@@ -4,7 +4,12 @@
 \alias{plot_star_system}
 \title{Plot a Stylized Star System}
 \usage{
-plot_star_system(planet_data, spectral_type = NULL, habitable_zone = c(0, 0))
+plot_star_system(
+  planet_data,
+  spectral_type = NULL,
+  habitable_zone = c(0, 0),
+  show_legend = FALSE
+)
 }
 \arguments{
 \item{planet_data}{A data frame containing planetary system data. Must include:
@@ -19,9 +24,11 @@ Accepted values: \code{O}, \code{B}, \code{A}, \code{F}, \code{G}, \code{K}, \co
 
 \item{habitable_zone}{Optional numeric vector containing 2 values:
 Inner and outer habitable zone edges in AU.}
+
+\item{show_legend}{Optional bool value, whether to show plot legend.}
 }
 \value{
-A \code{ggplot2} object representing the planetary system visualization.
+A ggplot2 object representing the planetary system visualization.
 }
 \description{
 Creates a stylized polar plot of a planetary system,

@@ -20,6 +20,7 @@
     "exoplanets_col_labels",
     "orbit_offset",
     "hostname",
-    "closest_50_exoplanets"
+    "closest_50_exoplanets",
+    "type"
   ))
 }
