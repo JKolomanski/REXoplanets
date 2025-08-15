@@ -31,7 +31,11 @@ star_systems_ui = function(id) {
       bslib::card(
         bslib::card_header("System map"),
         bslib::card_body(
-          style = "padding: 0; margin: 0; aspect-ratio: 1 / 1;",
+          style = htmltools::css(
+            "padding" = "0",
+            "margin" = "0",
+            "aspect-ratio" = "1/1"
+          ),
           visualize_star_system_ui(ns("visualize_star_systems"))
         )
       ),
