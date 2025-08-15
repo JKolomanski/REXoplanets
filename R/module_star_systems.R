@@ -56,7 +56,7 @@ star_systems_ui = function(id) {
         ),
         bslib::card_header("System info"),
         bslib::card_body(
-          shiny::p("This area will display the legend for the plot")
+          shiny::p("This area will display Systen details.")
         )
       )
     )
