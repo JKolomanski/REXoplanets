@@ -19,8 +19,6 @@ visualize_star_system_server(id, plot_data, show_hz)
 }
 \value{
 A Shiny UI object.
-
-A reactive expression containing the selected value(s).
 }
 \description{
 Module Visualizing Star Systems

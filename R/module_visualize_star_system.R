@@ -17,7 +17,6 @@ visualize_star_system_ui = function(id) {
 #' @param id A unique identifier for the module.
 #' @param plot_data A reactive expression returning a data frame with information about the system.
 #' @param show_hz A reactive boolean expression determining whether to show habitable zone.
-#' @returns A reactive expression containing the selected value(s).
 #' @describeIn module_visualize_star_system server function for the system mapping module.
 #' @export
 visualize_star_system_server = function(id, plot_data, show_hz) {
