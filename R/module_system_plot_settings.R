@@ -21,7 +21,7 @@ system_plot_settings_ui = function(id) {
 }
 
 #' @param id A unique identifier for the module.
-#' @returns A reactive list object containing bool value wether to show the habitable zone.
+#' @returns A reactive list object containing bool value whether to show the habitable zone.
 #' @describeIn module_system_plot_settings function for the search module.
 #' @export
 system_plot_settings_server = function(id) {
