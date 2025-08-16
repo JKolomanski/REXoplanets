@@ -43,7 +43,7 @@ star_systems_ui = function(id) {
       bslib::card(
         bslib::card_header("Planet details"),
         bslib::card_body(
-          shiny::p("This is a placeholder for the planet details.")
+          planet_details_ui(ns("planet_details"))
         )
       ),
       bslib::card(
@@ -108,6 +108,12 @@ star_systems_server = function(id, data) {
       start_random = TRUE
     )
 
+    planet_data = shiny::reactive({
+      shiny::req(selected_planet())
+      system_data() |>
+        dplyr::filter(pl_name == selected_planet())
+    })
+
     plot_options = system_plot_settings_server("system_plot_settings")
     visualize_star_system_server(
       "visualize_star_systems",
@@ -125,7 +131,20 @@ star_systems_server = function(id, data) {
         dplyr::rename(any_of(exoplanets_col_labels[["pscomppars"]]))
     })
 
+    planet_info = shiny::reactive(planet_data() %>%
+      select(pl_name, objectid, disc_year, discoverymethod,
+             pl_rade, pl_bmasse, pl_insol, pl_dens,
+             pl_eqt, pl_orbsmax, pl_orbper, pl_orbeccen) %>%
+      mutate(
+        across(c(pl_rade, pl_bmasse, pl_insol, pl_dens,
+                 pl_eqt, pl_orbsmax, pl_orbper, pl_orbeccen),
+               ~ round(.x, 3))
+      ) %>%
+      rename(any_of(exoplanets_col_labels[["pscomppars"]]))
+    )
+
     system_info_server("system_info", system_info)
+    planet_details_server("planet_details", planet_info)
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
   })
