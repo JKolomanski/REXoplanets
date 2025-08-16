@@ -17,7 +17,8 @@ star_systems_ui = function(id) {
   bslib::layout_sidebar(
     sidebar = shiny::tagList(
       search_ui(ns("search_star_systems"), label = "Search star:", random = TRUE),
-      system_plot_settings_ui(ns("system_plot_settings"))
+      system_plot_settings_ui(ns("system_plot_settings")),
+      search_ui(ns("search_planets"), label = "Select planet:", random = FALSE)
     ),
     shiny::div(
       style = htmltools::css(
@@ -93,6 +94,19 @@ star_systems_server = function(id, data) {
       star_system_data() |>
         dplyr::filter(hostname == selected_star())
     })
+
+    available_planets = shiny::reactive({
+      system_data() |>
+        dplyr::pull(pl_name) |>
+        unique() |>
+        sort()
+    })
+
+    selected_planet = search_server(
+      "search_planets",
+      choices = available_planets,
+      start_random = TRUE
+    )
 
     plot_options = system_plot_settings_server("system_plot_settings")
     visualize_star_system_server(
