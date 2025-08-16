@@ -20,6 +20,15 @@
     "exoplanets_col_labels",
     "orbit_offset",
     "hostname",
-    "closest_50_exoplanets"
+    "closest_50_exoplanets",
+    ".",
+    "across",
+    "st_mass",
+    "st_rad",
+    "st_teff",
+    "sy_pnum",
+    "sy_snum",
+    "sy_dist",
+    ""
   ))
 }

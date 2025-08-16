@@ -24,7 +24,7 @@ star_systems_ui = function(id) {
         "height" = "100%",
         "display" = "grid",
         "grid-template-columns" = "1fr 1fr",
-        "grid-template-rows" = "3fr 1fr",
+        "grid-template-rows" = "2fr 1fr",
         "row-gap" = "0",
         "column-gap" = "1rem"
       ),
@@ -48,7 +48,11 @@ star_systems_ui = function(id) {
       bslib::card(
         bslib::card_header("System info"),
         bslib::card_body(
-          shiny::p("This is a placeholder for the results of the star systems module.")
+          style = htmltools::css(
+            "padding" = "0",
+            "margin" = "0"
+          ),
+          system_info_ui((ns("system_info")))
         )
       ),
       bslib::card(
@@ -100,6 +104,19 @@ star_systems_server = function(id, data) {
       plot_data = system_data,
       show_hz = shiny::reactive(plot_options()$show_hz)
     )
+
+    system_info = shiny::reactive(system_data() %>%
+      select(hostname, sy_dist, sy_snum, sy_pnum, st_teff, st_rad, st_mass, st_lum) %>%
+      dplyr::slice(1) %>%
+      mutate(st_teff = classify_star_spectral_type(st_teff)) %>%
+      mutate(
+        across(c(sy_dist, st_rad, st_mass, st_lum), ~ round(.x, 3))
+      ) %>%
+      rename("Stellar spectral class" = st_teff) %>%
+      rename(any_of(exoplanets_col_labels[["pscomppars"]]))
+    )
+
+    system_info_server("system_info", system_info)
 
     shiny::observe(logger::log_debug("Selected star: {selected_star()}"))
   })
