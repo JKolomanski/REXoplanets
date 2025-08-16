@@ -26,25 +26,8 @@ system_info_server = function(id, system_info) {
   shiny::moduleServer(id, function(input, output, session) {
     logger::log_trace("{id} initialized")
 
-    output$system_info_row_1 = reactable::renderReactable({
-      shiny::req(system_info())
-
-      system_info_row_1 = system_info() %>%
-        dplyr::slice(1) %>%
-        select(1:4)
-
-      reactable::reactable(system_info_row_1, compact = TRUE)
-    })
-
-    output$system_info_row_2 = reactable::renderReactable({
-      shiny::req(system_info())
-
-      system_info_row_2 = system_info() %>%
-        dplyr::slice(1) %>%
-        select((ncol(.) - 3):ncol(.))
-
-      reactable::reactable(system_info_row_2, compact = TRUE)
-    })
+    .create_reactable_part(output, "system_info_row_1", system_info, 1:4)
+    .create_reactable_part(output, "system_info_row_2", system_info, (last_col() - 3):last_col())
 
   })
 }
