@@ -77,10 +77,10 @@ plot_star_system = function(
   color_map = c(
     setNames(.map_star_color(spectral_type), star_name),
     "Gas-dominated planet" = "lightblue",
-    "Water/ice-rich planet"               = "deepskyblue",
-    "Terrestial planet"            = "darkorange3",
-    "Iron-rich planet"     = "ivory3",
-    "Super-dense planet"      = "gray20"
+    "Water/ice-rich planet" = "deepskyblue",
+    "Terrestial planet" = "darkorange3",
+    "Iron-rich planet" = "ivory3",
+    "Super-dense planet" = "gray20"
   )
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = type)) +

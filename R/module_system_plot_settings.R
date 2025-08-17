@@ -33,15 +33,19 @@ system_plot_settings_server = function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     logger::log_trace("{id} initialized.")
 
-    shiny::observe({
-      logger::log_trace("{id} changed to: {input$show_hz}")
-    }) |>
-      shiny::bindEvent(input$show_hz)
+    shiny::reactive({
+      opts = list(
+        show_hz = input$show_hz,
+        show_legend = input$show_legend
+      )
 
-    shiny::observe({
-      logger::log_trace("{id} changed to: {input$show_legend}")
-    }) |>
-      shiny::bindEvent(input$show_legend)
+      opts_log = purrr::imap(opts, \(val, name) paste0("- ", name, ": ", val)) %>%
+        paste0(collapse = "\n") %>%
+        logger::log_trace("{id} options changed to:\n{.}")
+
+      opts
+    })
+
 
     shiny::reactive(list(
       show_hz = input$show_hz,
