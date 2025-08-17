@@ -42,17 +42,15 @@
 #' @export
 plot_star_system = function(
   planet_data,
-  spectral_type = NULL,
+  spectral_type = " ",
   habitable_zone = c(0, 0),
   show_legend = FALSE
 ) {
   assert_data_frame(planet_data)
   assert_numeric(habitable_zone, len = 2)
   assert_names(colnames(planet_data), must.include = c("pl_orbsmax", "pl_rade", "pl_dens"))
-  if (!is.null(spectral_type)) {
-    assert_character(spectral_type, len = 1, any.missing = FALSE)
-    assert_choice(spectral_type, choices = c("O", "B", "A", "F", "G", "K", "M"))
-  }
+  assert_character(spectral_type, len = 1, any.missing = FALSE)
+  assert_choice(spectral_type, choices = c(" ", "O", "B", "A", "F", "G", "K", "M"))
 
   star_name = paste0(
     "Central star",
@@ -75,7 +73,7 @@ plot_star_system = function(
   plot_data = plot_data[1:(nrow(plot_data) - 2), ]
 
   color_map = c(
-    NULL = "white",
+    " " = "white",
     "M" = "red2",
     "K" = "indianred2",
     "G" = "yellow1",
