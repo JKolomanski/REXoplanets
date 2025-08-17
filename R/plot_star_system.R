@@ -110,17 +110,6 @@ plot_star_system = function(
     )
 }
 
-
-.map_planet_color = function(pl_dens) {
-  case_when(
-    pl_dens < 0.25 ~ "lightblue",
-    pl_dens < 2 ~ "deepskyblue",
-    pl_dens < 6 ~ "darkorange3",
-    pl_dens < 13 ~ "ivory3",
-    TRUE ~ "gray20"
-  )
-}
-
 .map_star_color = function(spectral_type) {
   if (is.null(spectral_type)) {
     return("white")
