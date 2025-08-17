@@ -4,3 +4,4 @@
 .github
 ^.*\.tex$
 ^LICENSE\.md$
+^pkgdown/
