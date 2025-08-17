@@ -67,7 +67,7 @@ plot_star_system = function(
       max(habitable_zone)
     ))),
     pl_rade = c(17, planet_data$pl_rade, 0, 0),
-    type = c(star_name, .map_planet_type(planet_data$pl_dens), "HZ inner edge", "HZ outer edge")
+    type = c(spectral_type, .map_planet_type(planet_data$pl_dens), "HZ inner edge", "HZ outer edge")
   )
 
   inner_hz = plot_data$pl_orbsmax[nrow(plot_data) - 1]
@@ -75,13 +75,22 @@ plot_star_system = function(
   plot_data = plot_data[1:(nrow(plot_data) - 2), ]
 
   color_map = c(
-    setNames(.map_star_color(spectral_type), star_name),
+    NULL = "white",
+    "M" = "red2",
+    "K" = "indianred2",
+    "G" = "yellow1",
+    "F" = "lightyellow",
+    "A" = "lavenderblush",
+    "B" = "lightsteelblue1",
+    "O" = "slateblue1",
     "Gas-dominated planet" = "lightblue",
     "Water/ice-rich planet" = "deepskyblue",
     "Terrestial planet" = "darkorange3",
     "Iron-rich planet" = "ivory3",
     "Super-dense planet" = "gray20"
   )
+
+  names(color_map)[1] = paste0("Central star, type: ", spectral_type)
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = type)) +
     annotate(
@@ -92,7 +101,13 @@ plot_star_system = function(
     ) +
     geom_hline(yintercept = plot_data$pl_orbsmax, color = "grey15") +
     geom_point() +
-    scale_color_manual(values = color_map) +
+    scale_color_manual(
+      values = color_map,
+      labels = setNames(
+        paste0("Central star, spectral type ", spectral_type),
+        spectral_type
+      )
+    ) +
     scale_size_continuous(range = c(3.5, 17)) +
     coord_polar(theta = "x") +
     guides(
@@ -106,24 +121,8 @@ plot_star_system = function(
       legend.justification = "left",
       legend.box.just      = "left",
       legend.position = if (show_legend) "bottom" else "none",
-      legend.key.height = unit(19, "pt")
+      legend.key.height = unit(16, "pt")
     )
-}
-
-.map_star_color = function(spectral_type) {
-  if (is.null(spectral_type)) {
-    return("white")
-  }
-
-  case_when(
-    spectral_type == "M" ~ "red2",
-    spectral_type == "K" ~ "indianred2",
-    spectral_type == "G" ~ "yellow1",
-    spectral_type == "F" ~ "lightyellow",
-    spectral_type == "A" ~ "lavenderblush",
-    spectral_type == "B" ~ "lightsteelblue1",
-    spectral_type == "O" ~ "slateblue1"
-  )
 }
 
 .map_planet_type = function(pl_dens) {
