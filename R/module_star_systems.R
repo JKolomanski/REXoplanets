@@ -105,16 +105,15 @@ star_systems_server = function(id, data) {
       show_hz = shiny::reactive(plot_options()$show_hz)
     )
 
-    system_info = shiny::reactive(system_data() %>%
-      select(hostname, sy_dist, sy_snum, sy_pnum, st_teff, st_rad, st_mass, st_lum) %>%
-      dplyr::slice(1) %>%
-      mutate(st_teff = classify_star_spectral_type(st_teff)) %>%
-      mutate(
-        across(c(sy_dist, st_rad, st_mass, st_lum), ~ round(.x, 3))
-      ) %>%
-      rename("Stellar spectral class" = st_teff) %>%
-      rename(any_of(exoplanets_col_labels[["pscomppars"]]))
-    )
+    system_info = shiny::reactive({
+      system_data() %>%
+        dplyr::select(hostname, sy_dist, sy_snum, sy_pnum, st_teff, st_rad, st_mass, st_lum) %>%
+        dplyr::slice(1) %>%
+        dplyr::mutate(st_teff = classify_star_spectral_type(st_teff)) %>%
+        dplyr::mutate(dplyr::across(c(sy_dist, st_rad, st_mass, st_lum), ~ round(.x, 3))) %>%
+        dplyr::rename("Stellar spectral class" = st_teff) %>%
+        dplyr::rename(any_of(exoplanets_col_labels[["pscomppars"]]))
+    })
 
     system_info_server("system_info", system_info)
 
