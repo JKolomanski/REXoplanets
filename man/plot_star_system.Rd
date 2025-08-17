@@ -6,7 +6,7 @@
 \usage{
 plot_star_system(
   planet_data,
-  spectral_type = NULL,
+  spectral_type = " ",
   habitable_zone = c(0, 0),
   show_legend = FALSE
 )
