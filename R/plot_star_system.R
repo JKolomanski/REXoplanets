@@ -112,16 +112,20 @@ plot_star_system = function(
     coord_polar(theta = "x") +
     guides(
       size = "none",
-      color = guide_legend(title = "", override.aes = list(size = 6, shape = 15))
+      color = guide_legend(title = "", override.aes = list(size = 6, shape = 16))
     ) +
     theme_void() +
     theme(
       panel.background = element_rect(fill = "black", color = NA),
       legend.text = element_text(size = 16),
       legend.justification = "left",
-      legend.box.just      = "left",
+      legend.box.just = "left",
+      legend.box = "vertical",
+      legend.direction = "vertical",
       legend.position = if (show_legend) "bottom" else "none",
-      legend.key.height = unit(16, "pt")
+      legend.key.height = unit(23, "pt"),
+      legend.key = element_rect(fill = "white", color = NA)
+
     )
 }
 
