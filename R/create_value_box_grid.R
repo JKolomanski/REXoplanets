@@ -1,4 +1,4 @@
-#' Internal helper for creating grid of `valuboxes`
+#' Internal helper for creating grid of `valueboxes`
 #' for displaying information.
 #'
 #' @keywords internal
