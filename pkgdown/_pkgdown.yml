@@ -1,3 +1,11 @@
+url: "https://JKolomanski.github.io/REXoplanets/"
+
+authors:
+  Jakub Kołomański:
+    href: https://github.com/JKolomanski
+  Mateusz Kołomański:
+    href: https://github.com/m-kolomanski
+
 template:
   bootstrap: 5
   light-switch: true
@@ -40,5 +48,3 @@ reference:
       Functions containing Shiny modules for the main application.
     contents:
       - starts_with("module_")
-
-url: "https://JKolomanski.github.io/REXoplanets/"
