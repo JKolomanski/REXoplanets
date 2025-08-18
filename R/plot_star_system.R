@@ -52,11 +52,6 @@ plot_star_system = function(
   assert_character(spectral_type, len = 1, any.missing = FALSE)
   assert_choice(spectral_type, choices = c(" ", "O", "B", "A", "F", "G", "K", "M"))
 
-  star_name = paste0(
-    "Central star",
-    if (!is.null(spectral_type)) paste0(", type ", spectral_type) else ""
-  )
-
   plot_data = data.frame(
     orbit_offset = c(0, runif(nrow(planet_data), min = 0, max = 2 * pi), 0, 0),
     pl_orbsmax = c(0, .rescale_orbsmax(c(
