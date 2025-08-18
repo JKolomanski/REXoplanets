@@ -11,11 +11,7 @@ NULL
 #' @export
 planet_details_ui = function(id) {
   ns = shiny::NS(id)
-  shiny::tagList(
-    reactable::reactableOutput(ns("planet_info_row_1")),
-    reactable::reactableOutput(ns("planet_info_row_2")),
-    reactable::reactableOutput(ns("planet_info_row_3"))
-  )
+  shiny::uiOutput(ns("planet_info"))
 }
 
 #' @param id A unique identifier for the module.
@@ -27,8 +23,13 @@ planet_details_server = function(id, planet_info) {
   shiny::moduleServer(id, function(input, output, session) {
     logger::log_trace("{id} initialized")
 
-    .create_reactable_part(output, "planet_info_row_1", planet_info, 1:4)
-    .create_reactable_part(output, "planet_info_row_2", planet_info, 5:8)
-    .create_reactable_part(output, "planet_info_row_3", planet_info, (last_col() - 3):last_col())
+    output$planet_info = shiny::renderUI({
+      shiny::req(planet_info())
+      # Check for present data to avoid "subscript out of bounds"
+      # Error when changing star systems
+      shiny::req(nrow(planet_info()) > 0)
+
+      create_value_box_grid(planet_info())
+    })
   })
 }
