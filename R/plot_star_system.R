@@ -68,7 +68,6 @@ plot_star_system = function(
   plot_data = plot_data[1:(nrow(plot_data) - 2), ]
 
   color_map = c(
-    " " = "white",
     "M" = "red2",
     "K" = "indianred2",
     "G" = "yellow1",
@@ -82,8 +81,6 @@ plot_star_system = function(
     "Iron-rich planet" = "ivory3",
     "Super-dense planet" = "gray20"
   )
-
-  names(color_map)[1] = paste0("Central star, type: ", spectral_type)
 
   ggplot(plot_data, aes(x = orbit_offset, y = pl_orbsmax, size = pl_rade, color = type)) +
     annotate(
