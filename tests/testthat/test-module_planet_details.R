@@ -7,7 +7,7 @@ if (!identical(Sys.getenv("_R_CHECK_PACKAGE_NAME_"), ""))
 options(shiny.testmode = TRUE)
 
 describe("module_planet_details", {
-  it("renders tables without errors", {
+  it("renders value boxes without errors", {
     test_data = as.data.frame(
       setNames(
         rep(list("some_value"), 12),
@@ -27,14 +27,7 @@ describe("module_planet_details", {
     # Wait longer for the reactive updates to complete #
     app$wait_for_idle(500)
 
-    # Check if plot HTML is present for all three rows
-    plot_html = app$get_html("#test_planet-planet_info_row_1")
-    expect_true(plot_html != "")
-
-    plot_html = app$get_html("#test_planet-planet_info_row_2")
-    expect_true(plot_html != "")
-
-    plot_html = app$get_html("#test_planet-planet_info_row_3")
+    plot_html = app$get_html("#test_planet-planet_info")
     expect_true(plot_html != "")
   })
 })
