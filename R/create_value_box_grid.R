@@ -5,8 +5,8 @@
 create_value_box_grid = function(df) {
   vbs = lapply(names(df), function(col_name) {
     bslib::value_box(
-      title = shiny::span(col_name, style = "font-size:12px;"),
-      value = shiny::span(as.character(df[[1, col_name]]), style = "font-size:20px;"),
+      title = shiny::span(col_name, style = "font-size:10pt;"),
+      value = shiny::span(as.character(df[[1, col_name]]), style = "font-size:16pt;"),
       showcase = NULL,
       theme = bslib::value_box_theme(
         bg = "#ffffff",
