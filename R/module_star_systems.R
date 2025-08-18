@@ -48,10 +48,6 @@ star_systems_ui = function(id) {
       bslib::card(
         bslib::card_header("System info"),
         bslib::card_body(
-          style = htmltools::css(
-            "padding" = "0",
-            "margin" = "0"
-          ),
           system_info_ui((ns("system_info")))
         )
       ),

@@ -4,7 +4,7 @@
 \alias{module_system_info}
 \alias{system_info_ui}
 \alias{system_info_server}
-\title{Module Displaying Star System Info}
+\title{Module Displaying Star System Info with Value Boxes (Two Rows)}
 \usage{
 system_info_ui(id)
 
@@ -19,16 +19,12 @@ system_info_server(id, system_info)
 A Shiny UI object.
 }
 \description{
-Module Displaying Star System Info
-}
-\details{
-This module provides a dynamically refreshing table component
-for displaying basic information about a star system.
+Module Displaying Star System Info with Value Boxes (Two Rows)
 }
 \section{Functions}{
 \itemize{
-\item \code{system_info_ui()}: UI function for the system info module.
+\item \code{system_info_ui()}: UI function for the system info module using value boxes.
 
-\item \code{system_info_server()}: server function for the system info module.
+\item \code{system_info_server()}: Server function for the system info module using value boxes.
 
 }}
