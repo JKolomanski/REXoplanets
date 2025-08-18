@@ -143,6 +143,18 @@ star_systems_server = function(id, data) {
       rename(any_of(exoplanets_col_labels[["pscomppars"]]))
     )
 
+    planet_info = shiny::reactive(planet_data() %>%
+      select(pl_name, objectid, disc_year, discoverymethod,
+             pl_rade, pl_bmasse, pl_insol, pl_dens,
+             pl_eqt, pl_orbsmax, pl_orbper, pl_orbeccen) %>%
+      mutate(
+        across(c(pl_rade, pl_bmasse, pl_insol, pl_dens,
+                 pl_eqt, pl_orbsmax, pl_orbper, pl_orbeccen),
+               ~ round(.x, 3))
+      ) %>%
+      rename(any_of(exoplanets_col_labels[["pscomppars"]]))
+    )
+
     system_info_server("system_info", system_info)
     planet_details_server("planet_details", planet_info)
 
