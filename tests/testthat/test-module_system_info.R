@@ -7,7 +7,7 @@ if (!identical(Sys.getenv("_R_CHECK_PACKAGE_NAME_"), ""))
 options(shiny.testmode = TRUE)
 
 describe("module_system_info", {
-  it("renders table without errors", {
+  it("renders value boxes without errors", {
     test_data = data.frame(
       "Host Name" = c("ABC"),
       "Distance [pc]" = c(1.5),
@@ -31,11 +31,8 @@ describe("module_system_info", {
     # Wait longer for the reactive updates to complete #
     app$wait_for_idle(500)
 
-    # Check if plot HTML is present for both rows
-    plot_html = app$get_html("#test_info-system_info_row_1")
-    expect_true(plot_html != "")
-
-    plot_html = app$get_html("#test_info-system_info_row_2")
+    # Check if plot HTML is present
+    plot_html = app$get_html("#test_info-system_info")
     expect_true(plot_html != "")
   })
 })
