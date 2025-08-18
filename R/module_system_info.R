@@ -23,7 +23,7 @@ system_info_server = function(id, system_info) {
     output$system_info = shiny::renderUI({
       shiny::req(system_info())
 
-      create_value_box_grid(system_info())
+      .create_value_box_grid(system_info())
     })
   })
 }

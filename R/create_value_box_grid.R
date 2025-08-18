@@ -2,7 +2,7 @@
 #' for displaying information.
 #'
 #' @keywords internal
-create_value_box_grid = function(df) {
+.create_value_box_grid = function(df) {
   vbs = lapply(names(df), function(col_name) {
     bslib::value_box(
       title = htmltools::tags$span(col_name, style = "font-size:12px;"),

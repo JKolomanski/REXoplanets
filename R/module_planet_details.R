@@ -29,7 +29,7 @@ planet_details_server = function(id, planet_info) {
       # Error when changing star systems
       shiny::req(nrow(planet_info()) > 0)
 
-      create_value_box_grid(planet_info())
+      .create_value_box_grid(planet_info())
     })
   })
 }
