@@ -4,9 +4,6 @@
 #' @keywords internal
 create_value_box_grid = function(df) {
   vbs = purrr::imap(as.list(df), function(value, name) {
-    print(value)
-    print(name)
-    print("AABBCC")
     bslib::value_box(
       title = htmltools::tags$span(as.character(name), style = "font-size:10pt;"),
       value = htmltools::tags$span(as.character(value), style = "font-size:16pt;"),
