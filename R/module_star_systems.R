@@ -56,7 +56,7 @@ star_systems_ui = function(id) {
         ),
         bslib::card_header("System info"),
         bslib::card_body(
-          system_info_ui((ns("system_info")))
+          system_info_ui(ns("system_info"))
         )
       )
     )

@@ -2,11 +2,11 @@
 #' for displaying information.
 #'
 #' @keywords internal
-create_value_box_grid = function(df) {
+.create_value_box_grid = function(df) {
   vbs = purrr::imap(as.list(df), function(value, name) {
     bslib::value_box(
-      title = htmltools::tags$span(as.character(name), style = "font-size:10pt;"),
-      value = htmltools::tags$span(as.character(value), style = "font-size:16pt;"),
+      title = shiny::span(as.character(name), style = "font-size:10pt;"),
+      value = shiny::span(as.character(value), style = "font-size:16pt;"),
       showcase = NULL,
       theme = bslib::value_box_theme(
         bg = "#ffffff",
