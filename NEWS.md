@@ -3,7 +3,7 @@
 * Added API interface for fetching exoplanet data
 * Added calculation functions for various exoplanet attributes
 * Implemented classification functions for exoplanet and star types
-* Added summarization functions for data analysis
+* Added summary functions for data analysis
 * Created plotting and visualization functions
 * Developed interactive Shiny application for exploring exoplanet data
 * Comprehensive documentation and examples provided
