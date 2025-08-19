@@ -16,25 +16,40 @@ system_plot_settings_ui = function(id) {
     shiny::checkboxInput(
       ns("show_hz"),
       "Show habitable zone"
+    ),
+    shiny::checkboxInput(
+      ns("show_legend"),
+      "Show legend"
     )
   )
 }
 
 #' @param id A unique identifier for the module.
-#' @returns A reactive list object containing bool value whether to show the habitable zone.
+#' @returns A reactive list object containing bool value
+#' whether to show the habitable zone and plot legend.
 #' @describeIn module_system_plot_settings function for the search module.
 #' @export
 system_plot_settings_server = function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     logger::log_trace("{id} initialized.")
 
-    shiny::observe({
-      logger::log_trace("{id} changed to: {input$show_hz}")
-    }) |>
-      shiny::bindEvent(input$show_hz)
+    shiny::reactive({
+      opts = list(
+        show_hz = input$show_hz,
+        show_legend = input$show_legend
+      )
+
+      opts_log = purrr::imap(opts, \(val, name) paste0("- ", name, ": ", val)) %>%
+        paste0(collapse = "\n") %>%
+        logger::log_trace("{id} options changed to:\n{.}")
+
+      opts
+    })
+
 
     shiny::reactive(list(
-      show_hz = input$show_hz
+      show_hz = input$show_hz,
+      show_legend = input$show_legend
     ))
   })
 }

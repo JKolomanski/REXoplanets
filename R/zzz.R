@@ -37,6 +37,8 @@
     "pl_eqt",
     "pl_name",
     "pl_orbeccen",
-    "pl_orbper"
+    "pl_orbper",
+    "",
+    "type"
   ))
 }

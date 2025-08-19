@@ -30,14 +30,18 @@ star_systems_ui = function(id) {
         "column-gap" = "1rem"
       ),
       bslib::card(
+        style = htmltools::css(
+          grid_row = "1 / span 2",
+          grid_column = "1"
+        ),
         bslib::card_header("System map"),
         bslib::card_body(
           style = htmltools::css(
             "padding" = "0",
+            "padding-bottom" = "5px",
             "margin" = "0",
-            "aspect-ratio" = "1/1"
           ),
-          visualize_star_system_ui(ns("visualize_star_systems"))
+          visualize_star_system_ui(ns("visualize_star_systems")),
         )
       ),
       bslib::card(
@@ -47,15 +51,13 @@ star_systems_ui = function(id) {
         )
       ),
       bslib::card(
+        style = htmltools::css(
+          "grid-row" = "2",
+          "grid-column" = "2",
+        ),
         bslib::card_header("System info"),
         bslib::card_body(
-          system_info_ui((ns("system_info")))
-        )
-      ),
-      bslib::card(
-        bslib::card_header("Legend"),
-        bslib::card_body(
-          shiny::p("This area will display the legend for the plot")
+          system_info_ui(ns("system_info"))
         )
       )
     )
@@ -118,7 +120,8 @@ star_systems_server = function(id, data) {
     visualize_star_system_server(
       "visualize_star_systems",
       plot_data = system_data,
-      show_hz = shiny::reactive(plot_options()$show_hz)
+      show_hz = shiny::reactive(plot_options()$show_hz),
+      show_legend = shiny::reactive(plot_options()$show_legend)
     )
 
     system_info = shiny::reactive({
