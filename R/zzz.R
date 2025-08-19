@@ -29,6 +29,7 @@
     "sy_pnum",
     "sy_snum",
     "sy_dist",
-    ""
+    "",
+    "type"
   ))
 }
