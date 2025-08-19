@@ -18,6 +18,27 @@
     "df",
     "name_map",
     "exoplanets_col_labels",
-    "orbit_offset"
+    "orbit_offset",
+    "hostname",
+    "closest_50_exoplanets",
+    ".",
+    "across",
+    "st_mass",
+    "st_rad",
+    "st_teff",
+    "sy_pnum",
+    "sy_snum",
+    "sy_dist",
+    "disc_year",
+    "discoverymethod",
+    "last_col",
+    "pl_bmasse",
+    "pl_dens",
+    "pl_eqt",
+    "pl_name",
+    "pl_orbeccen",
+    "pl_orbper",
+    "",
+    "type"
   ))
 }
