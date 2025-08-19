@@ -16,7 +16,8 @@ system_plot_settings_server(id)
 \value{
 A Shiny UI object.
 
-A reactive list object containing bool value whether to show the habitable zone.
+A reactive list object containing bool value
+whether to show the habitable zone and plot legend.
 }
 \description{
 System Plot Settings Module
