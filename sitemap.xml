@@ -12,10 +12,16 @@
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/classify_planet_type.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/classify_star_spectral_type.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/closest_50_exoplanets.html</loc></url>
+<url><loc>https://JKolomanski.github.io/REXoplanets/reference/dot-create_value_box_grid.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/exoplanets_col_labels.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/fetch_table.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/index.html</loc></url>
+<url><loc>https://JKolomanski.github.io/REXoplanets/reference/module_planet_details.html</loc></url>
+<url><loc>https://JKolomanski.github.io/REXoplanets/reference/module_search.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/module_star_systems.html</loc></url>
+<url><loc>https://JKolomanski.github.io/REXoplanets/reference/module_system_info.html</loc></url>
+<url><loc>https://JKolomanski.github.io/REXoplanets/reference/module_system_plot_settings.html</loc></url>
+<url><loc>https://JKolomanski.github.io/REXoplanets/reference/module_visualize_star_system.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/plot_star_system.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/scatterplot_esi.html</loc></url>
 <url><loc>https://JKolomanski.github.io/REXoplanets/reference/summarize_star_occurrences.html</loc></url>
