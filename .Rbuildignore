@@ -1,6 +1,7 @@
-^Praktyki\.Rproj$
+^REXoplanets\.Rproj$
 ^\.Rproj\.user$
 .lintr
 .github
 ^.*\.tex$
 ^LICENSE\.md$
+^pkgdown/

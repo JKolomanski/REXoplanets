@@ -1,6 +1,6 @@
 Package: REXoplanets
 Title: Creates interface with NASA exoplanets API
-Version: 0.0.0.9024
+Version: 0.0.0.9028
 Authors@R: c(
     person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
     person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
@@ -32,8 +32,9 @@ Suggests:
     bslib,
     shinytest2,
     bsicons,
-    htmltools,
-    reactable
+    htmltools
+URL: https://JKolomanski.github.io/REXoplanets/ https://github.com/JKolomanski/REXoplanets
+BugReports: https://github.com/JKolomanski/REXoplanets/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

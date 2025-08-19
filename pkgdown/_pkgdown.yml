@@ -1,0 +1,50 @@
+url: "https://JKolomanski.github.io/REXoplanets/"
+
+authors:
+  Jakub Kołomański:
+    href: https://github.com/JKolomanski
+  Mateusz Kołomański:
+    href: https://github.com/m-kolomanski
+
+template:
+  bootstrap: 5
+  light-switch: true
+navbar:
+  structure:
+    right: [search, github, lightswitch]
+reference:
+  - title: "API interface and data manipulation"
+    contents:
+      - fetch_table
+      - closest_50_exoplanets
+      - exoplanets_col_labels
+      - trim_ps_table
+
+  - title: "Calculating attributes"
+    contents:
+      - starts_with("calculate_")
+
+  - title: "Classifying types"
+    contents:
+      - starts_with("classify_")
+
+  - title: "Summarizations"
+    contents:
+      - starts_with("summarize_")
+
+  - title: "Plotting and visualizations"
+    contents:
+      - starts_with("plot_")
+      - scatterplot_esi
+
+  - title: "REXoplanets application"
+    desc: >
+      The main application for exploring exoplanet data.
+    contents:
+      - app
+
+  - title: "Shiny modules"
+    desc: >
+      Functions containing Shiny modules for the main application.
+    contents:
+      - starts_with("module_")

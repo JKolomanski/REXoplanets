@@ -64,14 +64,25 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
   log_debug("Query URL: `{url}`")
 
   req = request(url) %>%
-    req_options(followlocation = TRUE) # todo: add handling 3xx responses
+    req_options(followlocation = TRUE)
   res = tryCatch(
     req_perform(req),
     error = function(e) {
-      # TODO: Handle specific error cases more gracefully.
-      # For example, if the error is from 5XX range, it has nothing to do with filter syntax.
-      log_error("Request failed. Check your filter syntax. Original error: {e$message}")
-      stop(e$message)
+      status_code = sub(".*?(\\d{3}).*", "\\1", e$message)
+
+      message = switch(
+        status_code,
+        "400" = "The request was invalid, please check filter syntax",
+        "500" = paste0(
+          "The API encountered an unknown error. Try again later.",
+          "If the issue persists, please report a bug"
+        ),
+        "503" = "The API is currently unavailable. Try again later.",
+        "504" = "The API connection timed out. Try again later.",
+        "API request encountered an unexpected error."
+      )
+
+      stop(paste0(message, " Original error: ", e$message), call. = FALSE)
     }
   )
 
@@ -88,7 +99,6 @@ fetch_table = function(table, query_string = NULL, pretty_colnames = FALSE, form
   )
 
   res_data = read_fn[[format]](res_data)
-
 
   log_success("Table {table} fetched successfully.")
 
