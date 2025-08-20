@@ -1,3 +1,6 @@
+# [REXoplanets 0.1.1](https://github.com/JKolomanski/REXoplanets/releases/tag/v0.1.1)
+* Change the `Title` field to Title Case to meet CRAN requirements
+
 # [REXoplanets 0.1.0](https://github.com/JKolomanski/REXoplanets/releases/tag/v0.1.0)
 * Initial release of **REXoplanets** package
 * Added API interface for fetching exoplanet data
