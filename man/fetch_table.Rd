@@ -41,7 +41,7 @@ and returns it as a data frame or a named list.
 You can optionally specify \code{WHERE} ADQL clause to filter rows based on conditions.
 }
 \examples{
-\dontrun{
+\donttest{
  # All entries from Stellar Hosts table
  fetch_table("stellarhosts")
  # Entries from Planetary Systems table where planetary mass > 3 times the earth mass

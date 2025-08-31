@@ -33,7 +33,7 @@
 #' @importFrom logger log_info log_success log_error log_debug log_trace
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  # All entries from Stellar Hosts table
 #'  fetch_table("stellarhosts")
 #'  # Entries from Planetary Systems table where planetary mass > 3 times the earth mass

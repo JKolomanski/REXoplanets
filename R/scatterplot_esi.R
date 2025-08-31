@@ -19,7 +19,7 @@
 #' @importFrom checkmate assert_names assert_data_frame assert_numeric
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' closest_50_exoplanets |>
 #'   dplyr::mutate(esi = calculate_esi(pl_rade, pl_insol)) |>
 #'   scatterplot_esi()
