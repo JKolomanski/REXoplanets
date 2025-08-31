@@ -1,12 +1,12 @@
 Package: REXoplanets
-Title: Creates Interface with NASA Exoplanets API
+Title: Creates Interface with NASA 'Exoplanets API'
 Version: 0.1.1
 Authors@R: c(
     person("Jakub", "Kołomański", email = "xqubula@gmail.com", role = c("cre", "aut")),
     person("Mateusz", "Kołomański", email = "m.kolomanski.biosoftware@gmail.com", role = "aut"))
-Description: Provides a user-friendly interface to the NASA Exoplanets Archive API, 
+Description: Provides a user-friendly interface to NASA 'Exoplanets Archive API', 
     enabling retrieval and analysis of exoplanetary and stellar data. Includes functions for querying, 
-    filtering, summarizing, and computing derived parameters from the Exoplanets catalog. 
+    filtering, summarizing, and computing derived parameters from the 'Exoplanets' catalog. 
 License: MIT + file LICENSE
 Depends: 
     R (>= 4.1)
