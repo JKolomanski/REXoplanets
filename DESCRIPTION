@@ -25,7 +25,6 @@ Suggests:
     roxygen2,
     lintr,
     devtools,
-    pak,
     spelling,
     shiny,
     shinyjs,
