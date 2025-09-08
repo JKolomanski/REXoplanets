@@ -61,7 +61,7 @@ check_app_dependencies = function() {
     stop(paste0(
       "The following packages are required for shiny application, but are missing:\n",
       paste0("    - ", missing_packages, collapse = "\n"), "\n",
-      "Install missing packages to proceed"
+      "Install missing packages to run the application."
     ))
   }
 }
