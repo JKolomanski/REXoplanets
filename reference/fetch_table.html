@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">REXoplanets</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,14 +92,72 @@ You can optionally specify <code>WHERE</code> ADQL clause to filter rows based o
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span> <span class="co"># All entries from Stellar Hosts table</span></span></span>
 <span class="r-in"><span> <span class="fu">fetch_table</span><span class="op">(</span><span class="st">"stellarhosts"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> INFO [<span style="font-style: italic;">2025-09-08 21:41:50</span>] <span style="color: #949494;">Fetching table `stellarhosts`...</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00AF00; font-weight: bold;">SUCCESS</span> [<span style="font-style: italic;">2025-09-08 21:42:07</span>] <span style="color: #A8A8A8;">Table stellarhosts fetched successfully.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 46,609 × 135</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    hostname    hd_name hip_name tic_id   st_refname sy_refname    ra rastr   dec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Kepler-27   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 137… &lt;a refstr… &lt;a refstr…  292. 19h2…  41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Kepler-633  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 138… &lt;a refstr… &lt;a refstr…  295. 19h4…  40.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Kepler-1063 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 122… &lt;a refstr… &lt;a refstr…  291. 19h2…  38.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Kepler-1945 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 123… &lt;a refstr… &lt;a refstr…  282. 18h4…  42.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Kepler-1006 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 271… &lt;a refstr… &lt;a refstr…  296. 19h4…  42.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Kepler-799  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 158… &lt;a refstr… &lt;a refstr…  287. 19h0…  44.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Kepler-636  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 138… &lt;a refstr… &lt;a refstr…  294. 19h3…  41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Kepler-477  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 158… &lt;a refstr… &lt;a refstr…  288. 19h1…  42.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Kepler-565  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 164… &lt;a refstr… &lt;a refstr…  284. 18h5…  47.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Kepler-27   <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 137… &lt;a refstr… &lt;a refstr…  292. 19h2…  41.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 46,599 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 126 more variables: decstr &lt;chr&gt;, glon &lt;dbl&gt;, glat &lt;dbl&gt;, elon &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   elat &lt;dbl&gt;, sy_icmag &lt;lgl&gt;, sy_icmagerr1 &lt;lgl&gt;, sy_icmagerr2 &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   st_teff &lt;dbl&gt;, st_tefferr1 &lt;dbl&gt;, st_tefferr2 &lt;dbl&gt;, st_tefflim &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   st_met &lt;dbl&gt;, st_meterr1 &lt;dbl&gt;, st_meterr2 &lt;dbl&gt;, st_metlim &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   st_radv &lt;dbl&gt;, st_radverr1 &lt;dbl&gt;, st_radverr2 &lt;dbl&gt;, st_radvlim &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   st_vsin &lt;dbl&gt;, st_vsinerr1 &lt;dbl&gt;, st_vsinerr2 &lt;dbl&gt;, st_vsinlim &lt;dbl&gt;, …</span></span>
 <span class="r-in"><span> <span class="co"># Entries from Planetary Systems table where planetary mass &gt; 3 times the earth mass</span></span></span>
 <span class="r-in"><span> <span class="fu">fetch_table</span><span class="op">(</span><span class="st">"ps"</span>, query_string <span class="op">=</span> <span class="st">"pl_bmasse &gt; 3"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> INFO [<span style="font-style: italic;">2025-09-08 21:42:07</span>] <span style="color: #949494;">Fetching table `ps`...</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00AF00; font-weight: bold;">SUCCESS</span> [<span style="font-style: italic;">2025-09-08 21:42:14</span>] <span style="color: #A8A8A8;">Table ps fetched successfully.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6,384 × 354</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    pl_name     pl_letter hostname  hd_name hip_name tic_id  gaia_id default_flag</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Kepler-6 b  b         Kepler-6  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Kepler-6 b  b         Kepler-6  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Kepler-6 b  b         Kepler-6  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Kepler-6 b  b         Kepler-6  <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Kepler-32 c c         Kepler-32 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Kepler-32 c c         Kepler-32 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Kepler-29 c c         Kepler-29 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Kepler-29 c c         Kepler-29 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Kepler-29 c c         Kepler-29 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 27… Gaia D…            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Kepler-20 c c         Kepler-20 <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 15… Gaia D…            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6,374 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 346 more variables: pl_refname &lt;chr&gt;, sy_refname &lt;chr&gt;, disc_pubdate &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   disc_year &lt;dbl&gt;, discoverymethod &lt;chr&gt;, disc_locale &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   disc_facility &lt;chr&gt;, disc_instrument &lt;chr&gt;, disc_telescope &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   disc_refname &lt;chr&gt;, ra &lt;dbl&gt;, rastr &lt;chr&gt;, dec &lt;dbl&gt;, decstr &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   glon &lt;dbl&gt;, glat &lt;dbl&gt;, elon &lt;dbl&gt;, elat &lt;dbl&gt;, pl_orbper &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pl_orbpererr1 &lt;dbl&gt;, pl_orbpererr2 &lt;dbl&gt;, pl_orbperlim &lt;dbl&gt;, …</span></span>
 <span class="r-in"><span> <span class="co"># Planets orbiting Teegarden's Star with radius &gt; 1 Earth radius</span></span></span>
 <span class="r-in"><span> <span class="fu">fetch_table</span><span class="op">(</span><span class="st">"pscomppars"</span>, query_string <span class="op">=</span> <span class="st">"hostname = 'Teegarden''s Star' and pl_rade &gt; 1"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> INFO [<span style="font-style: italic;">2025-09-08 21:42:14</span>] <span style="color: #949494;">Fetching table `pscomppars`...</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00AF00; font-weight: bold;">SUCCESS</span> [<span style="font-style: italic;">2025-09-08 21:42:15</span>] <span style="color: #A8A8A8;">Table pscomppars fetched successfully.</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 682</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   objectid pl_name            pl_letter hostid hostname  hd_name hip_name tic_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     3.12 Teegarden's Star b b           2.10 Teegarde… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 2…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     3.12 Teegarden's Star c c           2.10 Teegarde… <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       TIC 2…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 674 more variables: disc_pubdate &lt;chr&gt;, disc_year &lt;dbl&gt;, disc_method &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   discoverymethod &lt;chr&gt;, disc_locale &lt;chr&gt;, disc_facility &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   disc_instrument &lt;chr&gt;, disc_telescope &lt;chr&gt;, disc_refname &lt;chr&gt;, ra &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   raerr1 &lt;dbl&gt;, raerr2 &lt;dbl&gt;, rasymerr &lt;dbl&gt;, rastr &lt;chr&gt;, ra_solnid &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ra_reflink &lt;chr&gt;, dec &lt;dbl&gt;, decerr1 &lt;dbl&gt;, decerr2 &lt;dbl&gt;, decsymerr &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   decstr &lt;chr&gt;, dec_solnid &lt;dbl&gt;, dec_reflink &lt;chr&gt;, glon &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   glonerr1 &lt;lgl&gt;, glonerr2 &lt;lgl&gt;, glonsymerr &lt;lgl&gt;, glonstr &lt;dbl&gt;, …</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
