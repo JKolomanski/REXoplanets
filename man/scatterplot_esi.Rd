@@ -28,9 +28,9 @@ colored by the Earth Similarity Index (ESI).
 Dashed lines at (1,1) indicate Earth's reference values for stellar flux and radius.
 }
 \examples{
-\dontrun{
+\donttest{
 closest_50_exoplanets |>
-  dplyr::mutate(esi = calculate_esi(pl_rade, pl_insol)) |>
+  dplyr::mutate(esi = calculate_esi(radius = pl_rade, flux = pl_insol)) |>
   scatterplot_esi()
 }
 }
